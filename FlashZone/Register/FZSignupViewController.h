@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FZViewController.h"
-#import <GooglePlus/GooglePlus.h>
 
 
-@interface FZSignupViewController : FZViewController <UITableViewDataSource, UITableViewDelegate, GPPSignInDelegate>
+@interface FZSignupViewController : FZViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
