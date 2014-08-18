@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *linkedinImage;
 @property (copy, nonatomic) NSString *image;
 @property (strong, nonatomic) UIImage *imageData;
+@property (strong, nonatomic) NSMutableArray *tags;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 
