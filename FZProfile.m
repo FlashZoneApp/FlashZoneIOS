@@ -32,12 +32,14 @@
 @synthesize linkedinId;
 @synthesize linkedinImage;
 @synthesize tags;
+@synthesize registrationType;
 
 
 - (id)init
 {
     self = [super init];
     if (self){
+        self.registrationType = FZRegistrationTypeEmail;
         self.populated = NO;
         self.latitude = 0.0f;
         self.longitude = 0.0f;

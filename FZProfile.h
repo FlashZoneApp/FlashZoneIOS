@@ -10,6 +10,13 @@
 #import "FZSocialAccountsMgr.h"
 #import <GoogleOpenSource/GoogleOpenSource.h>
 
+typedef enum {
+    FZRegistrationTypeEmail = 0,
+    FZRegistrationTypeFacebook,
+    FZRegistrationTypeTwitter,
+    FZRegistrationTypeLinkedIn,
+    FZRegistrationTypeGoogle
+} FZRegistrationType;
 
 @interface FZProfile : NSObject
 
@@ -34,6 +41,7 @@
 @property (strong, nonatomic) NSMutableArray *tags;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
+@property (nonatomic) FZRegistrationType registrationType;
 
 
 @property (nonatomic) BOOL populated;
