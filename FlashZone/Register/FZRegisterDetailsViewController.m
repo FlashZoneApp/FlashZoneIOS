@@ -233,6 +233,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 
     
     y += btnTerms.frame.size.height;
+    self.scrollView.backgroundColor = [UIColor greenColor];
 
     self.scrollView.contentSize = CGSizeMake(0, y);
     [view addSubview:self.scrollView];
@@ -446,59 +447,10 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         else {
             NSDictionary *results = (NSDictionary *)result;
             NSLog(@"%@", [results description]);
-            
             [self.profile populate:results[@"profile"]];
-            
-//            if ([self.profile.facebookId isEqualToString:@"none"]==NO){
-//                [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self.loadingIndicator stopLoading];
-//                        FZPickPhotoViewController *pickPhotoVc = [[FZPickPhotoViewController alloc] init];
-//                        [self.navigationController pushViewController:pickPhotoVc animated:YES];
-//                    });
-//
-//                }];
-//                
-//                return;
-//            }
-//
-//            
-//            if ([self.profile.twitterImage isEqualToString:@"none"]==NO){
-//                NSLog(@"FOUND TWITTER PROFILE PIC: %@", self.profile.twitterImage);
-//                [self.profile requestTwitterProfilePic:^(BOOL success, NSError *error){
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self.loadingIndicator stopLoading];
-//                        FZPickPhotoViewController *pickPhotoVc = [[FZPickPhotoViewController alloc] init];
-//                        [self.navigationController pushViewController:pickPhotoVc animated:YES];
-//                    });
-//                    
-//                }];
-//                
-//                return;
-//            }
-//
-//            
-//            if ([self.profile.linkedinImage isEqualToString:@"none"]==NO){
-////                NSLog(@"FOUND TWITTER PROFILE PIC: %@", self.profile.twitterImage);
-//                [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self.loadingIndicator stopLoading];
-//                        FZPickPhotoViewController *pickPhotoVc = [[FZPickPhotoViewController alloc] init];
-//                        [self.navigationController pushViewController:pickPhotoVc animated:YES];
-//                    });
-//                    
-//                }];
-//                
-//                return;
-//            }
-
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 FZPickPhotoViewController *pickPhotoVc = [[FZPickPhotoViewController alloc] init];
                 [self.navigationController pushViewController:pickPhotoVc animated:YES];
-                
-                
-
             });
         }
         
@@ -680,7 +632,8 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     
     
     if (textField.tag > 1002){
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+//        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+        [self.scrollView setContentOffset:CGPointMake(0, 100.0f) animated:NO];
         [self shiftUp:140.0f];
     }
     
@@ -712,7 +665,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     }
     
     self.scrollView.delegate = nil;
-    [self.scrollView setContentOffset:CGPointMake(0, 320.0f) animated:YES];
+    [self.scrollView setContentOffset:CGPointMake(0, 540.0f) animated:YES];
     [self performSelector:@selector(connectScrollViewDelegate) withObject:nil afterDelay:0.60f];
     return YES;
 }
