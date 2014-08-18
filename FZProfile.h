@@ -52,4 +52,8 @@
 // LinkedIn
 - (void)requestLinkedinProfilePic:(void (^)(BOOL success, NSError *error))completion;
 
+// GooglePlus
+- (void)requestGooglePlusInfo:(GTMOAuth2Authentication *)auth completion:(void (^)(id result, NSError *error))completion;
+
+
 @end

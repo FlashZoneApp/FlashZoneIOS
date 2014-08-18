@@ -8,6 +8,7 @@
 
 #import "FZProfile.h"
 #import "FZWebServices.h"
+#import <GoogleOpenSource/GoogleOpenSource.h>
 
 
 @implementation FZProfile
@@ -43,16 +44,6 @@
         
         [self restoreDefaults];
         [self populateFromCache];
-
-        
-//        self.following = [NSMutableArray array];
-//        self.places = [NSMutableArray array];
-//        self.placesMap = [NSMutableDictionary dictionary];
-//        [self restoreDefaults];
-//        [self populateFromCache];
-//        
-//        [self refreshProfileInfo];
-        
 
     }
     return self;
@@ -323,6 +314,30 @@
                                   }];
 }
 
+- (void)requestGooglePlusInfo:(GTMOAuth2Authentication *)auth completion:(void (^)(id result, NSError *error))completion
+{
+
+    GTLServicePlus* plusService = [[GTLServicePlus alloc] init];
+    plusService.retryEnabled = YES;
+    plusService.authorizer = auth;
+    
+    GTLQueryPlus *query = [GTLQueryPlus queryForPeopleGetWithUserId:@"me"];
+    
+    [plusService executeQuery:query
+            completionHandler:^(GTLServiceTicket *ticket, GTLPlusPerson *person, NSError *error) {
+                if (error) {
+                    GTMLoggerError(@"Error: %@", error);
+                    completion(nil, error);
+                }
+                else {
+                    NSString *description = [NSString stringWithFormat:@"%@\n%@\n%@", person.displayName, person.aboutMe, [person.emails description]];
+                    
+                    NSLog(@"GOOGLE PROFILE INFO: %@", description);
+                    completion(person, nil);
+                }
+            }];
+
+}
 
 - (NSDictionary *)parametersDictionary
 {
