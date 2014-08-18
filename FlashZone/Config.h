@@ -21,6 +21,7 @@
 #define kLinkedInClientID @"77clc8s96rvbxr"
 #define kLinkedInClientSecret @"bNldG6BFfJZTMPtu"
 #define kLinkedInState @"DCEEFWF45453sdffef424"
+#define kGooglePlusClientID @"434470043767-1dbtcobtt0i4kokfor9lujjthgpkp3ih.apps.googleusercontent.com"
 
 
 
