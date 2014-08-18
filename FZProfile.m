@@ -38,7 +38,6 @@
 {
     self = [super init];
     if (self){
-        self.tags = [NSMutableArray array];
         self.populated = NO;
         self.latitude = 0.0f;
         self.longitude = 0.0f;
@@ -66,6 +65,7 @@
 
 - (void)restoreDefaults
 {
+    self.tags = [NSMutableArray array];
     self.uniqueId = @"none";
     self.fullname = @"none";
     self.email = @"none";
