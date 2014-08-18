@@ -233,7 +233,6 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 
     
     y += btnTerms.frame.size.height;
-    self.scrollView.backgroundColor = [UIColor greenColor];
 
     self.scrollView.contentSize = CGSizeMake(0, y);
     [view addSubview:self.scrollView];
