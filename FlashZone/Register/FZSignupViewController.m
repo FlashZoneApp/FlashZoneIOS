@@ -9,12 +9,10 @@
 #import "FZSignupViewController.h"
 #import "FZRegisterDetailsViewController.h"
 #import "FZLoginViewController.h"
-#import <GoogleOpenSource/GoogleOpenSource.h>
 
 
 @interface FZSignupViewController ()
 @property (strong, nonatomic) UITableView *twitterAccountsTable;
-@property (strong, nonatomic) GPPSignIn *signIn;
 @end
 
 #define kSmallHeight 460.0f
@@ -124,17 +122,6 @@
 {
     [super viewDidLoad];
     
-    self.signIn = [GPPSignIn sharedInstance];
-    self.signIn.shouldFetchGooglePlusUser = YES;
-    self.signIn.shouldFetchGoogleUserEmail = YES;
-    self.signIn.clientID = kGooglePlusClientID;
-    
-    // Uncomment one of these two statements for the scope you chose in the previous step
-//    signIn.scopes = @[ kGTLAuthScopePlusLogin ];  // "https://www.googleapis.com/auth/plus.login" scope
-    self.signIn.scopes = @[@"profile"];
-    
-    // Optional: declare signIn.actions, see "app activities"
-    self.signIn.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -256,17 +243,37 @@
     }
     
     if (btn.tag==1002){ // GOOGLE PLUS
-        BOOL signedIn = [self.signIn trySilentAuthentication];
-        if (signedIn){
-            NSLog(@"SIGNED IN");
-        }
-        else{
-            NSLog(@"NOT SIGNED IN");
-            [self.signIn authenticate];
-        }
-        
+        [self.loadingIndicator startLoading];
+        [self.socialAccountsMgr requestGooglePlusAccess:@[@"profile"] completion:^(id result, NSError *error){
+            if (error){
+                [self.loadingIndicator stopLoading];
+                NSLog(@"GOOGLE PLUS LOGIN FAILED");
+            
+            }
+            else {
+                GTMOAuth2Authentication *auth = (GTMOAuth2Authentication *)result;
+//                NSLog(@"GOOGLE PLUS LOGIN SUCCESS: %@", auth);
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
+                        
+                        GTLPlusPerson *person = (GTLPlusPerson *)result;
+                        for (GTLPlusPersonEmailsItem *email in person.emails){
+                            NSLog(@"EMAIL: %@", [email description]);
+                            if (email.value)
+                                self.profile.email = email.value;
+                        }
+                        
+                        if (person.displayName)
+                            self.profile.fullname = person.displayName;
+                        
+                        [self showProfileDetailsScreen];
 
-        
+                    }];
+                });
+                
+            }
+        }];
     }
     
     if (btn.tag==1003){ // LINKEDIN
@@ -324,56 +331,7 @@
 }
 
 
-#pragma mark - GooglePlusDelegate
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
-{
-    NSLog(@"Received error %@ and auth object %@", [error localizedDescription], auth);
-    if (error){ // handle error
-        return;
-    }
-    
-    GTLServicePlus* plusService = [[GTLServicePlus alloc] init];
-    plusService.retryEnabled = YES;
-    plusService.authorizer = auth;
-    
-    GTLQueryPlus *query = [GTLQueryPlus queryForPeopleGetWithUserId:@"me"];
-    
-    [plusService executeQuery:query
-            completionHandler:^(GTLServiceTicket *ticket, GTLPlusPerson *person, NSError *error) {
-                if (error) {
-                    GTMLoggerError(@"Error: %@", error);
-                }
-                else {
-                    NSString *description = [NSString stringWithFormat:@"%@\n%@\n%@", person.displayName, person.aboutMe, [person.emails description]];
-                    
-                    NSLog(@"GOOGLE PROFILE INFO: %@", description);
-                }
-            }];
-    
-}
 
-- (void)presentSignInViewController:(UIViewController *)viewController
-{
-    // This is an example of how you can implement it if your app is navigation-based.
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
--(void)refreshInterfaceBasedOnSignIn
-{
-    if ([[GPPSignIn sharedInstance] authentication]) {
-        NSLog(@"GOOGLE USER SIGNED IN");
-        
-        // The user is signed in.
-//        self.signInButton.hidden = YES;
-        // Perform other actions here, such as showing a sign-out button
-    }
-    else {
-        NSLog(@"GOOGLE USER NOT SIGNED IN");
-        
-//        self.signInButton.hidden = NO;
-        // Perform other actions here
-    }
-}
 
 
 
