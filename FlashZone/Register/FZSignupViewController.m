@@ -157,6 +157,7 @@
 
 - (void)signupWithEmail:(UIButton *)btn
 {
+    self.profile.registrationType = FZRegistrationTypeEmail;
     [self showProfileDetailsScreen];
 }
 
@@ -175,7 +176,7 @@
             }
             else{
                 NSLog(@"FACEBOOK ACCESS GRANTED!!");
-                
+                self.profile.registrationType = FZRegistrationTypeFacebook;
                 [self.profile getFacebookInfo:^(BOOL success, NSError *error){
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.loadingIndicator stopLoading];
@@ -224,6 +225,7 @@
                     ACAccount *twitterAccount = [self.socialAccountsMgr.twitterAccounts objectAtIndex:0];
                     [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            self.profile.registrationType = FZRegistrationTypeTwitter;
                             [self.loadingIndicator stopLoading];
                             if (success){
                                 self.twitterAccountsTable.alpha = 0;
@@ -256,6 +258,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
+                        self.profile.registrationType = FZRegistrationTypeGoogle;
                         
                         GTLPlusPerson *person = (GTLPlusPerson *)result;
                         for (GTLPlusPersonEmailsItem *email in person.emails){
@@ -285,13 +288,14 @@
                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
             }
             else{
+                self.profile.registrationType = FZRegistrationTypeLinkedIn;
                 NSDictionary *linkedInInfo = (NSDictionary *)result;
                 NSLog(@"LINKED IN PROFILE: %@", [linkedInInfo description]);
                 
                 NSString *name = @"";
-                if (linkedInInfo[@"firstName"]){
+                if (linkedInInfo[@"firstName"])
                     name = [name stringByAppendingString:linkedInInfo[@"firstName"]];
-                }
+                
                 
                 if (linkedInInfo[@"lastName"]){
                     name = [name stringByAppendingString:@" "];
