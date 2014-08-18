@@ -7,6 +7,7 @@
 //
 
 #import "FZPickPhotoViewController.h"
+#import "FZPickTagsViewController.h"
 
 
 
@@ -81,6 +82,7 @@
     btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     btnGo.frame = CGRectMake(frame.size.width-width-20.0f, y, width, 44);
     [btnGo setTitle:@"Go" forState:UIControlStateNormal];
+    [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
     [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [theScrollview addSubview:btnGo];
 
@@ -283,13 +285,15 @@
 
             
         }];
-        
-
-        
     }
-    
 }
 
+
+- (void)segueToPickTags
+{
+    FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
+    [self.navigationController pushViewController:pickTagsVc animated:YES];
+}
 
 
 #pragma mark - UIActionSheetDelegate
@@ -305,6 +309,8 @@
     }
     
 }
+
+
 
 #pragma mark - UIImagePickerControllerDelegate
 
