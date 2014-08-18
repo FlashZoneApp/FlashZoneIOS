@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FZSocialAccountsMgr.h"
+#import <GoogleOpenSource/GoogleOpenSource.h>
 
 
 @interface FZProfile : NSObject

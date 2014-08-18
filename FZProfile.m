@@ -8,7 +8,6 @@
 
 #import "FZProfile.h"
 #import "FZWebServices.h"
-#import <GoogleOpenSource/GoogleOpenSource.h>
 
 
 @implementation FZProfile
@@ -330,9 +329,9 @@
                     completion(nil, error);
                 }
                 else {
-                    NSString *description = [NSString stringWithFormat:@"%@\n%@\n%@", person.displayName, person.aboutMe, [person.emails description]];
+//                    NSString *description = [NSString stringWithFormat:@"%@\n%@\n%@", person.displayName, person.aboutMe, [person.emails description]];
                     
-                    NSLog(@"GOOGLE PROFILE INFO: %@", description);
+//                    NSLog(@"GOOGLE PROFILE INFO: %@", description);
                     completion(person, nil);
                 }
             }];
