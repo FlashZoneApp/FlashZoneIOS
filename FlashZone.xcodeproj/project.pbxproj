@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E319A25949002A4EF9 /* AddressBook.framework */; };
+		5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */; };
+		5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */; };
+		5C0A99EA19A25962002A4EF9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E919A25962002A4EF9 /* CoreText.framework */; };
+		5C0A99EC19A2596D002A4EF9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */; };
+		5C0A99EE19A2597A002A4EF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99ED19A2597A002A4EF9 /* Security.framework */; };
 		5C0B40A9198ADAFE000DD3B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0B40A8198ADAFE000DD3B6 /* CoreLocation.framework */; };
 		5C0CA82E199408D000F63E7F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0CA82D199408D000F63E7F /* Social.framework */; };
 		5C0CA83019940AFA00F63E7F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0CA82F19940AFA00F63E7F /* Accounts.framework */; };
@@ -82,6 +88,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C0A99E319A25949002A4EF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5C0A99E919A25962002A4EF9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		5C0A99ED19A2597A002A4EF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5C0B40A8198ADAFE000DD3B6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5C0CA82D199408D000F63E7F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5C0CA82F19940AFA00F63E7F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -185,6 +197,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0A99EE19A2597A002A4EF9 /* Security.framework in Frameworks */,
+				5C0A99EC19A2596D002A4EF9 /* MediaPlayer.framework in Frameworks */,
+				5C0A99EA19A25962002A4EF9 /* CoreText.framework in Frameworks */,
+				5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */,
+				5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */,
+				5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */,
 				5C0CA83019940AFA00F63E7F /* Accounts.framework in Frameworks */,
 				5C0CA82E199408D000F63E7F /* Social.framework in Frameworks */,
 				5C0B40A9198ADAFE000DD3B6 /* CoreLocation.framework in Frameworks */,
@@ -304,6 +322,12 @@
 		5C9BC8AD1987595D007BAD1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C0A99ED19A2597A002A4EF9 /* Security.framework */,
+				5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */,
+				5C0A99E919A25962002A4EF9 /* CoreText.framework */,
+				5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */,
+				5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */,
+				5C0A99E319A25949002A4EF9 /* AddressBook.framework */,
 				5C0CA82F19940AFA00F63E7F /* Accounts.framework */,
 				5C0CA82D199408D000F63E7F /* Social.framework */,
 				5C0B40A8198ADAFE000DD3B6 /* CoreLocation.framework */,
