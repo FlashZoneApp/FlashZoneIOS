@@ -12,6 +12,7 @@
 #import "LIALinkedInHttpClient.h"
 #import "LIALinkedInApplication.h"
 #import "LIALinkedInAuthorizationViewController.h"
+#import <GooglePlus/GooglePlus.h>
 #import "Config.h"
 
 
@@ -19,7 +20,7 @@
 typedef void (^FZSocialAccountsMgrCompletionBlock)(id result, NSError *error);
 
 
-@interface FZSocialAccountsMgr : NSObject
+@interface FZSocialAccountsMgr : NSObject <GPPSignInDelegate>
 
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) ACAccount *facebookAccount;
@@ -37,6 +38,9 @@ typedef void (^FZSocialAccountsMgrCompletionBlock)(id result, NSError *error);
 
 // LinkedIn
 - (void)requestLinkedInAccess:(NSArray *)permissions fromViewController:(UIViewController *)vc completionBlock:(FZSocialAccountsMgrCompletionBlock)completionBlock;
+
+// Google
+- (void)requestGooglePlusAccess:(NSArray *)permissions completion:(FZSocialAccountsMgrCompletionBlock)completionBlock;
 
 
 @end

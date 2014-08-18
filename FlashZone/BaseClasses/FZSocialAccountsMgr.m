@@ -7,9 +7,12 @@
 //
 
 #import "FZSocialAccountsMgr.h"
+#import <GoogleOpenSource/GoogleOpenSource.h>
+
 
 @interface FZSocialAccountsMgr ()
 @property (strong, nonatomic) LIALinkedInHttpClient *linkedInClient;
+@property (strong, nonatomic) FZSocialAccountsMgrCompletionBlock googlePlusCompletionHandler;
 @end
 
 @implementation FZSocialAccountsMgr
@@ -266,6 +269,74 @@
                                           NSLog(@"Authorization failed %@", error);
                                           completionBlock(nil, error);
                                       }];
+}
+
+
+
+#pragma mark - GooglePlus
+- (void)requestGooglePlusAccess:(NSArray *)permissions completion:(FZSocialAccountsMgrCompletionBlock)completionBlock
+{
+    if (completionBlock != NULL)
+        self.googlePlusCompletionHandler = completionBlock;
+    
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.shouldFetchGooglePlusUser = YES;
+    signIn.shouldFetchGoogleUserEmail = YES;
+    signIn.clientID = kGooglePlusClientID;
+    
+    // Uncomment one of these two statements for the scope you chose in the previous step
+    //    signIn.scopes = @[ kGTLAuthScopePlusLogin ];  // "https://www.googleapis.com/auth/plus.login" scope
+    signIn.scopes = permissions;
+    
+    // Optional: declare signIn.actions, see "app activities"
+    signIn.delegate = self;
+    
+    
+    [signIn authenticate];
+    
+}
+
+
+- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
+{
+    NSLog(@"Received error %@ and auth object %@", [error localizedDescription], auth);
+    if (error){ // handle error
+        if (self.googlePlusCompletionHandler != NULL)
+            self.googlePlusCompletionHandler(nil, error);
+        return;
+    }
+    
+    
+    if (self.googlePlusCompletionHandler == NULL){
+        NSLog(@"MISSING COMPLETION HANDLER! ! ! ");
+        return;
+    }
+    
+    
+    self.googlePlusCompletionHandler(auth, nil);
+}
+
+- (void)presentSignInViewController:(UIViewController *)viewController
+{
+    // This is an example of how you can implement it if your app is navigation-based.
+//    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+-(void)refreshInterfaceBasedOnSignIn
+{
+    if ([[GPPSignIn sharedInstance] authentication]) {
+        NSLog(@"GOOGLE USER SIGNED IN");
+        
+        // The user is signed in.
+        //        self.signInButton.hidden = YES;
+        // Perform other actions here, such as showing a sign-out button
+    }
+    else {
+        NSLog(@"GOOGLE USER NOT SIGNED IN");
+        
+        //        self.signInButton.hidden = NO;
+        // Perform other actions here
+    }
 }
 
 
