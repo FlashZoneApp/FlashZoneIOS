@@ -13,6 +13,8 @@
 		5C0A99EA19A25962002A4EF9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E919A25962002A4EF9 /* CoreText.framework */; };
 		5C0A99EC19A2596D002A4EF9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */; };
 		5C0A99EE19A2597A002A4EF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99ED19A2597A002A4EF9 /* Security.framework */; };
+		5C0A99F519A259E9002A4EF9 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99F319A259E9002A4EF9 /* GoogleOpenSource.framework */; };
+		5C0A99F619A259E9002A4EF9 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99F419A259E9002A4EF9 /* GooglePlus.framework */; };
 		5C0B40A9198ADAFE000DD3B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0B40A8198ADAFE000DD3B6 /* CoreLocation.framework */; };
 		5C0CA82E199408D000F63E7F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0CA82D199408D000F63E7F /* Social.framework */; };
 		5C0CA83019940AFA00F63E7F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0CA82F19940AFA00F63E7F /* Accounts.framework */; };
@@ -94,6 +96,8 @@
 		5C0A99E919A25962002A4EF9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		5C0A99ED19A2597A002A4EF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5C0A99F319A259E9002A4EF9 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		5C0A99F419A259E9002A4EF9 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
 		5C0B40A8198ADAFE000DD3B6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5C0CA82D199408D000F63E7F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5C0CA82F19940AFA00F63E7F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -205,7 +209,9 @@
 				5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */,
 				5C0CA83019940AFA00F63E7F /* Accounts.framework in Frameworks */,
 				5C0CA82E199408D000F63E7F /* Social.framework in Frameworks */,
+				5C0A99F519A259E9002A4EF9 /* GoogleOpenSource.framework in Frameworks */,
 				5C0B40A9198ADAFE000DD3B6 /* CoreLocation.framework in Frameworks */,
+				5C0A99F619A259E9002A4EF9 /* GooglePlus.framework in Frameworks */,
 				5C9BC91319875EBA007BAD1E /* SystemConfiguration.framework in Frameworks */,
 				5C9BC8B11987595D007BAD1E /* CoreGraphics.framework in Frameworks */,
 				5C9BC8B31987595D007BAD1E /* UIKit.framework in Frameworks */,
@@ -322,6 +328,8 @@
 		5C9BC8AD1987595D007BAD1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C0A99F319A259E9002A4EF9 /* GoogleOpenSource.framework */,
+				5C0A99F419A259E9002A4EF9 /* GooglePlus.framework */,
 				5C0A99ED19A2597A002A4EF9 /* Security.framework */,
 				5C0A99EB19A2596D002A4EF9 /* MediaPlayer.framework */,
 				5C0A99E919A25962002A4EF9 /* CoreText.framework */,
@@ -675,6 +683,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "1716212e-39ad-4ef8-9103-93ae39ad8ffa";
 				SDKROOT = iphoneos;
 			};
@@ -708,6 +717,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -719,9 +729,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Edwin Rosenberger (QP625RGEL9)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone/FlashZone/ThirdParty,
+					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlashZone/FlashZone-Prefix.pch";
 				INFOPLIST_FILE = "FlashZone/FlashZone-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1716212e-39ad-4ef8-9103-93ae39ad8ffa";
 				WRAPPER_EXTENSION = app;
@@ -733,9 +749,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone/FlashZone/ThirdParty,
+					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlashZone/FlashZone-Prefix.pch";
 				INFOPLIST_FILE = "FlashZone/FlashZone-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
