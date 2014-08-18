@@ -176,11 +176,11 @@
             }
             else{
                 NSLog(@"FACEBOOK ACCESS GRANTED!!");
-                self.profile.registrationType = FZRegistrationTypeFacebook;
                 [self.profile getFacebookInfo:^(BOOL success, NSError *error){
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.loadingIndicator stopLoading];
                         if (success){
+                            self.profile.registrationType = FZRegistrationTypeFacebook;
                             [self showProfileDetailsScreen];
                         }
                         else{
@@ -225,9 +225,9 @@
                     ACAccount *twitterAccount = [self.socialAccountsMgr.twitterAccounts objectAtIndex:0];
                     [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            self.profile.registrationType = FZRegistrationTypeTwitter;
                             [self.loadingIndicator stopLoading];
                             if (success){
+                                self.profile.registrationType = FZRegistrationTypeTwitter;
                                 self.twitterAccountsTable.alpha = 0;
                                 [self showProfileDetailsScreen];
                             }
@@ -258,7 +258,6 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
-                        self.profile.registrationType = FZRegistrationTypeGoogle;
                         
                         GTLPlusPerson *person = (GTLPlusPerson *)result;
                         for (GTLPlusPersonEmailsItem *email in person.emails){
@@ -270,6 +269,7 @@
                         if (person.displayName)
                             self.profile.fullname = person.displayName;
                         
+                        self.profile.registrationType = FZRegistrationTypeGoogle;
                         [self showProfileDetailsScreen];
 
                     }];
@@ -288,7 +288,6 @@
                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
             }
             else{
-                self.profile.registrationType = FZRegistrationTypeLinkedIn;
                 NSDictionary *linkedInInfo = (NSDictionary *)result;
                 NSLog(@"LINKED IN PROFILE: %@", [linkedInInfo description]);
                 
@@ -313,7 +312,7 @@
                 if (linkedInInfo[@"pictureUrl"])
                     self.profile.linkedinImage = linkedInInfo[@"pictureUrl"];
                 
-
+                self.profile.registrationType = FZRegistrationTypeLinkedIn;
                 [self showProfileDetailsScreen];
 
                 
@@ -367,6 +366,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.loadingIndicator stopLoading];
             if (success){
+                self.profile.registrationType = FZRegistrationTypeTwitter;
                 self.twitterAccountsTable.alpha = 0;
                 [self showProfileDetailsScreen];
             }
