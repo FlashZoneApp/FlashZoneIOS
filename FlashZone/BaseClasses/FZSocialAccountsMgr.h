@@ -31,6 +31,8 @@ typedef void (^FZSocialAccountsMgrCompletionBlock)(id result, NSError *error);
 // Facebook
 - (void)requestFacebookAccess:(NSArray *)permissions completionBlock:(FZSocialAccountsMgrCompletionBlock)completionBlock;
 - (void)requestFacebookAccountInfo:(FZSocialAccountsMgrCompletionBlock)completionBlock;
+- (void)requestFacebookLikes:(FZSocialAccountsMgrCompletionBlock)completionBlock;
+
 
 // Twitter
 - (void)requestTwitterAccess:(FZSocialAccountsMgrCompletionBlock)completionBlock;

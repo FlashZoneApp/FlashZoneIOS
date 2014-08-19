@@ -218,6 +218,41 @@
     
 }
 
+
+- (void)requestFacebookLikes:(FZSocialAccountsMgrCompletionBlock)completionBlock
+{
+    if (!self.facebookAccount) { // no facebook acccount linked
+        NSError *error = [NSError errorWithDomain:@"com.flashzone.app" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
+        completionBlock(nil, error);
+        return;
+    }
+    
+    NSString *url = [kFacebookAPI stringByAppendingString:@"me/likes"]; // https://graph.facebook.com/me/likes
+    NSURL *requestURL = [NSURL URLWithString:url];
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook requestMethod:SLRequestMethodGET URL:requestURL parameters:nil];
+    request.account = self.facebookAccount;
+    
+    [request performRequestWithHandler:^(NSData *data, NSHTTPURLResponse *response, NSError *error) {
+        if (!error) {
+            NSDictionary *facebookLikes = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSLog(@"facebookLikes INFO: %@", [facebookLikes description]);
+            
+            if (error) // JSON parsing error
+                completionBlock(nil, error);
+            else
+                completionBlock(facebookLikes, nil);
+        }
+        else { // handle error:
+            NSLog(@"error from get - - %@", [error localizedDescription]); //attempt to revalidate credentials
+            completionBlock(nil, error);
+        }
+        
+    }];
+    
+}
+
+
+
 #pragma mark - LinkedIn
 - (void)requestLinkedInAccess:(NSArray *)permissions fromViewController:(UIViewController *)vc completionBlock:(FZSocialAccountsMgrCompletionBlock)completionBlock
 {
