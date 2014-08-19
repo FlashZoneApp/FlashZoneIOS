@@ -29,10 +29,10 @@
     CGRect frame = view.frame;
     view.backgroundColor = [UIColor redColor];
     
-    self.tagsTable = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    self.tagsTable = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height) style:UITableViewStylePlain];
+    self.tagsTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.tagsTable.dataSource = self;
     self.tagsTable.delegate = self;
-    self.tagsTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [view addSubview:self.tagsTable];
     
     
@@ -56,6 +56,36 @@
     
     if (self.profile.registrationType==FZRegistrationTypeFacebook){
         NSLog(@"REGISTRATION - FACEBOOK");
+        
+        [self.socialAccountsMgr requestFacebookLikes:^(id result, NSError *error){
+            if (error){
+                NSLog(@"Error fetching recent tweets.");
+            }
+            else{
+                NSDictionary *results = (NSDictionary *)result;
+                NSArray *likes = results[@"data"];
+                if (likes){
+                    for (int i=0; i<likes.count; i++) {
+                        NSDictionary *likeInfo = likes[i];
+                        NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
+                        for (NSDictionary *categoryInfo in categoryList) {
+                            NSString *categoryName = categoryInfo[@"name"];
+                            if (categoryName != nil){
+                                if ([self.profile.tags containsObject:categoryName]==NO)
+                                    [self.profile.tags addObject:categoryName];
+                            }
+                        }
+                    }
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tagsTable reloadData];
+                });
+                
+
+            }
+        }];
+        
         return;
     }
 
