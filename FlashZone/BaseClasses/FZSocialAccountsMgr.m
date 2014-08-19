@@ -19,6 +19,7 @@
 @synthesize accountStore;
 @synthesize facebookAccount;
 @synthesize twitterAccounts;
+@synthesize selectedTwitterAccount;
 
 
 #define kErrorDomain @"com.flashzone.app"

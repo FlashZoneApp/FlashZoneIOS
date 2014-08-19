@@ -25,6 +25,7 @@ typedef void (^FZSocialAccountsMgrCompletionBlock)(id result, NSError *error);
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) ACAccount *facebookAccount;
 @property (strong, nonatomic) NSArray *twitterAccounts;
+@property (strong, nonatomic) ACAccount *selectedTwitterAccount;
 + (FZSocialAccountsMgr *)sharedAccountManager;
 
 // Facebook
