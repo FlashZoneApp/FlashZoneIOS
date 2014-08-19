@@ -269,7 +269,22 @@
                         
                         if (person.displayName)
                             self.profile.fullname = person.displayName;
-                        
+
+                        if (person.occupation){
+                            if ([self.profile.tags containsObject:person.occupation]==NO)
+                                [self.profile.tags addObject:person.occupation];
+                        }
+
+                        if (person.skills){
+                            NSArray *skills = [person.skills componentsSeparatedByString:@","];
+                            for (int i=0; i<skills.count; i++) {
+                                NSString *skill = skills[i];
+                                skill = [skill stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                                if ([self.profile.tags containsObject:skill]==NO)
+                                    [self.profile.tags addObject:skill];
+                            }
+                        }
+
                         self.profile.registrationType = FZRegistrationTypeGoogle;
                         [self showProfileDetailsScreen];
 
