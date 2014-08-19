@@ -223,6 +223,7 @@
                 else{
                     
                     ACAccount *twitterAccount = [self.socialAccountsMgr.twitterAccounts objectAtIndex:0];
+                    self.socialAccountsMgr.selectedTwitterAccount = twitterAccount;
                     [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self.loadingIndicator stopLoading];
@@ -360,6 +361,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[indexPath.row];
+    self.socialAccountsMgr.selectedTwitterAccount = twitterAccount;
     
     [self.loadingIndicator startLoading];
     [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
