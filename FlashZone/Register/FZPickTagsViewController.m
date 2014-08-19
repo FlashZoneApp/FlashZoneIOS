@@ -59,7 +59,7 @@
         
         [self.socialAccountsMgr requestFacebookLikes:^(id result, NSError *error){
             if (error){
-                NSLog(@"Error fetching recent tweets.");
+                NSLog(@"Error fetching recent likes.");
             }
             else{
                 NSDictionary *results = (NSDictionary *)result;
@@ -122,8 +122,6 @@
             }
         }];
         
-        
-        
         return;
     }
 
@@ -132,6 +130,7 @@
         return;
     }
 
+    // linkedIn automatically returns interests on sign in so it is parsed on registration
     if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
         NSLog(@"REGISTRATION - LINKED IN");
         return;
