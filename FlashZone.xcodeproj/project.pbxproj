@@ -39,6 +39,7 @@
 		5C35AD9A199A836900D99CAF /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD8F199A836900D99CAF /* AFURLRequestSerialization.m */; };
 		5C35AD9B199A836900D99CAF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD91199A836900D99CAF /* AFURLResponseSerialization.m */; };
 		5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD93199A836900D99CAF /* AFURLSessionManager.m */; };
+		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */; };
 		5C9BC8AF1987595D007BAD1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8AE1987595D007BAD1E /* Foundation.framework */; };
 		5C9BC8B11987595D007BAD1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8B01987595D007BAD1E /* CoreGraphics.framework */; };
@@ -137,6 +138,8 @@
 		5C35AD91199A836900D99CAF /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		5C35AD92199A836900D99CAF /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		5C35AD93199A836900D99CAF /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickTagsViewController.h; sourceTree = "<group>"; };
+		5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickTagsViewController.m; sourceTree = "<group>"; };
 		5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FZImageEffects.h"; sourceTree = "<group>"; };
 		5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FZImageEffects.m"; sourceTree = "<group>"; };
 		5C9BC8AB1987595D007BAD1E /* FlashZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +408,8 @@
 				5CFF7D2B1989573A00867679 /* FZRegisterDetailsViewController.m */,
 				5C12A01D1995A9D400703CCA /* FZPickPhotoViewController.h */,
 				5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */,
+				5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */,
+				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
 				5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */,
 				5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */,
 				5CF42484198EDB2E00338D55 /* FZForgotPasswordViewController.h */,
@@ -605,6 +610,7 @@
 				5CF42486198EDB2E00338D55 /* FZForgotPasswordViewController.m in Sources */,
 				5C35AD97199A836900D99CAF /* AFNetworkReachabilityManager.m in Sources */,
 				5C35AD9B199A836900D99CAF /* AFURLResponseSerialization.m in Sources */,
+				5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */,
 				5C9BC8BB1987595D007BAD1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
