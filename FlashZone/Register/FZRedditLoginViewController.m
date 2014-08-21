@@ -122,39 +122,49 @@
         else{
             NSLog(@"REDDIT LOGIN SUCCESS: %@", [result description]);
             
+            
             // Fetch subreddits
-            [redditMgr fetchSubreddits:^(id result, NSError *error){
-                NSDictionary *response = (NSDictionary *)result;
-                NSDictionary *data = response[@"data"];
-                
-                if (data[@"children"]){
-                    NSArray *list = data[@"children"];
-                    for (NSDictionary *subreddit in list) {
-                        if (subreddit[@"data"]==nil)
-                            continue;
-                        
-                        NSDictionary *subredditInfo = subreddit[@"data"];
-                        NSString *title = subredditInfo[@"title"];
-                        if (title==nil)
-                            continue;
-                        
-                        NSLog(@"SUBREDDIT = %@", title);
-                        if([self.profile.tags containsObject:title]==NO)
-                            [self.profile.tags addObject:title];
-                    }
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.loadingIndicator stopLoading];
-                    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
-                });
-
-                
-            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fetchSubreddits:redditMgr];
+            });
             
             
         }
     }];
+}
+
+- (void)fetchSubreddits:(DKRedditManager *)redditMgr
+{
+    [redditMgr fetchSubreddits:^(id result, NSError *error){
+        NSDictionary *response = (NSDictionary *)result;
+        NSDictionary *data = response[@"data"];
+        
+        if (data[@"children"]){
+            NSArray *list = data[@"children"];
+            for (NSDictionary *subreddit in list) {
+                if (subreddit[@"data"]==nil)
+                    continue;
+                
+                NSDictionary *subredditInfo = subreddit[@"data"];
+                NSString *title = subredditInfo[@"title"];
+                if (title==nil)
+                    continue;
+                
+//                NSLog(@"SUBREDDIT = %@", title);
+                if([self.profile.tags containsObject:title]==NO){
+                    [self.profile.tags addObject:title];
+                }
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loadingIndicator stopLoading];
+            [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+        });
+        
+        
+    }];
+    
 }
 
 
