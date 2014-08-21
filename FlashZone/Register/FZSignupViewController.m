@@ -9,6 +9,8 @@
 #import "FZSignupViewController.h"
 #import "FZRegisterDetailsViewController.h"
 #import "FZLoginViewController.h"
+//#import "DKRedditSignInViewController.h"
+#import "FZRedditLoginViewController.h"
 
 
 @interface FZSignupViewController ()
@@ -48,7 +50,7 @@
     static CGFloat padding = 12.0f;
     CGFloat w = frame.size.width-2*padding;
     
-    NSArray *socialogins = @[@"loginFacebook.png", @"loginTwitter.png", @"loginGoogle.png", @"loginLinkedin.png"];
+    NSArray *socialogins = @[@"loginFacebook.png", @"loginTwitter.png", @"loginGoogle.png", @"loginLinkedin.png", @"loginReddit.png"];
     for (int i=0; i<socialogins.count; i++){
         UIImage *loginImage = [UIImage imageNamed:socialogins[i]];
         UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -127,7 +129,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.profile restoreDefaults];
+//    [self.profile restoreDefaults];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -351,12 +353,18 @@
                 
                 self.profile.registrationType = FZRegistrationTypeLinkedIn;
                 [self showProfileDetailsScreen];
-
-                
             }
             
         }];
-        
+    }
+    
+    
+    if (btn.tag==1004){ // REDDIT
+        FZRedditLoginViewController *redditSignInVc = [[FZRedditLoginViewController alloc] init];
+        UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:redditSignInVc];
+        [self presentViewController:navCtr animated:YES completion:^{
+            
+        }];
         
     }
 }
