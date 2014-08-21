@@ -15,7 +15,8 @@ typedef enum {
     FZRegistrationTypeFacebook,
     FZRegistrationTypeTwitter,
     FZRegistrationTypeLinkedIn,
-    FZRegistrationTypeGoogle
+    FZRegistrationTypeGoogle,
+    FZRegistrationTypeReddit
 } FZRegistrationType;
 
 @interface FZProfile : NSObject
