@@ -41,6 +41,7 @@
 		5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD93199A836900D99CAF /* AFURLSessionManager.m */; };
 		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C42FFA719A3F47500DC31B3 /* loginReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C42FFA619A3F47500DC31B3 /* loginReddit@2x.png */; };
+		5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E67E419A5712400955E57 /* reddit-logo@2x.png */; };
 		5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */; };
 		5C9BC8AF1987595D007BAD1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8AE1987595D007BAD1E /* Foundation.framework */; };
 		5C9BC8B11987595D007BAD1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8B01987595D007BAD1E /* CoreGraphics.framework */; };
@@ -76,6 +77,8 @@
 		5CF8A007198E9EF900DE17C5 /* loginLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF8A004198E9EF900DE17C5 /* loginLinkedin@2x.png */; };
 		5CF8A008198E9EF900DE17C5 /* loginTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF8A005198E9EF900DE17C5 /* loginTwitter@2x.png */; };
 		5CF8A00E198EA22C00DE17C5 /* bgMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF8A00D198EA22C00DE17C5 /* bgMap@2x.png */; };
+		5CF9D09B19A6708C0080DB44 /* DKRedditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9D09A19A6708C0080DB44 /* DKRedditManager.m */; };
+		5CF9D09E19A671AE0080DB44 /* FZRedditLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9D09D19A671AE0080DB44 /* FZRedditLoginViewController.m */; };
 		5CFF7D2619894C4900867679 /* FZContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF7D2519894C4900867679 /* FZContainerViewController.m */; };
 		5CFF7D2919894F0700867679 /* FZSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF7D2819894F0700867679 /* FZSignupViewController.m */; };
 		5CFF7D2C1989573A00867679 /* FZRegisterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF7D2B1989573A00867679 /* FZRegisterDetailsViewController.m */; };
@@ -142,6 +145,7 @@
 		5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickTagsViewController.h; sourceTree = "<group>"; };
 		5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickTagsViewController.m; sourceTree = "<group>"; };
 		5C42FFA619A3F47500DC31B3 /* loginReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginReddit@2x.png"; sourceTree = "<group>"; };
+		5C4E67E419A5712400955E57 /* reddit-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reddit-logo@2x.png"; sourceTree = "<group>"; };
 		5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FZImageEffects.h"; sourceTree = "<group>"; };
 		5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FZImageEffects.m"; sourceTree = "<group>"; };
 		5C9BC8AB1987595D007BAD1E /* FlashZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +197,10 @@
 		5CF8A004198E9EF900DE17C5 /* loginLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginLinkedin@2x.png"; sourceTree = "<group>"; };
 		5CF8A005198E9EF900DE17C5 /* loginTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginTwitter@2x.png"; sourceTree = "<group>"; };
 		5CF8A00D198EA22C00DE17C5 /* bgMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgMap@2x.png"; sourceTree = "<group>"; };
+		5CF9D09919A6708C0080DB44 /* DKRedditManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRedditManager.h; sourceTree = "<group>"; };
+		5CF9D09A19A6708C0080DB44 /* DKRedditManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRedditManager.m; sourceTree = "<group>"; };
+		5CF9D09C19A671AE0080DB44 /* FZRedditLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZRedditLoginViewController.h; sourceTree = "<group>"; };
+		5CF9D09D19A671AE0080DB44 /* FZRedditLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZRedditLoginViewController.m; sourceTree = "<group>"; };
 		5CFF7D2419894C4900867679 /* FZContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZContainerViewController.h; sourceTree = "<group>"; };
 		5CFF7D2519894C4900867679 /* FZContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZContainerViewController.m; sourceTree = "<group>"; };
 		5CFF7D2719894F0700867679 /* FZSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSignupViewController.h; sourceTree = "<group>"; };
@@ -240,6 +248,7 @@
 		5C116C2519898B8C004AFC22 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5C4E67E419A5712400955E57 /* reddit-logo@2x.png */,
 				5C3338831997FD1800B5E58E /* atSign@2x.png */,
 				5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */,
 				5CE017FC1995B4CF00D4D67C /* btnPhotoGoogle@2x.png */,
@@ -310,6 +319,15 @@
 				5C35AD93199A836900D99CAF /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		5C42FFA819A3F7EE00DC31B3 /* Reddit */ = {
+			isa = PBXGroup;
+			children = (
+				5CF9D09919A6708C0080DB44 /* DKRedditManager.h */,
+				5CF9D09A19A6708C0080DB44 /* DKRedditManager.m */,
+			);
+			path = Reddit;
 			sourceTree = "<group>";
 		};
 		5C9BC8A21987595C007BAD1E = {
@@ -417,6 +435,8 @@
 				5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */,
 				5CF42484198EDB2E00338D55 /* FZForgotPasswordViewController.h */,
 				5CF42485198EDB2E00338D55 /* FZForgotPasswordViewController.m */,
+				5CF9D09C19A671AE0080DB44 /* FZRedditLoginViewController.h */,
+				5CF9D09D19A671AE0080DB44 /* FZRedditLoginViewController.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -452,6 +472,7 @@
 		5C9BC8ED19875EA8007BAD1E /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				5C42FFA819A3F7EE00DC31B3 /* Reddit */,
 				5C35AD80199A836800D99CAF /* AFNetworking */,
 				5C35AD6E199A824600D99CAF /* IOSLinkedInAPI */,
 				5C9BC90219875EA8007BAD1E /* Reachability */,
@@ -561,6 +582,7 @@
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
 				5CF8A006198E9EF900DE17C5 /* loginGoogle@2x.png in Resources */,
 				5CF8A008198E9EF900DE17C5 /* loginTwitter@2x.png in Resources */,
+				5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */,
 				5CF8A007198E9EF900DE17C5 /* loginLinkedin@2x.png in Resources */,
 				5C12A0211995AE6F00703CCA /* photoPlaceholder@2x.png in Resources */,
 				5CF8A002198E9E5A00DE17C5 /* loginFacebook@2x.png in Resources */,
@@ -596,6 +618,7 @@
 				5C9BC8EC19875DCB007BAD1E /* FZWebServices.m in Sources */,
 				5C35AD98199A836900D99CAF /* AFSecurityPolicy.m in Sources */,
 				5C35AD94199A836900D99CAF /* AFHTTPRequestOperation.m in Sources */,
+				5CF9D09E19A671AE0080DB44 /* FZRedditLoginViewController.m in Sources */,
 				5C9BC8E2198759C4007BAD1E /* FZProfile.m in Sources */,
 				5C9BC91119875EA8007BAD1E /* SignalCheck.m in Sources */,
 				5C35AD7A199A824600D99CAF /* LIALinkedInApplication.m in Sources */,
@@ -609,6 +632,7 @@
 				5C35AD95199A836900D99CAF /* AFHTTPRequestOperationManager.m in Sources */,
 				5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */,
 				5C35AD7B199A824600D99CAF /* LIALinkedInAuthorizationViewController.m in Sources */,
+				5CF9D09B19A6708C0080DB44 /* DKRedditManager.m in Sources */,
 				5CF42483198ED50000338D55 /* FZWebViewController.m in Sources */,
 				5CE018091995E64600D4D67C /* FZSocialAccountsMgr.m in Sources */,
 				5CF42486198EDB2E00338D55 /* FZForgotPasswordViewController.m in Sources */,
