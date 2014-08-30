@@ -41,8 +41,34 @@
 		5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD93199A836900D99CAF /* AFURLSessionManager.m */; };
 		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C42FFA719A3F47500DC31B3 /* loginReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C42FFA619A3F47500DC31B3 /* loginReddit@2x.png */; };
+		5C4A33BD19B26CB1001D5502 /* FZTagsIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */; };
+		5C4A33C019B26F6E001D5502 /* FZTagsSelectNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BF19B26F6E001D5502 /* FZTagsSelectNetworkView.m */; };
+		5C4A33C419B27442001D5502 /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C319B27442001D5502 /* bg_select_network@2x.png */; };
+		5C4A33D519B28405001D5502 /* fb-active-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C619B28405001D5502 /* fb-active-rndsquare@2x.png */; };
+		5C4A33D619B28405001D5502 /* fb-brandicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C719B28405001D5502 /* fb-brandicon@2x.png */; };
+		5C4A33D719B28405001D5502 /* fb-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C819B28405001D5502 /* fb-rndsquare@2x.png */; };
+		5C4A33D819B28405001D5502 /* g-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C919B28405001D5502 /* g-activestate-rndsquare@2x.png */; };
+		5C4A33D919B28405001D5502 /* g-brandicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CA19B28405001D5502 /* g-brandicon@2x.png */; };
+		5C4A33DA19B28405001D5502 /* g-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CB19B28405001D5502 /* g-rndsquare@2x.png */; };
+		5C4A33DB19B28405001D5502 /* linkd-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CC19B28405001D5502 /* linkd-activestate-rndsquare@2x.png */; };
+		5C4A33DC19B28405001D5502 /* linkd-brandicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CD19B28405001D5502 /* linkd-brandicon@2x.png */; };
+		5C4A33DD19B28405001D5502 /* linkd-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CE19B28405001D5502 /* linkd-rndsquare@2x.png */; };
+		5C4A33DE19B28405001D5502 /* redd-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33CF19B28405001D5502 /* redd-activestate-rndsquare@2x.png */; };
+		5C4A33DF19B28405001D5502 /* redd-brandicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33D019B28405001D5502 /* redd-brandicon@2x.png */; };
+		5C4A33E119B28405001D5502 /* twit-brandicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33D219B28405001D5502 /* twit-brandicon@2x.png */; };
+		5C4A33E219B28405001D5502 /* twt-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33D319B28405001D5502 /* twt-activestate-rndsquare@2x.png */; };
+		5C4A33E319B28405001D5502 /* twt-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33D419B28405001D5502 /* twt-rndsquare@2x.png */; };
+		5C4A33E519B28588001D5502 /* redd-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33E419B28588001D5502 /* redd-rndsquare@2x.png */; };
+		5C4A33EA19B28C3E001D5502 /* FZExploreTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33E919B28C3E001D5502 /* FZExploreTagsView.m */; };
+		5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */; };
+		5C4A33EE19B28F6B001D5502 /* bg_explore_tags@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */; };
 		5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E67E419A5712400955E57 /* reddit-logo@2x.png */; };
 		5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */; };
+		5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */; };
+		5C7A706C19B24C0900CDB4F6 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A706B19B24C0900CDB4F6 /* profileIcon@2x.png */; };
+		5C7A707319B24ED300CDB4F6 /* user-popup01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A707119B24ED300CDB4F6 /* user-popup01@2x.png */; };
+		5C7A707419B24ED300CDB4F6 /* user-popup02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A707219B24ED300CDB4F6 /* user-popup02@2x.png */; };
+		5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A707519B2530000CDB4F6 /* pulse@2x.png */; };
 		5C9BC8AF1987595D007BAD1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8AE1987595D007BAD1E /* Foundation.framework */; };
 		5C9BC8B11987595D007BAD1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8B01987595D007BAD1E /* CoreGraphics.framework */; };
 		5C9BC8B31987595D007BAD1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC8B21987595D007BAD1E /* UIKit.framework */; };
@@ -145,9 +171,38 @@
 		5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickTagsViewController.h; sourceTree = "<group>"; };
 		5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickTagsViewController.m; sourceTree = "<group>"; };
 		5C42FFA619A3F47500DC31B3 /* loginReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginReddit@2x.png"; sourceTree = "<group>"; };
+		5C4A33BB19B26CB1001D5502 /* FZTagsIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsIntroView.h; sourceTree = "<group>"; };
+		5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsIntroView.m; sourceTree = "<group>"; };
+		5C4A33BE19B26F6E001D5502 /* FZTagsSelectNetworkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsSelectNetworkView.h; sourceTree = "<group>"; };
+		5C4A33BF19B26F6E001D5502 /* FZTagsSelectNetworkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsSelectNetworkView.m; sourceTree = "<group>"; };
+		5C4A33C319B27442001D5502 /* bg_select_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network@2x.png"; sourceTree = "<group>"; };
+		5C4A33C619B28405001D5502 /* fb-active-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-active-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33C719B28405001D5502 /* fb-brandicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-brandicon@2x.png"; sourceTree = "<group>"; };
+		5C4A33C819B28405001D5502 /* fb-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33C919B28405001D5502 /* g-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33CA19B28405001D5502 /* g-brandicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g-brandicon@2x.png"; sourceTree = "<group>"; };
+		5C4A33CB19B28405001D5502 /* g-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33CC19B28405001D5502 /* linkd-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkd-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33CD19B28405001D5502 /* linkd-brandicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkd-brandicon@2x.png"; sourceTree = "<group>"; };
+		5C4A33CE19B28405001D5502 /* linkd-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkd-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33CF19B28405001D5502 /* redd-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redd-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33D019B28405001D5502 /* redd-brandicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redd-brandicon@2x.png"; sourceTree = "<group>"; };
+		5C4A33D219B28405001D5502 /* twit-brandicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twit-brandicon@2x.png"; sourceTree = "<group>"; };
+		5C4A33D319B28405001D5502 /* twt-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twt-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33D419B28405001D5502 /* twt-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twt-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33E419B28588001D5502 /* redd-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redd-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C4A33E819B28C3E001D5502 /* FZExploreTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZExploreTagsView.h; sourceTree = "<group>"; };
+		5C4A33E919B28C3E001D5502 /* FZExploreTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZExploreTagsView.m; sourceTree = "<group>"; };
+		5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgSearchBar@2x.png"; sourceTree = "<group>"; };
+		5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_explore_tags@2x.png"; sourceTree = "<group>"; };
 		5C4E67E419A5712400955E57 /* reddit-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reddit-logo@2x.png"; sourceTree = "<group>"; };
 		5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FZImageEffects.h"; sourceTree = "<group>"; };
 		5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FZImageEffects.m"; sourceTree = "<group>"; };
+		5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_tags1@2x.png"; sourceTree = "<group>"; };
+		5C7A706B19B24C0900CDB4F6 /* profileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileIcon@2x.png"; sourceTree = "<group>"; };
+		5C7A707119B24ED300CDB4F6 /* user-popup01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-popup01@2x.png"; sourceTree = "<group>"; };
+		5C7A707219B24ED300CDB4F6 /* user-popup02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-popup02@2x.png"; sourceTree = "<group>"; };
+		5C7A707519B2530000CDB4F6 /* pulse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse@2x.png"; sourceTree = "<group>"; };
 		5C9BC8AB1987595D007BAD1E /* FlashZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9BC8AE1987595D007BAD1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5C9BC8B01987595D007BAD1E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -266,6 +321,15 @@
 				5C116C2619898B8C004AFC22 /* btnUnselected@2x.png */,
 				5C116C2A19898FB5004AFC22 /* btnSelected@2x.png */,
 				5C116C2C19899498004AFC22 /* bgButton@2x.png */,
+				5C7A707519B2530000CDB4F6 /* pulse@2x.png */,
+				5C7A707119B24ED300CDB4F6 /* user-popup01@2x.png */,
+				5C7A707219B24ED300CDB4F6 /* user-popup02@2x.png */,
+				5C7A706B19B24C0900CDB4F6 /* profileIcon@2x.png */,
+				5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */,
+				5C4A33C319B27442001D5502 /* bg_select_network@2x.png */,
+				5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */,
+				5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */,
+				5C4A33C519B28405001D5502 /* socialIcons */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -328,6 +392,41 @@
 				5CF9D09A19A6708C0080DB44 /* DKRedditManager.m */,
 			);
 			path = Reddit;
+			sourceTree = "<group>";
+		};
+		5C4A33BA19B26C0E001D5502 /* Slides */ = {
+			isa = PBXGroup;
+			children = (
+				5C4A33BB19B26CB1001D5502 /* FZTagsIntroView.h */,
+				5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */,
+				5C4A33BE19B26F6E001D5502 /* FZTagsSelectNetworkView.h */,
+				5C4A33BF19B26F6E001D5502 /* FZTagsSelectNetworkView.m */,
+				5C4A33E819B28C3E001D5502 /* FZExploreTagsView.h */,
+				5C4A33E919B28C3E001D5502 /* FZExploreTagsView.m */,
+			);
+			path = Slides;
+			sourceTree = "<group>";
+		};
+		5C4A33C519B28405001D5502 /* socialIcons */ = {
+			isa = PBXGroup;
+			children = (
+				5C4A33C619B28405001D5502 /* fb-active-rndsquare@2x.png */,
+				5C4A33C719B28405001D5502 /* fb-brandicon@2x.png */,
+				5C4A33C819B28405001D5502 /* fb-rndsquare@2x.png */,
+				5C4A33C919B28405001D5502 /* g-activestate-rndsquare@2x.png */,
+				5C4A33CA19B28405001D5502 /* g-brandicon@2x.png */,
+				5C4A33CB19B28405001D5502 /* g-rndsquare@2x.png */,
+				5C4A33CC19B28405001D5502 /* linkd-activestate-rndsquare@2x.png */,
+				5C4A33CD19B28405001D5502 /* linkd-brandicon@2x.png */,
+				5C4A33CE19B28405001D5502 /* linkd-rndsquare@2x.png */,
+				5C4A33CF19B28405001D5502 /* redd-activestate-rndsquare@2x.png */,
+				5C4A33D019B28405001D5502 /* redd-brandicon@2x.png */,
+				5C4A33E419B28588001D5502 /* redd-rndsquare@2x.png */,
+				5C4A33D219B28405001D5502 /* twit-brandicon@2x.png */,
+				5C4A33D319B28405001D5502 /* twt-activestate-rndsquare@2x.png */,
+				5C4A33D419B28405001D5502 /* twt-rndsquare@2x.png */,
+			);
+			path = socialIcons;
 			sourceTree = "<group>";
 		};
 		5C9BC8A21987595C007BAD1E = {
@@ -431,6 +530,7 @@
 				5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */,
 				5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */,
 				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
+				5C4A33BA19B26C0E001D5502 /* Slides */,
 				5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */,
 				5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */,
 				5CF42484198EDB2E00338D55 /* FZForgotPasswordViewController.h */,
@@ -568,26 +668,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF8A00E198EA22C00DE17C5 /* bgMap@2x.png in Resources */,
+				5C7A706C19B24C0900CDB4F6 /* profileIcon@2x.png in Resources */,
+				5C4A33DC19B28405001D5502 /* linkd-brandicon@2x.png in Resources */,
 				5CF8A000198E9D9700DE17C5 /* flashzonelogo@2x.png in Resources */,
 				5CE018061995B76200D4D67C /* btnPhotoMeetup@2x.png in Resources */,
+				5C7A707319B24ED300CDB4F6 /* user-popup01@2x.png in Resources */,
+				5C4A33D919B28405001D5502 /* g-brandicon@2x.png in Resources */,
 				5C116C2719898B8C004AFC22 /* btnUnselected@2x.png in Resources */,
 				5C42FFA719A3F47500DC31B3 /* loginReddit@2x.png in Resources */,
+				5C4A33D519B28405001D5502 /* fb-active-rndsquare@2x.png in Resources */,
 				5CE018011995B4CF00D4D67C /* btnPhotoGoogle@2x.png in Resources */,
 				5CE018041995B4CF00D4D67C /* btnPhotoFb@2x.png in Resources */,
+				5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */,
 				5CE018031995B4CF00D4D67C /* btnPhotoTwitter@2x.png in Resources */,
+				5C4A33DA19B28405001D5502 /* g-rndsquare@2x.png in Resources */,
+				5C4A33DF19B28405001D5502 /* redd-brandicon@2x.png in Resources */,
+				5C7A707419B24ED300CDB4F6 /* user-popup02@2x.png in Resources */,
 				5C35AD7E199A824600D99CAF /* 01-refresh.png in Resources */,
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
+				5C4A33D819B28405001D5502 /* g-activestate-rndsquare@2x.png in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
 				5CE018021995B4CF00D4D67C /* btnPhotoLinkedin@2x.png in Resources */,
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
+				5C4A33E219B28405001D5502 /* twt-activestate-rndsquare@2x.png in Resources */,
+				5C4A33E519B28588001D5502 /* redd-rndsquare@2x.png in Resources */,
 				5CF8A006198E9EF900DE17C5 /* loginGoogle@2x.png in Resources */,
 				5CF8A008198E9EF900DE17C5 /* loginTwitter@2x.png in Resources */,
+				5C4A33DE19B28405001D5502 /* redd-activestate-rndsquare@2x.png in Resources */,
+				5C4A33D619B28405001D5502 /* fb-brandicon@2x.png in Resources */,
 				5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */,
+				5C4A33E319B28405001D5502 /* twt-rndsquare@2x.png in Resources */,
+				5C4A33D719B28405001D5502 /* fb-rndsquare@2x.png in Resources */,
+				5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */,
 				5CF8A007198E9EF900DE17C5 /* loginLinkedin@2x.png in Resources */,
+				5C4A33DB19B28405001D5502 /* linkd-activestate-rndsquare@2x.png in Resources */,
+				5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */,
 				5C12A0211995AE6F00703CCA /* photoPlaceholder@2x.png in Resources */,
 				5CF8A002198E9E5A00DE17C5 /* loginFacebook@2x.png in Resources */,
 				5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */,
+				5C4A33DD19B28405001D5502 /* linkd-rndsquare@2x.png in Resources */,
 				5C116C2D19899499004AFC22 /* bgButton@2x.png in Resources */,
+				5C4A33E119B28405001D5502 /* twit-brandicon@2x.png in Resources */,
+				5C4A33C419B27442001D5502 /* bg_select_network@2x.png in Resources */,
+				5C4A33EE19B28F6B001D5502 /* bg_explore_tags@2x.png in Resources */,
 				5C35AD7F199A824600D99CAF /* 01-refresh@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,12 +734,14 @@
 				5C35AD99199A836900D99CAF /* AFURLConnectionOperation.m in Sources */,
 				5CFF7D2619894C4900867679 /* FZContainerViewController.m in Sources */,
 				5C9BC8E619875B0F007BAD1E /* FZViewController.m in Sources */,
+				5C4A33BD19B26CB1001D5502 /* FZTagsIntroView.m in Sources */,
 				5C9BC8BF1987595D007BAD1E /* FZAppDelegate.m in Sources */,
 				5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */,
 				5C35AD7C199A824600D99CAF /* LIALinkedInHttpClient.m in Sources */,
 				5C12A01F1995A9D400703CCA /* FZPickPhotoViewController.m in Sources */,
 				5C9BC8EC19875DCB007BAD1E /* FZWebServices.m in Sources */,
 				5C35AD98199A836900D99CAF /* AFSecurityPolicy.m in Sources */,
+				5C4A33EA19B28C3E001D5502 /* FZExploreTagsView.m in Sources */,
 				5C35AD94199A836900D99CAF /* AFHTTPRequestOperation.m in Sources */,
 				5CF9D09E19A671AE0080DB44 /* FZRedditLoginViewController.m in Sources */,
 				5C9BC8E2198759C4007BAD1E /* FZProfile.m in Sources */,
@@ -638,6 +763,7 @@
 				5CF42486198EDB2E00338D55 /* FZForgotPasswordViewController.m in Sources */,
 				5C35AD97199A836900D99CAF /* AFNetworkReachabilityManager.m in Sources */,
 				5C35AD9B199A836900D99CAF /* AFURLResponseSerialization.m in Sources */,
+				5C4A33C019B26F6E001D5502 /* FZTagsSelectNetworkView.m in Sources */,
 				5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */,
 				5C9BC8BB1987595D007BAD1E /* main.m in Sources */,
 			);
