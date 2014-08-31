@@ -140,7 +140,7 @@
     }
     
     self.populated = YES;
-    [self cacheProfile];
+//    [self cacheProfile];
 }
 
 - (void)cacheProfile
