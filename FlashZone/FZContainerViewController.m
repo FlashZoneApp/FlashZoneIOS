@@ -82,11 +82,6 @@
 {
     [super viewDidAppear:animated];
     
-//    FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
-//    UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
-//    tagsNavCtr.navigationBarHidden = YES;
-//    [self.profileNavCtr presentViewController:tagsNavCtr animated:YES completion:NULL];
-//    return;
 
     
     if (self.profile.populated) // profile cached
