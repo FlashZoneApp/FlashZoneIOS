@@ -12,6 +12,9 @@
 #import "FZProfile.h"
 #import "FZLoadingIndicator.h"
 #import "FZSocialAccountsMgr.h"
+#import "UIView+FZViewAdditions.h"
+#import "UIImage+FZImageEffects.h"
+
 
 @interface FZViewController : UIViewController
 
