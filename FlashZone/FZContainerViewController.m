@@ -8,6 +8,7 @@
 
 #import "FZContainerViewController.h"
 #import "FZSignupViewController.h"
+#import "FZPickTagsViewController.h"
 
 @interface FZContainerViewController ()
 @property (strong, nonatomic) UINavigationController *profileNavCtr;
@@ -81,7 +82,12 @@
 {
     [super viewDidAppear:animated];
     
-    
+//    FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
+//    UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
+//    tagsNavCtr.navigationBarHidden = YES;
+//    [self.profileNavCtr presentViewController:tagsNavCtr animated:YES completion:NULL];
+//    return;
+
     
     if (self.profile.populated) // profile cached
         return;
