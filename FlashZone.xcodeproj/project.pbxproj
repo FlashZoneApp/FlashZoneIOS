@@ -62,6 +62,7 @@
 		5C4A33EA19B28C3E001D5502 /* FZExploreTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33E919B28C3E001D5502 /* FZExploreTagsView.m */; };
 		5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */; };
 		5C4A33EE19B28F6B001D5502 /* bg_explore_tags@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */; };
+		5C4A33F119B299CE001D5502 /* FZTagsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */; };
 		5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E67E419A5712400955E57 /* reddit-logo@2x.png */; };
 		5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */; };
 		5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */; };
@@ -195,6 +196,8 @@
 		5C4A33E919B28C3E001D5502 /* FZExploreTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZExploreTagsView.m; sourceTree = "<group>"; };
 		5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgSearchBar@2x.png"; sourceTree = "<group>"; };
 		5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_explore_tags@2x.png"; sourceTree = "<group>"; };
+		5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsMenuViewController.h; sourceTree = "<group>"; };
+		5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsMenuViewController.m; sourceTree = "<group>"; };
 		5C4E67E419A5712400955E57 /* reddit-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reddit-logo@2x.png"; sourceTree = "<group>"; };
 		5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FZImageEffects.h"; sourceTree = "<group>"; };
 		5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FZImageEffects.m"; sourceTree = "<group>"; };
@@ -530,6 +533,8 @@
 				5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */,
 				5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */,
 				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
+				5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */,
+				5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */,
 				5C4A33BA19B26C0E001D5502 /* Slides */,
 				5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */,
 				5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */,
@@ -765,6 +770,7 @@
 				5C35AD9B199A836900D99CAF /* AFURLResponseSerialization.m in Sources */,
 				5C4A33C019B26F6E001D5502 /* FZTagsSelectNetworkView.m in Sources */,
 				5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */,
+				5C4A33F119B299CE001D5502 /* FZTagsMenuViewController.m in Sources */,
 				5C9BC8BB1987595D007BAD1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
