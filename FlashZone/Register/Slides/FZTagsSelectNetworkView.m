@@ -20,7 +20,9 @@
         self.theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
         
         self.theScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        self.theScrollview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_select_network.png"]];
+        
+        UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_select_network.png"]];
+        [self.theScrollview addSubview:background];
         
         self.btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
