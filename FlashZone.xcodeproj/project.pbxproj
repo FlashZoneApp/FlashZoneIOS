@@ -63,6 +63,8 @@
 		5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */; };
 		5C4A33EE19B28F6B001D5502 /* bg_explore_tags@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */; };
 		5C4A33F119B299CE001D5502 /* FZTagsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */; };
+		5C4A33F419B2A2BF001D5502 /* FZButtonTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33F319B2A2BF001D5502 /* FZButtonTag.m */; };
+		5C4A33F719B2A67D001D5502 /* UIView+FZViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33F619B2A67D001D5502 /* UIView+FZViewAdditions.m */; };
 		5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E67E419A5712400955E57 /* reddit-logo@2x.png */; };
 		5C6A17B6199FD5F6004E9CCE /* UIImage+FZImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */; };
 		5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */; };
@@ -198,6 +200,10 @@
 		5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_explore_tags@2x.png"; sourceTree = "<group>"; };
 		5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsMenuViewController.h; sourceTree = "<group>"; };
 		5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsMenuViewController.m; sourceTree = "<group>"; };
+		5C4A33F219B2A2BF001D5502 /* FZButtonTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZButtonTag.h; sourceTree = "<group>"; };
+		5C4A33F319B2A2BF001D5502 /* FZButtonTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZButtonTag.m; sourceTree = "<group>"; };
+		5C4A33F519B2A67D001D5502 /* UIView+FZViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FZViewAdditions.h"; sourceTree = "<group>"; };
+		5C4A33F619B2A67D001D5502 /* UIView+FZViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FZViewAdditions.m"; sourceTree = "<group>"; };
 		5C4E67E419A5712400955E57 /* reddit-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reddit-logo@2x.png"; sourceTree = "<group>"; };
 		5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FZImageEffects.h"; sourceTree = "<group>"; };
 		5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FZImageEffects.m"; sourceTree = "<group>"; };
@@ -535,6 +541,8 @@
 				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
 				5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */,
 				5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */,
+				5C4A33F219B2A2BF001D5502 /* FZButtonTag.h */,
+				5C4A33F319B2A2BF001D5502 /* FZButtonTag.m */,
 				5C4A33BA19B26C0E001D5502 /* Slides */,
 				5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */,
 				5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */,
@@ -570,6 +578,8 @@
 				5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */,
 				5C6A17B4199FD5F6004E9CCE /* UIImage+FZImageEffects.h */,
 				5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */,
+				5C4A33F519B2A67D001D5502 /* UIView+FZViewAdditions.h */,
+				5C4A33F619B2A67D001D5502 /* UIView+FZViewAdditions.m */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -753,6 +763,7 @@
 				5C9BC91119875EA8007BAD1E /* SignalCheck.m in Sources */,
 				5C35AD7A199A824600D99CAF /* LIALinkedInApplication.m in Sources */,
 				5CEA047E198AFEBA00BE0457 /* FZLoginViewController.m in Sources */,
+				5C4A33F419B2A2BF001D5502 /* FZButtonTag.m in Sources */,
 				5C35AD7D199A824600D99CAF /* NSString+LIAEncode.m in Sources */,
 				5CFF7D2919894F0700867679 /* FZSignupViewController.m in Sources */,
 				5C35AD96199A836900D99CAF /* AFHTTPSessionManager.m in Sources */,
@@ -764,6 +775,7 @@
 				5C35AD7B199A824600D99CAF /* LIALinkedInAuthorizationViewController.m in Sources */,
 				5CF9D09B19A6708C0080DB44 /* DKRedditManager.m in Sources */,
 				5CF42483198ED50000338D55 /* FZWebViewController.m in Sources */,
+				5C4A33F719B2A67D001D5502 /* UIView+FZViewAdditions.m in Sources */,
 				5CE018091995E64600D4D67C /* FZSocialAccountsMgr.m in Sources */,
 				5CF42486198EDB2E00338D55 /* FZForgotPasswordViewController.m in Sources */,
 				5C35AD97199A836900D99CAF /* AFNetworkReachabilityManager.m in Sources */,
