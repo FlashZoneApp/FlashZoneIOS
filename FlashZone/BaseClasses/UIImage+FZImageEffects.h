@@ -11,4 +11,5 @@
 @interface UIImage (FZImageEffects)
 
 - (UIImage *)croppedImage;
+- (UIImage *)applyBlurOnImage:(CGFloat)blurRadius;
 @end
