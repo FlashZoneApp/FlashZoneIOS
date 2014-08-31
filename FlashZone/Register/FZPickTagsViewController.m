@@ -7,9 +7,18 @@
 //
 
 #import "FZPickTagsViewController.h"
+#import "FZTagsIntroView.h"
+#import "FZTagsSelectNetworkView.h"
+#import "FZExploreTagsView.h"
+#import "FZTagsMenuViewController.h"
+
 
 @interface FZPickTagsViewController ()
-@property (strong, nonatomic) UITableView *tagsTable;
+@property (strong, nonatomic) NSMutableArray *tagsMenu;
+@property (strong, nonatomic) UIScrollView *theScrollview;
+@property (strong, nonatomic) FZTagsIntroView *introSlide;
+@property (strong, nonatomic) FZTagsSelectNetworkView *selectNetworkSlide;
+@property (strong, nonatomic) FZExploreTagsView *exploreTagsSlide;
 @end
 
 @implementation FZPickTagsViewController
@@ -18,6 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.tagsMenu = [NSMutableArray array];
         
     }
     return self;
@@ -29,12 +39,38 @@
     CGRect frame = view.frame;
     view.backgroundColor = [UIColor redColor];
     
-    self.tagsTable = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height) style:UITableViewStylePlain];
-    self.tagsTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.tagsTable.dataSource = self;
-    self.tagsTable.delegate = self;
-    [view addSubview:self.tagsTable];
+    self.theScrollview = [[UIScrollView alloc] initWithFrame:frame];
+    self.theScrollview.delegate = self;
+    self.theScrollview.pagingEnabled = YES;
+    self.theScrollview.showsHorizontalScrollIndicator = NO;
+    self.theScrollview.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);
     
+    CGFloat x = 0.0f;
+    self.introSlide = [[FZTagsIntroView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
+    self.introSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    [self.introSlide.btnGotit addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
+    [self.introSlide.btnNext addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
+    [self.theScrollview addSubview:self.introSlide];
+    x += self.introSlide.frame.size.width;
+
+    self.selectNetworkSlide = [[FZTagsSelectNetworkView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
+    self.selectNetworkSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    [self.selectNetworkSlide.btnNext addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
+    [self.selectNetworkSlide.btnGetStarted addTarget:self action:@selector(showTagsMenu) forControlEvents:UIControlEventTouchUpInside];
+    [self.theScrollview addSubview:self.selectNetworkSlide];
+    x += self.selectNetworkSlide.frame.size.width;
+
+    
+    self.exploreTagsSlide = [[FZExploreTagsView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
+    self.exploreTagsSlide.theScrollview.delegate = self;
+    self.exploreTagsSlide.searchField.delegate = self;
+    self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    [self.theScrollview addSubview:self.exploreTagsSlide];
+
+    
+    self.theScrollview.contentSize = CGSizeMake(3*frame.size.width, 0);
+    
+    [view addSubview:self.theScrollview];
     
     self.view = view;
 }
@@ -79,7 +115,7 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tagsTable reloadData];
+//                    [self.tagsTable reloadData];
                 });
                 
 
@@ -116,7 +152,7 @@
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tagsTable reloadData];
+//                        [self.tagsTable reloadData];
                     });
                 }
             }
@@ -138,25 +174,51 @@
 
 }
 
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)viewDidAppear:(BOOL)animated
 {
-    return self.profile.tags.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell==nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
-    }
+    [super viewDidAppear:animated];
     
-    cell.textLabel.text = self.profile.tags[indexPath.row];
-    return cell;
+    [self.introSlide animate];
+    
+    
 }
+
+- (void)nextSlide
+{
+    NSLog(@"NEXT SLIDE");
+    
+    CGFloat x = self.theScrollview.contentOffset.x;
+    x += self.theScrollview.frame.size.width;
+    
+    [self.theScrollview setContentOffset:CGPointMake(x, self.theScrollview.contentOffset.y) animated:YES];
+}
+
+- (void)showTagsMenu
+{
+    NSLog(@"SHOW TAGS MENU");
+
+    FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
+    tagsMenuVc.backgroundImage = [self.view screenshot];
+    [self.navigationController pushViewController:tagsMenuVc animated:NO];
+    
+}
+
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.exploreTagsSlide.searchField resignFirstResponder];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

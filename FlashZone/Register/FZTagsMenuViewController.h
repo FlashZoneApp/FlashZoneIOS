@@ -10,4 +10,6 @@
 
 @interface FZTagsMenuViewController : FZViewController
 
+@property (strong, nonatomic) UIImage *backgroundImage;
+@property (strong, nonatomic) UIImageView *blurryBackground;
 @end

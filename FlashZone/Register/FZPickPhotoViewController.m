@@ -282,7 +282,6 @@
                 }
                 
             }
-
             
         }];
     }
@@ -291,8 +290,11 @@
 
 - (void)segueToPickTags
 {
+    
     FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
-    [self.navigationController pushViewController:pickTagsVc animated:YES];
+    UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
+    tagsNavCtr.navigationBarHidden = YES;
+    [self presentViewController:tagsNavCtr animated:YES completion:NULL];
 }
 
 
