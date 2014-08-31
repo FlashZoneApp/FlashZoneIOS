@@ -909,8 +909,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Edwin Rosenberger (QP625RGEL9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone/FlashZone/ThirdParty,
-					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone,
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlashZone/FlashZone-Prefix.pch";
@@ -929,8 +928,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone/FlashZone/ThirdParty,
-					/Users/dennykwon/Desktop/TheGrid/freelance/FlashZoneLLC/FlashZone,
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlashZone/FlashZone-Prefix.pch";
