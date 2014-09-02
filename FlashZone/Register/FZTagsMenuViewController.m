@@ -64,7 +64,6 @@
     self.screen.alpha = 0.0f;
     [view addSubview:self.screen];
     
-//    UIScrollView *theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
     
     self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
     self.tagsScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -83,61 +82,8 @@
     btnNext.titleLabel.textAlignment = NSTextAlignmentRight;
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
     [self.tagsScrollview addSubview:btnNext];
-
-    CGFloat h = 36.0f;
-    CGFloat y = 60.0f;
-    CGFloat x = 0.0f;
-    BOOL nextLine = NO;
     
-    for (int i=0; i<self.tagsList.count; i++) {
-        NSString *tag = self.tagsList[i];
-        FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
-        btnTag.tag = 1000+i;
-        [btnTag setTitle:[NSString stringWithFormat:@" %@", tag] forState:UIControlStateNormal];
-        [btnTag addTarget:self action:@selector(pickTag:) forControlEvents:UIControlEventTouchUpInside];
-
-        CGRect boudingRect = [tag boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
-                                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                                     attributes:@{NSFontAttributeName:btnTag.titleLabel.font}
-                                                        context:NULL];
-
-        if (x==0.0)
-            x = 10+arc4random()%130;
-        
-        btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
-        btnTag.layer.cornerRadius = 0.5f*h;
-        [self.tagsScrollview addSubview:btnTag];
-        NSLog(@"%@ == %.2f", tag, btnTag.center.x);
-        
-        if (btnTag.center.x > 140.0f){
-            nextLine = YES;
-            x = 0.0f;
-        }
-        else{
-            x = btnTag.frame.origin.x+btnTag.frame.size.width+10.0f;
-        }
-        
-        if (nextLine){
-            y += h+10.0f;
-            nextLine = NO;
-        }
-    }
-    
-    h = y+100.0f;
-    self.tagsScrollview.contentSize = CGSizeMake(0, h);
-
-    if (h+44.0f < frame.size.height)
-        h = frame.size.height;
-    
-    self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
-    self.btnShowMore.backgroundColor = [UIColor clearColor];
-    [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1)];
-    line.backgroundColor = [UIColor whiteColor];
-    [self.btnShowMore addSubview:line];
-    [self.tagsScrollview addSubview:self.btnShowMore];
+    [self layoutTags];
 
     [view addSubview:self.tagsScrollview];
     
@@ -147,7 +93,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
         if (error){
@@ -165,7 +110,9 @@
                 }
                 
                 NSLog(@"TAGS LIST: %@", [self.tagsList description]);
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self layoutTags];
+                });
             }
             else{
                 [self showAlertWithtTitle:@"Error" message:results[@"message"]];
@@ -191,6 +138,71 @@
                      completion:^(BOOL finished){
                          
                      }];
+}
+
+- (void)layoutTags
+{
+    CGRect frame = self.tagsScrollview.frame;
+    
+    CGFloat h = 36.0f;
+    CGFloat y = 60.0f;
+    CGFloat x = 0.0f;
+    BOOL nextLine = NO;
+    
+    for (int i=0; i<self.tagsList.count; i++) {
+        NSDictionary *tag = self.tagsList[i];
+        NSString *tagName = tag[@"name"];
+        FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
+        btnTag.tag = 1000+i;
+        [btnTag setTitle:[NSString stringWithFormat:@" #%@", tagName] forState:UIControlStateNormal];
+        [btnTag addTarget:self action:@selector(pickTag:) forControlEvents:UIControlEventTouchUpInside];
+        
+        CGRect boudingRect = [tagName boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{NSFontAttributeName:btnTag.titleLabel.font}
+                                                   context:NULL];
+        
+        if (x==0.0)
+            x = 10+arc4random()%130;
+        
+        btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
+        btnTag.layer.cornerRadius = 0.5f*h;
+        [self.tagsScrollview addSubview:btnTag];
+        NSLog(@"%@ == %.2f", tag, btnTag.center.x);
+        
+        if (btnTag.center.x > 140.0f){
+            nextLine = YES;
+            x = 0.0f;
+        }
+        else{
+            x = btnTag.frame.origin.x+btnTag.frame.size.width+10.0f;
+        }
+        
+        if (nextLine){
+            y += h+10.0f;
+            nextLine = NO;
+        }
+    }
+    
+    h = y+100.0f;
+    self.tagsScrollview.contentSize = CGSizeMake(0, h);
+    
+    if (h+44.0f < frame.size.height)
+        h = frame.size.height;
+    
+    if (self.btnShowMore==nil) {
+        self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.btnShowMore.backgroundColor = [UIColor clearColor];
+        [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1)];
+        line.backgroundColor = [UIColor whiteColor];
+        [self.btnShowMore addSubview:line];
+        [self.tagsScrollview addSubview:self.btnShowMore];
+    }
+    
+    
+    self.btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
 }
 
 - (void)pickTag:(UIButton *)btn
