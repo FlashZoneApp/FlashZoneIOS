@@ -14,7 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.backgroundColor = [UIColor whiteColor];
         [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         
