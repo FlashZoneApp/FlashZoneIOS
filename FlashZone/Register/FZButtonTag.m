@@ -19,6 +19,7 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.backgroundColor = [UIColor whiteColor];
         [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         
     }
     return self;
