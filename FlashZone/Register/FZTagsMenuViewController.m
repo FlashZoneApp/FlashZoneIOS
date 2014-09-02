@@ -195,7 +195,9 @@
 
 - (void)pickTag:(UIButton *)btn
 {
-    NSLog(@"pickTag: %d", (int)btn.tag);
+    int index = (int)btn.tag-1000;
+    NSDictionary *flashTag = self.tagsList[index];
+    NSLog(@"pickTag: %@", flashTag[@"name"]);
     btn.selected = !btn.selected;
     btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
     
