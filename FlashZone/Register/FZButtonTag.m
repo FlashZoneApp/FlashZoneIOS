@@ -14,10 +14,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        self.backgroundColor = [UIColor whiteColor];
+        [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        
     }
     return self;
 }
+
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
