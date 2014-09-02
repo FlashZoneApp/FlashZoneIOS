@@ -257,7 +257,22 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
-                self.profileIcon.image = [self.profile.imageData croppedImage];
+                UIImage *croppedImage = [self.profile.imageData croppedImage];
+                NSLog(@"CROPPED IMAGE: %.2f, %.2f", croppedImage.size.width, croppedImage.size.height);
+                
+//                self.profileIcon.image = croppedImage;
+                
+                UIImage *img = self.profile.imageData;
+                self.profileIcon.image = img;
+                CGRect frame = self.profileIcon.frame;
+                frame.size.width = img.size.width;
+                frame.size.height = img.size.height;
+                self.profileIcon.frame = frame;
+                
+                CGPoint ctr = self.profileIcon.center;
+                ctr.x = 0.5f*self.view.frame.size.width;
+                self.profileIcon.center = ctr;
+                
             });
             
         }];
