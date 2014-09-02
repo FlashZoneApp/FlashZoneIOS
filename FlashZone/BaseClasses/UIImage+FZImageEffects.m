@@ -19,7 +19,7 @@
     UIImage *cropped = self;
     if (w != h){
         CGFloat dimen = (w < h) ? w : h;
-        CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], CGRectMake(0.50f*(self.size.width-dimen), 0.50f*(self.size.height-dimen), dimen, dimen));
+        CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], CGRectMake(0.50f*(w-dimen), 0.50f*(h-dimen), dimen, dimen));
         cropped = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithCGImage:imageRef], 0.5f)];
         CGImageRelease(imageRef);
     }
