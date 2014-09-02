@@ -27,19 +27,6 @@
     if (self) {
         self.tagsList = [NSMutableArray array];
         
-//        [self.tagsList addObject:@"#cartoonists"];
-//        [self.tagsList addObject:@"#YOLO"];
-//        [self.tagsList addObject:@"#TheNewYorkYankees"];
-//        [self.tagsList addObject:@"#ILoveNY"];
-//        [self.tagsList addObject:@"#VintageThriftShop"];
-//        [self.tagsList addObject:@"#BeltParkwayTraffic"];
-//        [self.tagsList addObject:@"#Coffee"];
-//        [self.tagsList addObject:@"#WebDesigner"];
-//        [self.tagsList addObject:@"#NewYorkCityNightlife"];
-//        [self.tagsList addObject:@"#Baseball"];
-//        [self.tagsList addObject:@"#ThisWeekend"];
-//        [self.tagsList addObject:@"#Photographer"];
-
     }
     return self;
 }
@@ -103,6 +90,7 @@
             NSString *confirmation = results[@"confirmation"];
             if ([confirmation isEqualToString:@"success"]){
                 
+                self.tagsList = [NSMutableArray array];
                 NSArray *tags = results[@"flashTags"];
                 for (int i=0; i<tags.count; i++){
                     NSString *tag = tags[i];
@@ -195,7 +183,7 @@
         self.btnShowMore.backgroundColor = [UIColor clearColor];
         [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1.0f)];
         line.backgroundColor = [UIColor whiteColor];
         [self.btnShowMore addSubview:line];
         [self.tagsScrollview addSubview:self.btnShowMore];
