@@ -630,7 +630,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     }
     
     if (textField.tag >= 1000 && textField.tag <= 1002){
-        [self shiftUp:70.0f];
+        [self shiftUp:80.0f];
         
     }
 
