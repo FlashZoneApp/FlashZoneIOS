@@ -13,6 +13,8 @@
 @interface FZTagsMenuViewController ()
 @property (strong, nonatomic) NSMutableArray *tagsList;
 @property (strong, nonatomic) UIView *screen;
+@property (strong, nonatomic) UIScrollView *tagsScrollview;
+@property (strong, nonatomic) UIButton *btnShowMore;
 @end
 
 @implementation FZTagsMenuViewController
@@ -25,18 +27,18 @@
     if (self) {
         self.tagsList = [NSMutableArray array];
         
-        [self.tagsList addObject:@"#cartoonists"];
-        [self.tagsList addObject:@"#YOLO"];
-        [self.tagsList addObject:@"#TheNewYorkYankees"];
-        [self.tagsList addObject:@"#ILoveNY"];
-        [self.tagsList addObject:@"#VintageThriftShop"];
-        [self.tagsList addObject:@"#BeltParkwayTraffic"];
-        [self.tagsList addObject:@"#Coffee"];
-        [self.tagsList addObject:@"#WebDesigner"];
-        [self.tagsList addObject:@"#NewYorkCityNightlife"];
-        [self.tagsList addObject:@"#Baseball"];
-        [self.tagsList addObject:@"#ThisWeekend"];
-        [self.tagsList addObject:@"#Photographer"];
+//        [self.tagsList addObject:@"#cartoonists"];
+//        [self.tagsList addObject:@"#YOLO"];
+//        [self.tagsList addObject:@"#TheNewYorkYankees"];
+//        [self.tagsList addObject:@"#ILoveNY"];
+//        [self.tagsList addObject:@"#VintageThriftShop"];
+//        [self.tagsList addObject:@"#BeltParkwayTraffic"];
+//        [self.tagsList addObject:@"#Coffee"];
+//        [self.tagsList addObject:@"#WebDesigner"];
+//        [self.tagsList addObject:@"#NewYorkCityNightlife"];
+//        [self.tagsList addObject:@"#Baseball"];
+//        [self.tagsList addObject:@"#ThisWeekend"];
+//        [self.tagsList addObject:@"#Photographer"];
 
     }
     return self;
@@ -62,14 +64,16 @@
     self.screen.alpha = 0.0f;
     [view addSubview:self.screen];
     
-    UIScrollView *theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
-    theScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//    UIScrollView *theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+    
+    self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+    self.tagsScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, frame.size.width, 24.0f)];
     lblDirections.textColor = [UIColor whiteColor];
     lblDirections.textAlignment = NSTextAlignmentCenter;
     lblDirections.text = @"Tap a few things you like";
-    [theScrollview addSubview:lblDirections];
+    [self.tagsScrollview addSubview:lblDirections];
     
     UIButton *btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -78,7 +82,7 @@
     [btnNext addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
     btnNext.titleLabel.textAlignment = NSTextAlignmentRight;
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
-    [theScrollview addSubview:btnNext];
+    [self.tagsScrollview addSubview:btnNext];
 
     CGFloat h = 36.0f;
     CGFloat y = 60.0f;
@@ -102,7 +106,7 @@
         
         btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
         btnTag.layer.cornerRadius = 0.5f*h;
-        [theScrollview addSubview:btnTag];
+        [self.tagsScrollview addSubview:btnTag];
         NSLog(@"%@ == %.2f", tag, btnTag.center.x);
         
         if (btnTag.center.x > 140.0f){
@@ -120,22 +124,22 @@
     }
     
     h = y+100.0f;
-    theScrollview.contentSize = CGSizeMake(0, h);
+    self.tagsScrollview.contentSize = CGSizeMake(0, h);
 
     if (h+44.0f < frame.size.height)
         h = frame.size.height;
     
-    UIButton *btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
-    btnShowMore.backgroundColor = [UIColor clearColor];
-    [btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
+    self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
+    self.btnShowMore.backgroundColor = [UIColor clearColor];
+    [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1)];
     line.backgroundColor = [UIColor whiteColor];
-    [btnShowMore addSubview:line];
-    [theScrollview addSubview:btnShowMore];
+    [self.btnShowMore addSubview:line];
+    [self.tagsScrollview addSubview:self.btnShowMore];
 
-    [view addSubview:theScrollview];
+    [view addSubview:self.tagsScrollview];
     
     self.view = view;
 }
@@ -143,6 +147,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
+        if (error){
+            
+        }
+        else{
+            NSDictionary *results = (NSDictionary *)result;
+            NSString *confirmation = results[@"confirmation"];
+            if ([confirmation isEqualToString:@"success"]){
+                
+                NSArray *tags = results[@"flashTags"];
+                for (int i=0; i<tags.count; i++){
+                    NSString *tag = tags[i];
+                    [self.tagsList addObject:tag];
+                }
+                
+                NSLog(@"TAGS LIST: %@", [self.tagsList description]);
+                
+            }
+            else{
+                [self showAlertWithtTitle:@"Error" message:results[@"message"]];
+            }
+            
+            
+        }
+        
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
