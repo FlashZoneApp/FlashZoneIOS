@@ -98,6 +98,7 @@
 		5CE018061995B76200D4D67C /* btnPhotoMeetup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */; };
 		5CE018091995E64600D4D67C /* FZSocialAccountsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */; };
 		5CEA047E198AFEBA00BE0457 /* FZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */; };
+		5CF0CAD219B58C96004AE0D2 /* bg_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */; };
 		5CF42483198ED50000338D55 /* FZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF42482198ED50000338D55 /* FZWebViewController.m */; };
 		5CF42486198EDB2E00338D55 /* FZForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF42485198EDB2E00338D55 /* FZForgotPasswordViewController.m */; };
 		5CF8A000198E9D9700DE17C5 /* flashzonelogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF89FFF198E9D9700DE17C5 /* flashzonelogo@2x.png */; };
@@ -251,6 +252,7 @@
 		5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSocialAccountsMgr.m; sourceTree = "<group>"; };
 		5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLoginViewController.h; sourceTree = "<group>"; };
 		5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZLoginViewController.m; sourceTree = "<group>"; };
+		5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_orange@2x.png"; sourceTree = "<group>"; };
 		5CF42481198ED50000338D55 /* FZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZWebViewController.h; sourceTree = "<group>"; };
 		5CF42482198ED50000338D55 /* FZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZWebViewController.m; sourceTree = "<group>"; };
 		5CF42484198EDB2E00338D55 /* FZForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		5C116C2519898B8C004AFC22 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */,
 				5C4E67E419A5712400955E57 /* reddit-logo@2x.png */,
 				5C3338831997FD1800B5E58E /* atSign@2x.png */,
 				5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */,
@@ -707,6 +710,7 @@
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
 				5C4A33E219B28405001D5502 /* twt-activestate-rndsquare@2x.png in Resources */,
 				5C4A33E519B28588001D5502 /* redd-rndsquare@2x.png in Resources */,
+				5CF0CAD219B58C96004AE0D2 /* bg_orange@2x.png in Resources */,
 				5CF8A006198E9EF900DE17C5 /* loginGoogle@2x.png in Resources */,
 				5CF8A008198E9EF900DE17C5 /* loginTwitter@2x.png in Resources */,
 				5C4A33DE19B28405001D5502 /* redd-activestate-rndsquare@2x.png in Resources */,
