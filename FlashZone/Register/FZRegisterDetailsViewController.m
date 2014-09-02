@@ -629,9 +629,13 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         return NO;
     }
     
+    if (textField.tag >= 1000 && textField.tag <= 1002){
+        [self shiftUp:70.0f];
+        
+    }
+
     
     if (textField.tag > 1002){
-//        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
         [self.scrollView setContentOffset:CGPointMake(0, 100.0f) animated:NO];
         [self shiftUp:140.0f];
     }
