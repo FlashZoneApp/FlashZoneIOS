@@ -46,8 +46,9 @@
 {
     UIView *view = [self baseView:NO];
     CGRect frame = view.frame;
-    
     view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    
+    
     
     self.blurryBackground = [[UIImageView alloc] initWithImage:[backgroundImage applyBlurOnImage:0.45f]];
     self.blurryBackground.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight);
@@ -61,11 +62,14 @@
     self.screen.alpha = 0.0f;
     [view addSubview:self.screen];
     
+    UIScrollView *theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+    theScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
     UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, frame.size.width, 24.0f)];
     lblDirections.textColor = [UIColor whiteColor];
     lblDirections.textAlignment = NSTextAlignmentCenter;
     lblDirections.text = @"Tap a few things you like";
-    [view addSubview:lblDirections];
+    [theScrollview addSubview:lblDirections];
     
     UIButton *btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -74,9 +78,9 @@
     [btnNext addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
     btnNext.titleLabel.textAlignment = NSTextAlignmentRight;
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
-    [view addSubview:btnNext];
+    [theScrollview addSubview:btnNext];
 
-    static CGFloat h = 36.0f;
+    CGFloat h = 36.0f;
     CGFloat y = 60.0f;
     CGFloat x = 0.0f;
     BOOL nextLine = NO;
@@ -98,7 +102,7 @@
         
         btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
         btnTag.layer.cornerRadius = 0.5f*h;
-        [view addSubview:btnTag];
+        [theScrollview addSubview:btnTag];
         NSLog(@"%@ == %.2f", tag, btnTag.center.x);
         
         if (btnTag.center.x > 140.0f){
@@ -115,16 +119,23 @@
         }
     }
     
+    h = y+100.0f;
+    theScrollview.contentSize = CGSizeMake(0, h);
+
+    if (h+44.0f < frame.size.height)
+        h = frame.size.height;
+    
     UIButton *btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnShowMore.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnShowMore.frame = CGRectMake(-1.0f, frame.size.height-44.0f, frame.size.width+2.0f, 46.0f);
+    btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
     btnShowMore.backgroundColor = [UIColor clearColor];
-    btnShowMore.layer.borderColor = [[UIColor whiteColor] CGColor];
-    btnShowMore.layer.borderWidth = 1.0f;
     [btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
-    [view addSubview:btnShowMore];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1)];
+    line.backgroundColor = [UIColor whiteColor];
+    [btnShowMore addSubview:line];
+    [theScrollview addSubview:btnShowMore];
 
+    [view addSubview:theScrollview];
     
     self.view = view;
 }
