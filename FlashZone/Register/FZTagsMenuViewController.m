@@ -25,6 +25,19 @@
     if (self) {
         self.tagsList = [NSMutableArray array];
         
+        [self.tagsList addObject:@"#cartoonists"];
+        [self.tagsList addObject:@"#YOLO"];
+        [self.tagsList addObject:@"#TheNewYorkYankees"];
+        [self.tagsList addObject:@"#ILoveNY"];
+        [self.tagsList addObject:@"#VintageThriftShop"];
+        [self.tagsList addObject:@"#BeltParkwayTraffic"];
+        [self.tagsList addObject:@"#Coffee"];
+        [self.tagsList addObject:@"#WebDesigner"];
+        [self.tagsList addObject:@"#NewYorkCityNightlife"];
+        [self.tagsList addObject:@"#Baseball"];
+        [self.tagsList addObject:@"#ThisWeekend"];
+        [self.tagsList addObject:@"#Photographer"];
+
     }
     return self;
 }
@@ -63,12 +76,42 @@
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
     [view addSubview:btnNext];
 
+    static CGFloat h = 36.0f;
+    CGFloat y = 60.0f;
+    CGFloat x = 0.0f;
+    BOOL nextLine = NO;
     
-    FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
-    btnTag.backgroundColor = [UIColor whiteColor];
-    btnTag.frame = CGRectMake(20.0f, 50.0f, 120.0f, 36.0f);
-    btnTag.layer.cornerRadius = 0.5f*btnTag.frame.size.height;
-    [view addSubview:btnTag];
+    for (int i=0; i<self.tagsList.count; i++) {
+        NSString *tag = self.tagsList[i];
+        FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
+        [btnTag setTitle:[NSString stringWithFormat:@" %@", tag] forState:UIControlStateNormal];
+
+        CGRect boudingRect = [tag boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:@{NSFontAttributeName:btnTag.titleLabel.font}
+                                                        context:NULL];
+
+        if (x==0.0)
+            x = 10+arc4random()%130;
+        
+        btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
+        btnTag.layer.cornerRadius = 0.5f*h;
+        [view addSubview:btnTag];
+        NSLog(@"%@ == %.2f", tag, btnTag.center.x);
+        
+        if (btnTag.center.x > 140.0f){
+            nextLine = YES;
+            x = 0.0f;
+        }
+        else{
+            x = btnTag.frame.origin.x+btnTag.frame.size.width+10.0f;
+        }
+        
+        if (nextLine){
+            y += h+10.0f;
+            nextLine = NO;
+        }
+    }
 
     
     self.view = view;
