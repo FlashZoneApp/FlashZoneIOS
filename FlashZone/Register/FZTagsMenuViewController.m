@@ -84,7 +84,9 @@
     for (int i=0; i<self.tagsList.count; i++) {
         NSString *tag = self.tagsList[i];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
+        btnTag.tag = 1000+i;
         [btnTag setTitle:[NSString stringWithFormat:@" %@", tag] forState:UIControlStateNormal];
+        [btnTag addTarget:self action:@selector(pickTag:) forControlEvents:UIControlEventTouchUpInside];
 
         CGRect boudingRect = [tag boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
                                                         options:NSStringDrawingUsesLineFragmentOrigin
@@ -112,6 +114,16 @@
             nextLine = NO;
         }
     }
+    
+    UIButton *btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnShowMore.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    btnShowMore.frame = CGRectMake(-1.0f, frame.size.height-44.0f, frame.size.width+2.0f, 46.0f);
+    btnShowMore.backgroundColor = [UIColor clearColor];
+    btnShowMore.layer.borderColor = [[UIColor whiteColor] CGColor];
+    btnShowMore.layer.borderWidth = 1.0f;
+    [btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
+    [view addSubview:btnShowMore];
 
     
     self.view = view;
@@ -136,6 +148,14 @@
                      completion:^(BOOL finished){
                          
                      }];
+}
+
+- (void)pickTag:(UIButton *)btn
+{
+    NSLog(@"pickTag: %d", (int)btn.tag);
+    btn.selected = !btn.selected;
+    btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
+    
 }
 
 - (void)exit
