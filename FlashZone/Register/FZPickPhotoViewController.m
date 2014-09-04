@@ -207,6 +207,23 @@
 
 }
 
+- (void)requestLinkedinProfilePic
+{
+    
+    [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
+        [self.loadingIndicator stopLoading];
+        if (error){
+            [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+        }
+        else{
+            self.photoIcon.image = self.profile.imageData;
+            [self resizeProfileIcon];
+        }
+    }];
+    
+}
+
+
 - (void)selectSocialIcon:(UIButton *)btn
 {
     int tag = (int)btn.tag;
@@ -263,7 +280,6 @@
     }
     
     if (tag==1001){
-        
         if ([self.profile.twitterId isEqualToString:@"none"]==NO && [self.profile.twitterImage isEqualToString:@"none"]==NO){
             [self requestTwitterProfilePic];
             return;
@@ -297,8 +313,6 @@
                             if (success){
                                 self.twitterAccountsTable.alpha = 0;
                                 [self requestTwitterProfilePic];
-
-
                             }
                             else{
                                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
@@ -313,6 +327,91 @@
             
         }];
     }
+    
+    
+    if (tag==1002){ // linked in
+        if ([self.profile.linkedinId isEqualToString:@"none"]==NO && [self.profile.linkedinImage isEqualToString:@"none"]==NO){
+            [self requestLinkedinProfilePic];
+            return;
+        }
+        
+        [self.loadingIndicator startLoading];
+        [self.socialAccountsMgr requestLinkedInAccess:@[@"r_fullprofile", @"r_network"] fromViewController:self completionBlock:^(id result, NSError *error){
+            
+            [self.loadingIndicator stopLoading];
+
+            
+            if (error){
+                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+            }
+            else{
+                NSDictionary *linkedInInfo = (NSDictionary *)result;
+                NSLog(@"LINKED IN PROFILE: %@", [linkedInInfo description]);
+                
+                NSString *name = @"";
+                if (linkedInInfo[@"firstName"])
+                    name = [name stringByAppendingString:linkedInInfo[@"firstName"]];
+                
+                
+                if (linkedInInfo[@"lastName"]){
+                    name = [name stringByAppendingString:@" "];
+                    name = [name stringByAppendingString:linkedInInfo[@"lastName"]];
+                }
+                
+                self.profile.fullname = name;
+                
+                if (linkedInInfo[@"email"])
+                    self.profile.email = linkedInInfo[@"email"];
+                
+                if (linkedInInfo[@"id"])
+                    self.profile.linkedinId = linkedInInfo[@"id"];
+                
+                if (linkedInInfo[@"pictureUrl"])
+                    self.profile.linkedinImage = linkedInInfo[@"pictureUrl"];
+                
+                if (linkedInInfo[@"industry"]){
+                    NSString *industry = linkedInInfo[@"industry"];
+                    if ([self.profile.tags containsObject:industry]==NO)
+                        [self.profile.tags addObject:industry];
+                }
+                
+                if (linkedInInfo[@"interests"]){
+                    NSString *interests = linkedInInfo[@"interests"]; // comma separated string
+                    NSArray *a = [interests componentsSeparatedByString:@","];
+                    
+                    for (int i=0; i<a.count; i++){
+                        NSString *interest = a[i];
+                        interest = [interest stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                        if ([self.profile.tags containsObject:interest]==NO)
+                            [self.profile.tags addObject:interest];
+                    }
+                }
+
+                [self requestLinkedinProfilePic];
+
+                
+//                self.profile.registrationType = FZRegistrationTypeLinkedIn;
+//                [self showProfileDetailsScreen];
+            }
+            
+            
+        }];
+    }
+    
+    
+    if (tag==1003){ // google plus
+        
+        
+        
+    }
+    
+    if (tag==1004){ // meetup
+        
+        
+        
+    }
+
+
 }
 
 
