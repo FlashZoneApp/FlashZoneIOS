@@ -9,12 +9,12 @@
 #import "FZSignupViewController.h"
 #import "FZRegisterDetailsViewController.h"
 #import "FZLoginViewController.h"
-//#import "DKRedditSignInViewController.h"
 #import "FZRedditLoginViewController.h"
 
 
 @interface FZSignupViewController ()
 @property (strong, nonatomic) UITableView *twitterAccountsTable;
+@property (strong, nonatomic) UILabel *lblHeader;
 @end
 
 #define kSmallHeight 460.0f
@@ -37,6 +37,11 @@
     view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgMap.png"]];
     CGRect frame = view.frame;
     
+    self.lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 72.0f)];
+    self.lblHeader.text = @"Select an account:";
+    self.lblHeader.textAlignment = NSTextAlignmentCenter;
+    self.lblHeader.textColor = [UIColor grayColor];
+    self.lblHeader.font = [UIFont boldSystemFontOfSize:16.0f];
     
     UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flashzonelogo.png"]];
     logo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
@@ -110,8 +115,9 @@
     [view addSubview:btnLogin];
     
     
-    self.twitterAccountsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) style:UITableViewStylePlain];
+    self.twitterAccountsTable = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, frame.size.height, frame.size.width, frame.size.height) style:UITableViewStyleGrouped];
     self.twitterAccountsTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.twitterAccountsTable.backgroundColor = [UIColor colorWithRed:230.0f/255.0f green:230.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
     self.twitterAccountsTable.dataSource = self;
     self.twitterAccountsTable.delegate = self;
     self.twitterAccountsTable.alpha = 0;
@@ -220,6 +226,18 @@
                         [self showAlertWithtTitle:@"Select Account" message:@"We found multiple Twitter accounts associated with this device. Please select one"];
                         [self.twitterAccountsTable reloadData];
                         self.twitterAccountsTable.alpha = 1.0f;
+                        
+                        [UIView animateWithDuration:1.1f
+                                              delay:0.0f
+                             usingSpringWithDamping:0.6f
+                              initialSpringVelocity:0.0f
+                                            options:UIViewAnimationOptionCurveEaseInOut
+                                         animations:^{
+                                             self.twitterAccountsTable.frame = CGRectMake(0.0f, 20.0f, self.twitterAccountsTable.frame.size.width, self.twitterAccountsTable.frame.size.height);
+
+                                         }
+                                         completion:NULL];
+                        
                     });
                 }
                 else{
@@ -384,6 +402,21 @@
 
 
 #pragma mark - UITableViewDataSource
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+//    UILabel *lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 72.0f)];
+//    lblHeader.text = @"Select an account:";
+//    lblHeader.textAlignment = NSTextAlignmentCenter;
+//    lblHeader.textColor = [UIColor grayColor];
+//    lblHeader.font = [UIFont boldSystemFontOfSize:16.0f];
+    return self.lblHeader;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 72.0f;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.socialAccountsMgr.twitterAccounts.count;
@@ -395,10 +428,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell==nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[indexPath.row];
-    cell.textLabel.text = twitterAccount.username;
+    cell.textLabel.text = [NSString stringWithFormat:@"@%@", twitterAccount.username];
     return cell;
 }
 
@@ -406,6 +440,18 @@
 {
     ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[indexPath.row];
     self.socialAccountsMgr.selectedTwitterAccount = twitterAccount;
+    
+    [UIView animateWithDuration:1.1f
+                          delay:0.0f
+         usingSpringWithDamping:0.6f
+          initialSpringVelocity:0.0f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.twitterAccountsTable.frame = CGRectMake(0.0f, self.view.frame.size.height, self.twitterAccountsTable.frame.size.width, self.twitterAccountsTable.frame.size.height);
+                         
+                     }
+                     completion:NULL];
+
     
     [self.loadingIndicator startLoading];
     [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
