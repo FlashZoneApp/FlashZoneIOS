@@ -45,14 +45,14 @@
     
     UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flashzonelogo.png"]];
     logo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    double pct = 50.0f/460.f;
+    double pct = 45.0f/460.f;
     CGFloat h = (frame.size.height > kSmallHeight) ? pct*frame.size.height+20.0f : pct*frame.size.height;
     logo.center = CGPointMake(0.5f*frame.size.width, h);
     [view addSubview:logo];
     
-    pct = 100.0f/460.0f;
+    pct = 86.0f/460.0f;
     CGFloat y = (frame.size.height > kSmallHeight) ? pct*frame.size.height+20.0f : pct*frame.size.height;
-    static CGFloat padding = 12.0f;
+    static CGFloat padding = 8.0f;
     CGFloat w = frame.size.width-2*padding;
     
     NSArray *socialogins = @[@"loginFacebook.png", @"loginTwitter.png", @"loginGoogle.png", @"loginLinkedin.png", @"loginReddit.png"];
@@ -69,33 +69,33 @@
         y += loginImage.size.height+padding;
     }
     
-
     h = 34.0f;
 
     UIButton *btnSignupWithEmail = [UIButton buttonWithType:UIButtonTypeCustom];
     btnSignupWithEmail.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnSignupWithEmail.frame = CGRectMake(padding, y, w, h);
+    btnSignupWithEmail.frame = CGRectMake(padding, y-3.0f, w, h);
     btnSignupWithEmail.backgroundColor = [UIColor clearColor];
     [btnSignupWithEmail setTitle:@"Sign up with Email" forState:UIControlStateNormal];
+    btnSignupWithEmail.titleLabel.font = [UIFont systemFontOfSize:16.0f];
     [btnSignupWithEmail addTarget:self action:@selector(signupWithEmail:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btnSignupWithEmail];
     
     
     // The following views are pinned to the bottom:
     
-    y = frame.size.height-48.0f;
+    y = frame.size.height-40.0f;
     
-    UILabel *lblAgreement = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width, 48.0f)];
+    UILabel *lblAgreement = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width, 44.0f)];
     lblAgreement.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     lblAgreement.textColor = [UIColor whiteColor];
-    lblAgreement.font = [UIFont systemFontOfSize:14.0f];
+    lblAgreement.font = [UIFont systemFontOfSize:12.0f];
     lblAgreement.textAlignment = NSTextAlignmentCenter;
     lblAgreement.numberOfLines = 2;
     lblAgreement.lineBreakMode = NSLineBreakByWordWrapping;
     lblAgreement.text = @"By signing up, you agree to FlashZone's\nTerms of Service and Privacy Policy.";
     [view addSubview:lblAgreement];
 
-    y -= (h+padding);
+    y -= (h+8.0f);
 
     UILabel *lblAreadyRegistered = [[UILabel alloc] initWithFrame:CGRectMake(padding, y, 0.7f*w, h)];
     lblAreadyRegistered.textColor = [UIColor whiteColor];
@@ -110,6 +110,7 @@
     btnLogin.frame = CGRectMake(padding+0.7f*w, y, 86.0f, h);
     btnLogin.backgroundColor = [UIColor lightGrayColor];
     btnLogin.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    btnLogin.layer.cornerRadius = 4.0f;
     [btnLogin setTitle:@"Login" forState:UIControlStateNormal];
     [btnLogin addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btnLogin];
@@ -223,7 +224,6 @@
                 else if (twitterAccounts.count > 1){ // multiple accounts - select one
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self showAlertWithtTitle:@"Select Account" message:@"We found multiple Twitter accounts associated with this device. Please select one"];
                         [self.twitterAccountsTable reloadData];
                         self.twitterAccountsTable.alpha = 1.0f;
                         
@@ -236,7 +236,9 @@
                                              self.twitterAccountsTable.frame = CGRectMake(0.0f, 20.0f, self.twitterAccountsTable.frame.size.width, self.twitterAccountsTable.frame.size.height);
 
                                          }
-                                         completion:NULL];
+                                         completion:^(BOOL finished){
+                                             [self showAlertWithtTitle:@"Select Account" message:@"We found multiple Twitter accounts associated with this device. Please select one"];
+                                         }];
                         
                     });
                 }
