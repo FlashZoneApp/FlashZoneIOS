@@ -16,6 +16,9 @@
 @property (strong, nonatomic) UITableView *twitterAccountsTable;
 @end
 
+
+#define kMaxDimen 84.0f
+
 @implementation FZPickPhotoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,18 +45,26 @@
     
     
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
-    self.photoIcon = [[UIImageView alloc] initWithImage:imageIcon];
     
-//    if (self.profile.imageData)
-//        self.photoIcon.image = [self cropImage:self.profile.imageData];
+    if (self.profile.imageData){
+        self.photoIcon = [[UIImageView alloc] initWithImage:self.profile.imageData];
+        CGRect iconFrame = self.photoIcon.frame;
+        CGFloat maxWidth = imageIcon.size.width;
+        if (iconFrame.size.width > maxWidth) {
+            double scale = maxWidth/iconFrame.size.width;
+            iconFrame.size.width = maxWidth;
+            iconFrame.size.height *= scale;
+            self.photoIcon.frame = iconFrame;
+        }
+    }
+    else{
+        self.photoIcon = [[UIImageView alloc] initWithImage:imageIcon];
+        self.photoIcon.layer.cornerRadius = 0.5*imageIcon.size.height;
+        self.photoIcon.layer.masksToBounds = YES;
+        self.photoIcon.userInteractionEnabled = YES;
+    }
 
-    if (self.profile.imageData)
-        self.photoIcon.image = self.profile.imageData;
-
-    self.photoIcon.layer.cornerRadius = 0.5*imageIcon.size.height;
-    self.photoIcon.layer.masksToBounds = YES;
-    self.photoIcon.userInteractionEnabled = YES;
-    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.25f*frame.size.height);
+    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.24f*frame.size.height);
     self.photoIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.photoIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)]];
     [self.photoIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
@@ -135,7 +146,24 @@
                     completion:NULL];
 }
 
-
+- (void)resizeProfileIcon
+{
+    CGRect iconFrame = self.photoIcon.frame;
+    if (self.profile.imageData.size.width > kMaxDimen) {
+        double scale = kMaxDimen/self.profile.imageData.size.width;
+        iconFrame.size.width = kMaxDimen;
+        iconFrame.size.height = scale*self.profile.imageData.size.height;
+    }
+    
+    if (self.profile.imageData.size.height > kMaxDimen) {
+        double scale = kMaxDimen/self.profile.imageData.size.height;
+        iconFrame.size.height = kMaxDimen;
+        iconFrame.size.width = scale*self.profile.imageData.size.width;
+    }
+    
+    iconFrame.origin.y = 54.0f;
+    self.photoIcon.frame = iconFrame;
+}
 
 
 - (void)selectPhoto:(UIGestureRecognizer *)tap
@@ -172,7 +200,8 @@
             [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
         }
         else{
-            self.photoIcon.image = [self cropImage:self.profile.imageData];
+            self.photoIcon.image = self.profile.imageData;
+            [self resizeProfileIcon];
         }
     }];
 
@@ -189,9 +218,8 @@
         if ([self.profile.facebookId isEqualToString:@"none"]==NO){
             [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
                 dispatch_async(dispatch_get_main_queue(), ^{
-//                    self.photoIcon.image = [self cropImage:self.profile.imageData];
                     self.photoIcon.image = self.profile.imageData;
-
+                    [self resizeProfileIcon];
                 });
                 
             }];
@@ -217,8 +245,8 @@
                             if (success){
                                 
                                 [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
-//                                    self.photoIcon.image = [self cropImage:self.profile.imageData];
                                     self.photoIcon.image = self.profile.imageData;
+                                    [self resizeProfileIcon];
                                 }];
                             }
                             else{
@@ -290,7 +318,6 @@
 
 - (void)segueToPickTags
 {
-    
     FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
     UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
     tagsNavCtr.navigationBarHidden = YES;
@@ -315,7 +342,6 @@
 
 
 #pragma mark - UIImagePickerControllerDelegate
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog(@"imagePickerController: didFinishPickingMediaWithInfo: %@", [info description]);
