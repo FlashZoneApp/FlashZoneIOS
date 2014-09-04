@@ -404,11 +404,6 @@
 #pragma mark - UITableViewDataSource
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-//    UILabel *lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 72.0f)];
-//    lblHeader.text = @"Select an account:";
-//    lblHeader.textAlignment = NSTextAlignmentCenter;
-//    lblHeader.textColor = [UIColor grayColor];
-//    lblHeader.font = [UIFont boldSystemFontOfSize:16.0f];
     return self.lblHeader;
 }
 
