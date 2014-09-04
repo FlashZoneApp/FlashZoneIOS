@@ -30,43 +30,58 @@
 - (void)loadView
 {
     UIView *view = [self baseView:YES];
-    view.backgroundColor = [UIColor orangeColor];
+    view.backgroundColor = [UIColor whiteColor];
     view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);
     CGRect frame = view.frame;
     
     
     UIImageView *redditLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reddit-logo.png"]];
+    redditLogo.frame = CGRectMake(0.0f, 0.0f, 0.5f*redditLogo.frame.size.width, 0.5f*redditLogo.frame.size.height);
     redditLogo.center = CGPointMake(0.5f*frame.size.width, 60.0f);
     [view addSubview:redditLogo];
     
     
-    CGFloat y = 150.0f;
+    CGFloat y = 120.0f;
     CGFloat h = 36.0f;
+    
+    UILabel *lblUsername = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 22.0f)];
+    lblUsername.text = @"Username";
+    lblUsername.font = [UIFont boldSystemFontOfSize:16.0f];
+    [view addSubview:lblUsername];
+    y += lblUsername.frame.size.height+4.0f;
     
     self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
     self.usernameField.delegate = self;
     self.usernameField.backgroundColor = [UIColor whiteColor];
     self.usernameField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.usernameField.layer.cornerRadius = 3.0f;
+    self.usernameField.layer.borderWidth = 2.0f;
+    self.usernameField.layer.cornerRadius = 5.0f;
     self.usernameField.layer.masksToBounds = YES;
     [view addSubview:self.usernameField];
-    y += self.usernameField.frame.size.height+20.0f;
+    y += self.usernameField.frame.size.height+4.0f;
+    
+    UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 22.0f)];
+    lblPassword.text = @"Password";
+    lblPassword.font = [UIFont boldSystemFontOfSize:16.0f];
+    [view addSubview:lblPassword];
+    y += lblPassword.frame.size.height+4.0f;
     
     self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
     self.passwordField.delegate = self;
     self.passwordField.backgroundColor = [UIColor whiteColor];
     self.passwordField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.passwordField.layer.cornerRadius = 3.0f;
+    self.passwordField.layer.borderWidth = 2.0f;
+    self.passwordField.layer.cornerRadius = 5.0f;
     self.passwordField.secureTextEntry = YES;
     self.passwordField.layer.masksToBounds = YES;
     [view addSubview:self.passwordField];
     y += self.passwordField.frame.size.height+20.0f;
     
     UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnLogin.backgroundColor = [UIColor grayColor];
-    btnLogin.frame = CGRectMake(10.0f, y, frame.size.width-20.0f, 44.0f);
+    btnLogin.backgroundColor = [UIColor redColor];
+    btnLogin.frame = CGRectMake(10.0f, y, frame.size.width-20.0f, 60.0f);
     btnLogin.layer.cornerRadius = 4.0f;
-    [btnLogin setTitle:@"Log In" forState:UIControlStateNormal];
+    [btnLogin setTitle:@"Sign In" forState:UIControlStateNormal];
     [btnLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnLogin addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btnLogin];
