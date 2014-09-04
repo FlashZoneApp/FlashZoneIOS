@@ -382,6 +382,8 @@
     if (btn.tag==1004){ // REDDIT
         FZRedditLoginViewController *redditSignInVc = [[FZRedditLoginViewController alloc] init];
         UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:redditSignInVc];
+        navCtr.navigationBar.barTintColor = kOrange;
+        navCtr.navigationBar.tintColor = [UIColor whiteColor];
         [self presentViewController:navCtr animated:YES completion:^{
             
         }];
