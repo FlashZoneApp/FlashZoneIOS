@@ -302,8 +302,14 @@
 - (void)requestLinkedinProfilePic:(void (^)(BOOL success, NSError *error))completion
 {
     NSLog(@"REQUEST LINKEDIN PROFILE PIC: %@", self.linkedinImage);
-    [[FZWebServices sharedInstance] fetchWebImage:self.linkedinImage
-                                         withPath:@""
+    NSArray *parts = [self.linkedinImage componentsSeparatedByString:@".com/"];
+    NSString *baseUrl = parts[0];
+    baseUrl = [baseUrl stringByAppendingString:@".com"];
+    
+    NSString *path = (parts.count>1) ? parts[1] : @"";
+    
+    [[FZWebServices sharedInstance] fetchWebImage:baseUrl
+                                         withPath:path
                                        withParams:nil
                                   completionBlock:^(id result, NSError *error){
                                       if (error){
