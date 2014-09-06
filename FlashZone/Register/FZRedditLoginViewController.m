@@ -175,6 +175,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.loadingIndicator stopLoading];
+            self.profile.registrationType = FZRegistrationTypeReddit;
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kShowProfileDetailsNotification object:nil]];
             }];
