@@ -361,8 +361,7 @@
                 
                 if (linkedInInfo[@"industry"]){
                     NSString *industry = linkedInInfo[@"industry"];
-                    if ([self.profile.tags containsObject:industry]==NO)
-                        [self.profile.tags addObject:industry];
+                    [self.profile.tags addObject:@{@"name":industry, @"id":@"-1"}];
                 }
                 
                 if (linkedInInfo[@"interests"]){
