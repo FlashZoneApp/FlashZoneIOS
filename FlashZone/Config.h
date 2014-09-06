@@ -29,4 +29,7 @@
 //Colors:
 #define kOrange [UIColor colorWithRed:255.0f/255.0f green:173.0f/255.0f blue:15.0f/255.0f alpha:1.0f]
 
+
+#define kShowProfileDetailsNotification @"ShowProfileDetails"
+
 #endif
