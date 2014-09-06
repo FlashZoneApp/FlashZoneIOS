@@ -372,8 +372,7 @@
                     for (int i=0; i<a.count; i++){
                         NSString *interest = a[i];
                         interest = [interest stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                        if ([self.profile.tags containsObject:interest]==NO)
-                            [self.profile.tags addObject:interest];
+                        [self.profile.tags addObject:@{@"name":interest, @"id":@"-1"}];
                     }
                     
                     
