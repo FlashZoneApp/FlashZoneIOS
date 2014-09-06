@@ -140,6 +140,7 @@
             
             // Fetch subreddits
             dispatch_async(dispatch_get_main_queue(), ^{
+                self.profile.username = self.usernameField.text;
                 [self fetchSubreddits:redditMgr];
             });
             
