@@ -175,7 +175,11 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.loadingIndicator stopLoading];
-            [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kShowProfileDetailsNotification object:nil]];
+            }];
+            
+
         });
         
         

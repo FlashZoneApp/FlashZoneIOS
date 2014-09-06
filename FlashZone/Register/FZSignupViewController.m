@@ -26,6 +26,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"";
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(showProfileDetailsScreen)
+                                                     name:kShowProfileDetailsNotification
+                                                   object:nil];
         
     }
     return self;
