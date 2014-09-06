@@ -628,7 +628,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-//    NSLog(@"textFieldShouldBeginEditing: %d", textField.tag);
+    NSLog(@"textFieldShouldBeginEditing: %d", textField.tag);
     if(textField.tag==1005){ // location field
         self.now = [[NSDate date] timeIntervalSince1970];
         [self shiftBack:64.0f];
@@ -644,15 +644,25 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         return NO;
     }
     
-    if (textField.tag >= 1000 && textField.tag <= 1002){
+
+    if (textField.tag >= 1000 && textField.tag <= 1001){
         [self shiftUp:80.0f];
-        
     }
+    
 
     
-    if (textField.tag > 1002){
-        [self.scrollView setContentOffset:CGPointMake(0, 100.0f) animated:NO];
-        [self shiftUp:140.0f];
+    if (textField.tag > 1001 && textField.tag < 1004){
+        self.scrollView.delegate = nil;
+        [self.scrollView setContentOffset:CGPointMake(0, 100.0f) animated:YES];
+        [self performSelector:@selector(connectScrollViewDelegate) withObject:nil afterDelay:0.60f];
+        [self shiftUp:116.0f];
+    }
+    
+    if (textField.tag==1004){
+        self.scrollView.delegate = nil;
+        [self.scrollView setContentOffset:CGPointMake(0, 156.0f) animated:YES];
+        [self performSelector:@selector(connectScrollViewDelegate) withObject:nil afterDelay:0.60f];
+        [self shiftUp:132.0f];
     }
     
     
