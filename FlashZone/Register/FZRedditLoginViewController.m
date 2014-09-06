@@ -50,15 +50,17 @@
     [view addSubview:lblUsername];
     y += lblUsername.frame.size.height+4.0f;
     
-    self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
+    UIView *bgUsername = [[UIView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
+    bgUsername.backgroundColor = [UIColor whiteColor];
+    bgUsername.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    bgUsername.layer.borderWidth = 2.0f;
+    bgUsername.layer.cornerRadius = 5.0f;
+    bgUsername.layer.masksToBounds = YES;
+    self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, 0.0f, frame.size.width-24.0f, h)];
     self.usernameField.delegate = self;
-    self.usernameField.backgroundColor = [UIColor whiteColor];
-    self.usernameField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.usernameField.layer.borderWidth = 2.0f;
-    self.usernameField.layer.cornerRadius = 5.0f;
-    self.usernameField.layer.masksToBounds = YES;
-    [view addSubview:self.usernameField];
-    y += self.usernameField.frame.size.height+4.0f;
+    [bgUsername addSubview:self.usernameField];
+    [view addSubview:bgUsername];
+    y += bgUsername.frame.size.height+4.0f;
     
     UILabel *lblPassword = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 22.0f)];
     lblPassword.text = @"Password";
@@ -66,15 +68,19 @@
     [view addSubview:lblPassword];
     y += lblPassword.frame.size.height+4.0f;
     
-    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
+    
+    UIView *bgPassword = [[UIView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, h)];
+    bgPassword.backgroundColor = [UIColor whiteColor];
+    bgPassword.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    bgPassword.layer.borderWidth = 2.0f;
+    bgPassword.layer.cornerRadius = 5.0f;
+    bgPassword.layer.masksToBounds = YES;
+    self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(12.0f, 0.0f, frame.size.width-24.0f, h)];
     self.passwordField.delegate = self;
-    self.passwordField.backgroundColor = [UIColor whiteColor];
-    self.passwordField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.passwordField.layer.borderWidth = 2.0f;
-    self.passwordField.layer.cornerRadius = 5.0f;
     self.passwordField.secureTextEntry = YES;
     self.passwordField.layer.masksToBounds = YES;
-    [view addSubview:self.passwordField];
+    [bgPassword addSubview:self.passwordField];
+    [view addSubview:bgPassword];
     y += self.passwordField.frame.size.height+20.0f;
     
     UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -125,6 +131,17 @@
     [self.passwordField resignFirstResponder];
     
     [self shiftBack:64.0f];
+    
+    if (self.usernameField.text.length==0){
+        [self showAlertWithtTitle:@"Missing Username" message:@"Please enter a valid Reddit username."];
+        return;
+    }
+
+    if (self.passwordField.text.length==0){
+        [self showAlertWithtTitle:@"Missing Password" message:@"Please enter your Reddit password."];
+        return;
+    }
+
     
     [self.loadingIndicator startLoading];
     
