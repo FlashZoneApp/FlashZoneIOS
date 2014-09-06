@@ -25,8 +25,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tagsList = [NSMutableArray array];
-        
+        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
+        self.profile.tags = [NSMutableArray array];
     }
     return self;
 }
