@@ -25,8 +25,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
-        self.profile.tags = [NSMutableArray array];
+//        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
+//        self.profile.tags = [NSMutableArray array];
     }
     return self;
 }
@@ -80,6 +80,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.profile.tags.count > 0){
+        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
+        self.profile.tags = [NSMutableArray array];
+        [self layoutTags];
+        return;
+    }
+
     
     [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
         if (error){
