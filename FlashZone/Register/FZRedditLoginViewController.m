@@ -165,7 +165,7 @@
                 if (title==nil)
                     continue;
                 
-//                NSLog(@"SUBREDDIT = %@", title);
+                NSLog(@"SUBREDDIT = %@", title);
                 if([self.profile.tags containsObject:title]==NO){
                     [self.profile.tags addObject:title];
                 }
