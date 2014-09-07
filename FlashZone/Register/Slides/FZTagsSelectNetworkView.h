@@ -10,7 +10,7 @@
 
 @interface FZTagsSelectNetworkView : UIView
 
-@property (strong, nonatomic) UIScrollView *theScrollview;
+//@property (strong, nonatomic) UIScrollView *theScrollview;
 @property (strong, nonatomic) UIButton *btnNext;
 @property (strong, nonatomic) UIButton *btnGetStarted;
 @end
