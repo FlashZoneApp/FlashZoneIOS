@@ -103,20 +103,19 @@
                 if (likes){
                     for (int i=0; i<likes.count; i++) {
                         NSDictionary *likeInfo = likes[i];
+                        if (likeInfo[@"name"])
+                            [self.profile.tags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
+                        
                         NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
                         for (NSDictionary *categoryInfo in categoryList) {
                             NSString *categoryName = categoryInfo[@"name"];
-                            if (categoryName != nil){
-                                if ([self.profile.tags containsObject:categoryName]==NO)
-                                    [self.profile.tags addObject:categoryName];
-                            }
+                            if (categoryName != nil)
+                                [self.profile.tags addObject:@{@"name":categoryName, @"id":@"-1"}];
+                            
                         }
                     }
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [self.tagsTable reloadData];
-                });
                 
 
             }
@@ -151,9 +150,6 @@
                             [self.profile.tags addObject:t];
                     }
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self.tagsTable reloadData];
-                    });
                 }
             }
         }];
@@ -166,11 +162,7 @@
         return;
     }
 
-    // linkedIn automatically returns interests on sign in so it is parsed on registration
-    if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
-        NSLog(@"REGISTRATION - LINKED IN");
-        return;
-    }
+    // linkedIn and reddit automatically returns interests on sign in so it is parsed on registration - no need to do it here
 
 }
 
