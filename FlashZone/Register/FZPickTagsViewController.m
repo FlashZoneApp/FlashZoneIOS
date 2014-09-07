@@ -37,7 +37,7 @@
 {
     UIView *view = [self baseView:NO];
     CGRect frame = view.frame;
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = kOrange;
     
     self.theScrollview = [[UIScrollView alloc] initWithFrame:frame];
     self.theScrollview.delegate = self;
