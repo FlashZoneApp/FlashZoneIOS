@@ -146,8 +146,7 @@
                     for (NSDictionary *hashtag in hashtags) {
                         NSString *t = hashtag[@"text"];
                         NSLog(@"HASH TAG: %@", t);
-                        if ([self.profile.tags containsObject:t]==NO)
-                            [self.profile.tags addObject:t];
+                        [self.profile.tags addObject:@{@"name":t, @"id":@"-1"}];
                     }
                     
                 }
