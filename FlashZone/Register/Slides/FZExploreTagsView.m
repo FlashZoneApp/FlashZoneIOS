@@ -54,7 +54,7 @@
         NSArray *icons = @[@"fb-rndsquare.png", @"twt-rndsquare.png", @"g-rndsquare.png", @"linkd-rndsquare.png", @"redd-rndsquare.png"];
         UIImage *icon = [UIImage imageNamed:icons[0]];
         
-        CGFloat padding = 6.0f;
+        CGFloat padding = 12.0f;
         CGFloat span = (icons.count-1)*padding+icons.count*icon.size.width;
         CGFloat x = 0.5f*(frame.size.width-span);
         for (int i=0; i<icons.count; i++) {
