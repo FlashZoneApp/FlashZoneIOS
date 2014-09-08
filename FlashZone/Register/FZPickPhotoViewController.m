@@ -387,8 +387,6 @@
                 [self requestLinkedinProfilePic];
 
                 
-//                self.profile.registrationType = FZRegistrationTypeLinkedIn;
-//                [self showProfileDetailsScreen];
             }
             
             
@@ -411,9 +409,72 @@
 
 }
 
+- (void)uploadProfileImage:(NSString *)uploadUrl
+{
+    NSData *imgData = UIImageJPEGRepresentation(self.profile.imageData, 0.5f);
+    
+    [[FZWebServices sharedInstance] uploadImage:@{@"data":imgData, @"name":@"image.jpg"} toUrl:uploadUrl completion:^(id result, NSError *error){
+        [self.loadingIndicator stopLoading];
+        if (error){
+            [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+        }
+        else {
+            NSDictionary *results = (NSDictionary *)result;
+            NSLog(@"%@", [results description]);
+            NSString *confirmation = results[@"confirmation"];
+            
+            if ([confirmation isEqualToString:@"success"]==YES){
+                NSDictionary *imageInfo = results[@"image"];
+                self.profile.image = imageInfo[@"id"];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
+                    UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
+                    tagsNavCtr.navigationBarHidden = YES;
+                    [self presentViewController:tagsNavCtr animated:YES completion:NULL];
+                });
+                
+            }
+            else{
+                [self showAlertWithtTitle:@"Error" message:results[@"message"]];
+            }
+        }
+    }];
+    
+}
+
 
 - (void)segueToPickTags
 {
+    // check for photo first:
+    
+    if (self.profile.imageData){
+        NSLog(@"UPLOAD PHOTO");
+        
+        [self.loadingIndicator startLoading];
+        [[FZWebServices sharedInstance] fetchUploadString:^(id result, NSError *error){
+            
+            if (error){
+                [self.loadingIndicator stopLoading];
+                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+            }
+            else{
+                NSDictionary *results = (NSDictionary *)result;
+                NSLog(@"%@", [results description]);
+                NSString *confirmation = results[@"confirmation"];
+                if ([confirmation isEqualToString:@"success"]){
+                    NSString *upload = results[@"upload"];
+                    [self uploadProfileImage:upload];
+                }
+                else{
+                    [self showAlertWithtTitle:@"Error" message:results[@"message"]];
+                }
+            }
+        }];
+        
+        return;
+    }
+    
     FZPickTagsViewController *pickTagsVc = [[FZPickTagsViewController alloc] init];
     UINavigationController *tagsNavCtr = [[UINavigationController alloc] initWithRootViewController:pickTagsVc];
     tagsNavCtr.navigationBarHidden = YES;
