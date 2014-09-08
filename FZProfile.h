@@ -37,6 +37,7 @@ typedef enum {
 @property (copy, nonatomic) NSString *twitterImage;
 @property (copy, nonatomic) NSString *linkedinId;
 @property (copy, nonatomic) NSString *linkedinImage;
+@property (copy, nonatomic) NSString *googleId;
 @property (copy, nonatomic) NSString *image;
 @property (strong, nonatomic) UIImage *imageData;
 @property (strong, nonatomic) NSMutableArray *tags;
@@ -65,6 +66,7 @@ typedef enum {
 
 // GooglePlus
 - (void)requestGooglePlusInfo:(GTMOAuth2Authentication *)auth completion:(void (^)(id result, NSError *error))completion;
+- (void)requestGooglePlusProfilePic:(GTLPlusPerson *)person completion:(void (^)(BOOL success, NSError *error))completion;
 
 
 @end

@@ -33,6 +33,7 @@
 @synthesize linkedinImage;
 @synthesize tags;
 @synthesize registrationType;
+@synthesize googleId;
 
 
 - (id)init
@@ -84,6 +85,7 @@
     self.gender = @"male";
     self.linkedinId = @"none";
     self.linkedinImage = @"none";
+    self.googleId = @"none";
     
 }
 
@@ -130,6 +132,9 @@
 
         if ([key isEqualToString:@"linkedinId"])
             self.linkedinId = [info objectForKey:key];
+
+        if ([key isEqualToString:@"googleId"])
+            self.googleId = [info objectForKey:key];
 
         if ([key isEqualToString:@"latitude"])
             self.latitude = [[info objectForKey:key] doubleValue];
@@ -325,7 +330,6 @@
 
 - (void)requestGooglePlusInfo:(GTMOAuth2Authentication *)auth completion:(void (^)(id result, NSError *error))completion
 {
-
     GTLServicePlus* plusService = [[GTLServicePlus alloc] init];
     plusService.retryEnabled = YES;
     plusService.authorizer = auth;
@@ -339,13 +343,38 @@
                     completion(nil, error);
                 }
                 else {
-//                    NSString *description = [NSString stringWithFormat:@"%@\n%@\n%@", person.displayName, person.aboutMe, [person.emails description]];
-                    
-//                    NSLog(@"GOOGLE PROFILE INFO: %@", description);
                     completion(person, nil);
                 }
             }];
 
+}
+
+- (void)requestGooglePlusProfilePic:(GTLPlusPerson *)person completion:(void (^)(BOOL success, NSError *error))completion
+{
+    NSArray *parts = [person.image.url componentsSeparatedByString:@".com/"];
+    NSString *baseUrl = parts[0];
+    baseUrl = [baseUrl stringByAppendingString:@".com"];
+    
+    NSString *path = (parts.count>1) ? parts[1] : @"";
+//    if (parts.count > 1){
+//        
+//    }
+
+    [[FZWebServices sharedInstance] fetchWebImage:baseUrl
+                                         withPath:path
+                                       withParams:nil
+                                  completionBlock:^(id result, NSError *error){
+                                      if (error){
+                                          NSLog(@"ERROR: %@", [error localizedDescription]);
+                                          completion(NO, error);
+                                      }
+                                      else{
+                                          self.imageData = (UIImage *)result;
+                                          completion(YES, nil);
+                                      }
+                                  }];
+
+    
 }
 
 - (NSDictionary *)parametersDictionary
