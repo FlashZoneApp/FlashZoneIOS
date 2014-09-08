@@ -84,18 +84,19 @@
         y += button.frame.size.height+12.0f;
     }
 
-    
-    CGFloat width = 80.0f;
-    UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGo.backgroundColor = kOrange;
-    btnGo.layer.cornerRadius = 4.0f;
-    btnGo.layer.masksToBounds = YES;
-    btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
-    [btnGo setTitle:@"Go" forState:UIControlStateNormal];
-    [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
-    [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [view addSubview:btnGo];
+    if (frame.size.height > 500){
+        CGFloat width = 80.0f;
+        UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnGo.backgroundColor = kOrange;
+        btnGo.layer.cornerRadius = 4.0f;
+        btnGo.layer.masksToBounds = YES;
+        btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
+        [btnGo setTitle:@"Go" forState:UIControlStateNormal];
+        [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
+        [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [view addSubview:btnGo];
+    }
 
     
     
