@@ -96,11 +96,6 @@
 		5CD47BF419B90E8D00BC4FDB /* loginLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD47BF319B90E8D00BC4FDB /* loginLinkedin@2x.png */; };
 		5CD47BF619B90EF000BC4FDB /* loginGoogle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD47BF519B90EF000BC4FDB /* loginGoogle@2x.png */; };
 		5CD47BFA19B9109800BC4FDB /* loginReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD47BF919B9109800BC4FDB /* loginReddit@2x.png */; };
-		5CE018011995B4CF00D4D67C /* btnPhotoGoogle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE017FC1995B4CF00D4D67C /* btnPhotoGoogle@2x.png */; };
-		5CE018021995B4CF00D4D67C /* btnPhotoLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE017FD1995B4CF00D4D67C /* btnPhotoLinkedin@2x.png */; };
-		5CE018031995B4CF00D4D67C /* btnPhotoTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE017FE1995B4CF00D4D67C /* btnPhotoTwitter@2x.png */; };
-		5CE018041995B4CF00D4D67C /* btnPhotoFb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE017FF1995B4CF00D4D67C /* btnPhotoFb@2x.png */; };
-		5CE018061995B76200D4D67C /* btnPhotoMeetup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */; };
 		5CE018091995E64600D4D67C /* FZSocialAccountsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */; };
 		5CEA047E198AFEBA00BE0457 /* FZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */; };
 		5CF0CAD219B58C96004AE0D2 /* bg_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */; };
@@ -249,11 +244,6 @@
 		5CD47BF319B90E8D00BC4FDB /* loginLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginLinkedin@2x.png"; sourceTree = "<group>"; };
 		5CD47BF519B90EF000BC4FDB /* loginGoogle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginGoogle@2x.png"; sourceTree = "<group>"; };
 		5CD47BF919B9109800BC4FDB /* loginReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginReddit@2x.png"; sourceTree = "<group>"; };
-		5CE017FC1995B4CF00D4D67C /* btnPhotoGoogle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPhotoGoogle@2x.png"; sourceTree = "<group>"; };
-		5CE017FD1995B4CF00D4D67C /* btnPhotoLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPhotoLinkedin@2x.png"; sourceTree = "<group>"; };
-		5CE017FE1995B4CF00D4D67C /* btnPhotoTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPhotoTwitter@2x.png"; sourceTree = "<group>"; };
-		5CE017FF1995B4CF00D4D67C /* btnPhotoFb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPhotoFb@2x.png"; sourceTree = "<group>"; };
-		5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPhotoMeetup@2x.png"; sourceTree = "<group>"; };
 		5CE018071995E64600D4D67C /* FZSocialAccountsMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSocialAccountsMgr.h; sourceTree = "<group>"; };
 		5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSocialAccountsMgr.m; sourceTree = "<group>"; };
 		5CEA047C198AFEBA00BE0457 /* FZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLoginViewController.h; sourceTree = "<group>"; };
@@ -319,11 +309,6 @@
 				5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */,
 				5C4E67E419A5712400955E57 /* reddit-logo@2x.png */,
 				5C3338831997FD1800B5E58E /* atSign@2x.png */,
-				5CE018051995B76200D4D67C /* btnPhotoMeetup@2x.png */,
-				5CE017FC1995B4CF00D4D67C /* btnPhotoGoogle@2x.png */,
-				5CE017FD1995B4CF00D4D67C /* btnPhotoLinkedin@2x.png */,
-				5CE017FE1995B4CF00D4D67C /* btnPhotoTwitter@2x.png */,
-				5CE017FF1995B4CF00D4D67C /* btnPhotoFb@2x.png */,
 				5C133E7B19B9255900FB4AEC /* btnFacebook@2x.png */,
 				5C133E7C19B9255900FB4AEC /* btnGoogle@2x.png */,
 				5C133E7D19B9255900FB4AEC /* btnLinkedin@2x.png */,
@@ -693,17 +678,13 @@
 				5CD47BEE19B90DD800BC4FDB /* loginTwitter@2x.png in Resources */,
 				5C133E8419B9255900FB4AEC /* btnTwitter@2x.png in Resources */,
 				5CF8A000198E9D9700DE17C5 /* flashzonelogo@2x.png in Resources */,
-				5CE018061995B76200D4D67C /* btnPhotoMeetup@2x.png in Resources */,
 				5C7A707319B24ED300CDB4F6 /* user-popup01@2x.png in Resources */,
 				5C116C2719898B8C004AFC22 /* btnUnselected@2x.png in Resources */,
-				5CE018011995B4CF00D4D67C /* btnPhotoGoogle@2x.png in Resources */,
-				5CE018041995B4CF00D4D67C /* btnPhotoFb@2x.png in Resources */,
 				5C133E8319B9255900FB4AEC /* btnReddit@2x.png in Resources */,
 				5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */,
 				5C133E7319B9228300FB4AEC /* g-activestate-rndsquare@2x.png in Resources */,
 				5C133E7A19B9228300FB4AEC /* twt-rndsquare@2x.png in Resources */,
 				5C133E7119B9228300FB4AEC /* fb-active-rndsquare@2x.png in Resources */,
-				5CE018031995B4CF00D4D67C /* btnPhotoTwitter@2x.png in Resources */,
 				5C133E7419B9228300FB4AEC /* g-rndsquare@2x.png in Resources */,
 				5CD47BF219B90DD800BC4FDB /* loginFacebook@2x.png in Resources */,
 				5C0FDE1219BC253C00531C80 /* bg_select_network_480@2x.png in Resources */,
@@ -713,7 +694,6 @@
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
 				5CD47BF419B90E8D00BC4FDB /* loginLinkedin@2x.png in Resources */,
-				5CE018021995B4CF00D4D67C /* btnPhotoLinkedin@2x.png in Resources */,
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
 				5C133E7719B9228300FB4AEC /* redd-activestate-rndsquare@2x.png in Resources */,
 				5C133E7919B9228300FB4AEC /* twt-activestate-rndsquare@2x.png in Resources */,
