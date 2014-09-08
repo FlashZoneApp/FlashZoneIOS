@@ -70,20 +70,27 @@
     [self.photoIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
     [theScrollview addSubview:self.photoIcon];
     
-    NSArray *buttons = @[@"btnPhotoFb.png", @"btnPhotoTwitter.png", @"btnPhotoLinkedin.png", @"btnPhotoGoogle.png", @"btnPhotoMeetup.png"];
+//    NSArray *buttons = @[@"btnPhotoFb.png", @"btnPhotoTwitter.png", @"btnPhotoLinkedin.png", @"btnPhotoGoogle.png", @"btnPhotoMeetup.png"];
     CGFloat y = self.photoIcon.frame.origin.y+self.photoIcon.frame.size.height+30.0f;
+    NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
     for (int i=0; i<buttons.count; i++) {
+        NSString *network = buttons[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = 1000+i;
         button.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        UIImage *btnImage = [UIImage imageNamed:buttons[i]];
+        UIImage *btnImage = [UIImage imageNamed:[NSString stringWithFormat:@"btn%@.png", network]];
         [button setBackgroundImage:btnImage forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"            Use my %@ Photo", network] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         button.frame = CGRectMake(0, 0, btnImage.size.width, btnImage.size.height);
         button.center = CGPointMake(self.photoIcon.center.x, y);
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         [button addTarget:self action:@selector(selectSocialIcon:) forControlEvents:UIControlEventTouchUpInside];
         [theScrollview addSubview:button];
         y += button.frame.size.height+12.0f;
     }
+
     
     CGFloat width = 80.0f;
     UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
