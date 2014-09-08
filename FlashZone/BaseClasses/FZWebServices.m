@@ -135,78 +135,39 @@
 {
     
     NSData *imageData = image[@"data"];
-//    NSString *imageName = image[@"name"];
+    NSString *imageName = image[@"name"];
 
-    
-//    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-//    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"foo": @"bar"};
     [manager POST:uploadUrl
        parameters:nil
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFormData:imageData name:@"file"];
+    [formData appendPartWithFileData:imageData name:@"file" fileName:imageName mimeType:@"image/jpeg"];
     }
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
+              NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+              NSDictionary *results = [responseDictionary objectForKey:@"results"];
+              NSString *confirmation = [results objectForKey:@"confirmation"];
+              
+              if ([confirmation isEqualToString:@"success"]){ // profile successfully registered
+                  if (completionBlock)
+                      completionBlock(results, nil);
+              }
+              else{ // registration failed.
+                  if (completionBlock)
+                      completionBlock(results, [NSError errorWithDomain:@"com.flashzone.ios" code:0 userInfo:@{NSLocalizedDescriptionKey:results[@"message"]}]);
+                  
+              }
+
+
+//        NSLog(@"Success: %@", responseObject);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+//        NSLog(@"Error: %@", error);
+              completionBlock(nil, error);
+
     }];
 }
 
-
-/*
-- (void)uploadImage:(NSDictionary *)image toUrl:(NSString *)uploadUrl completion:(FZWebServiceRequestCompletionBlock)completionBlock
-{
-    NSData *imageData = image[@"data"];
-    NSString *imageName = image[@"name"];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kBaseUrl]];
-    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:uploadUrl parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-        [formData appendPartWithFileData:imageData name:@"file" fileName:imageName mimeType:@"image/jpeg"];
-    }];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
-        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-    }];
-    
-    
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
-        NSError *error = nil;
-        NSDictionary *responseDictionary = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
-        if (error){
-            completionBlock(responseObject, error);
-        }
-        else{
-            //            completionBlock(response, nil);
-            
-            NSDictionary *results = [responseDictionary objectForKey:@"results"];
-            NSString *confirmation = [results objectForKey:@"confirmation"];
-            
-            if ([confirmation isEqualToString:@"success"]){ // profile successfully registered
-                if (completionBlock)
-                    completionBlock(results, error);
-            }
-            else{
-                if (completionBlock)
-                    completionBlock(results, nil);
-            }
-        }
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        //        NSLog(@"UPLOAD FAILED: %@", [error localizedDescription]);
-        completionBlock(nil, error);
-    }];
-    
-    
-    [operation start];
-    
-}
- 
- */
 
 - (void)fetchWebImage:(NSString *)baseUrl withPath:(NSString *)path withParams:(NSDictionary *)params completionBlock:(FZWebServiceRequestCompletionBlock)completionBlock
 {
