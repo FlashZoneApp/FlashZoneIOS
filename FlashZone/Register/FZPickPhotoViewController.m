@@ -39,13 +39,7 @@
     view.backgroundColor = [UIColor whiteColor];
     CGRect frame = view.frame;
     
-    UIScrollView *theScrollview = [[UIScrollView alloc] init];
-    theScrollview.frame = frame;
-    theScrollview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    
-    
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
-    
     if (self.profile.imageData){
         self.photoIcon = [[UIImageView alloc] initWithImage:self.profile.imageData];
         CGRect iconFrame = self.photoIcon.frame;
@@ -68,9 +62,8 @@
     self.photoIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.photoIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)]];
     [self.photoIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
-    [theScrollview addSubview:self.photoIcon];
+    [view addSubview:self.photoIcon];
     
-//    NSArray *buttons = @[@"btnPhotoFb.png", @"btnPhotoTwitter.png", @"btnPhotoLinkedin.png", @"btnPhotoGoogle.png", @"btnPhotoMeetup.png"];
     CGFloat y = self.photoIcon.frame.origin.y+self.photoIcon.frame.size.height+30.0f;
     NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
     for (int i=0; i<buttons.count; i++) {
@@ -87,7 +80,7 @@
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         [button addTarget:self action:@selector(selectSocialIcon:) forControlEvents:UIControlEventTouchUpInside];
-        [theScrollview addSubview:button];
+        [view addSubview:button];
         y += button.frame.size.height+12.0f;
     }
 
@@ -98,17 +91,13 @@
     btnGo.layer.cornerRadius = 4.0f;
     btnGo.layer.masksToBounds = YES;
     btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnGo.frame = CGRectMake(frame.size.width-width-20.0f, y, width, 44);
+    btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
     [btnGo setTitle:@"Go" forState:UIControlStateNormal];
     [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
     [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [theScrollview addSubview:btnGo];
+    [view addSubview:btnGo];
 
     
-    theScrollview.contentSize = CGSizeMake(0, 568.0f); // iPhone 5 height
-    theScrollview.scrollEnabled = !(frame.size.height > 500);
-    
-    [view addSubview:theScrollview];
     
     
     self.twitterAccountsTable = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height) style:UITableViewStylePlain];
