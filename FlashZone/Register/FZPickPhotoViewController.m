@@ -58,14 +58,13 @@
         self.photoIcon.userInteractionEnabled = YES;
     }
 
-    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.24f*frame.size.height);
-    self.photoIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.12f*frame.size.height);
     [self.photoIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)]];
     [self.photoIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
     [view addSubview:self.photoIcon];
     
-    CGFloat y = self.photoIcon.frame.origin.y+self.photoIcon.frame.size.height+30.0f;
-    NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
+    CGFloat y = 180.0f;
+    NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin"];
     for (int i=0; i<buttons.count; i++) {
         NSString *network = buttons[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -84,21 +83,18 @@
         y += button.frame.size.height+12.0f;
     }
 
-    if (frame.size.height > 500){
-        CGFloat width = 80.0f;
-        UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
-        btnGo.backgroundColor = kOrange;
-        btnGo.layer.cornerRadius = 4.0f;
-        btnGo.layer.masksToBounds = YES;
-        btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
-        [btnGo setTitle:@"Next" forState:UIControlStateNormal];
-        [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
-        [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [view addSubview:btnGo];
-    }
-
     
+    CGFloat width = 80.0f;
+    UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnGo.backgroundColor = kOrange;
+    btnGo.layer.cornerRadius = 4.0f;
+    btnGo.layer.masksToBounds = YES;
+    btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
+    [btnGo setTitle:@"Next" forState:UIControlStateNormal];
+    [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
+    [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [view addSubview:btnGo];
     
     
     self.twitterAccountsTable = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, frame.size.height, frame.size.width, frame.size.height) style:UITableViewStyleGrouped];
@@ -159,8 +155,9 @@
         iconFrame.size.width = scale*self.profile.imageData.size.width;
     }
     
-    iconFrame.origin.y = 54.0f;
     self.photoIcon.frame = iconFrame;
+    CGRect frame = self.view.frame;
+    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.12f*frame.size.height);
 }
 
 
