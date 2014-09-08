@@ -302,8 +302,7 @@
                             self.profile.fullname = person.displayName;
 
                         if (person.occupation){
-                            if ([self.profile.tags containsObject:person.occupation]==NO)
-                                [self.profile.tags addObject:person.occupation];
+                            [self.profile.tags addObject:@{@"name":person.occupation, @"id":@"-1"}];
                         }
 
                         if (person.skills){
@@ -311,9 +310,14 @@
                             for (int i=0; i<skills.count; i++) {
                                 NSString *skill = skills[i];
                                 skill = [skill stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                                if ([self.profile.tags containsObject:skill]==NO)
-                                    [self.profile.tags addObject:skill];
+                                [self.profile.tags addObject:@{@"name":skill, @"id":@"-1"}];
                             }
+                        }
+                        
+                        if (person.image){
+                            NSLog(@"GOOGLE PLUS IMAGE: %@", person.image.url);
+
+                            
                         }
 
                         self.profile.registrationType = FZRegistrationTypeGoogle;
