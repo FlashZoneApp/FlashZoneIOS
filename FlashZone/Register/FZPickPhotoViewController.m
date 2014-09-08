@@ -339,7 +339,11 @@
     }
     
     
-    if (tag==1002){ // linked in
+    if (tag==1002){ // google plus
+    }
+    
+    
+    if (tag==1003){ // linked in
         if ([self.profile.linkedinId isEqualToString:@"none"]==NO && [self.profile.linkedinImage isEqualToString:@"none"]==NO){
             [self requestLinkedinProfilePic];
             return;
@@ -349,7 +353,7 @@
         [self.socialAccountsMgr requestLinkedInAccess:@[@"r_fullprofile", @"r_network"] fromViewController:self completionBlock:^(id result, NSError *error){
             
             [self.loadingIndicator stopLoading];
-
+            
             
             if (error){
                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
@@ -396,21 +400,14 @@
                             [self.profile.tags addObject:interest];
                     }
                 }
-
+                
                 [self requestLinkedinProfilePic];
-
+                
                 
             }
             
             
         }];
-    }
-    
-    
-    if (tag==1003){ // google plus
-        
-        
-        
     }
     
     if (tag==1004){ // meetup
