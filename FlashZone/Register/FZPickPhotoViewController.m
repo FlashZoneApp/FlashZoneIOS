@@ -97,12 +97,6 @@
     [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [theScrollview addSubview:btnGo];
 
-    UIButton *btnSkip = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnSkip.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnSkip.frame = CGRectMake(frame.size.width-2*width-20, y, width, 44);
-    [btnSkip setTitle:@"Skip" forState:UIControlStateNormal];
-    [btnSkip setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [theScrollview addSubview:btnSkip];
     
     theScrollview.contentSize = CGSizeMake(0, 568.0f); // iPhone 5 height
     theScrollview.scrollEnabled = !(frame.size.height > 500);
@@ -130,6 +124,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(segueToPickTags)];
+
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
