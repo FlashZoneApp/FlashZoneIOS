@@ -92,7 +92,7 @@
         btnGo.layer.masksToBounds = YES;
         btnGo.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         btnGo.frame = CGRectMake(frame.size.width-width-37.0f, y-20.0f, width, 44);
-        [btnGo setTitle:@"Go" forState:UIControlStateNormal];
+        [btnGo setTitle:@"Next" forState:UIControlStateNormal];
         [btnGo addTarget:self action:@selector(segueToPickTags) forControlEvents:UIControlEventTouchUpInside];
         [btnGo setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [view addSubview:btnGo];
