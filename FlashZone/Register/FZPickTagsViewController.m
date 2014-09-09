@@ -82,6 +82,10 @@
 {
     [super viewWillAppear:animated];
     
+    if (self.profile.suggestedTags.count > 0)
+        return;
+    
+    
     if (self.profile.registrationType==FZRegistrationTypeEmail){
         NSLog(@"REGISTRATION - EMAIL");
         
