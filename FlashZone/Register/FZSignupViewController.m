@@ -290,13 +290,15 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
-                        
                         GTLPlusPerson *person = (GTLPlusPerson *)result;
                         for (GTLPlusPersonEmailsItem *email in person.emails){
                             NSLog(@"EMAIL: %@", [email description]);
                             if (email.value)
                                 self.profile.email = email.value;
                         }
+                        
+                        if (person.identifier)
+                            self.profile.googleId = person.identifier;
                         
                         if (person.displayName)
                             self.profile.fullname = person.displayName;
@@ -315,7 +317,8 @@
                         }
                         
                         if (person.image){
-                            NSLog(@"GOOGLE PLUS IMAGE: %@", person.image.url);
+                            self.profile.googleImage = person.image.url;
+                            NSLog(@"GOOGLE PLUS IMAGE: %@", self.profile.googleImage);
 
                             
                         }
