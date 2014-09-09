@@ -14,6 +14,8 @@
 @property (strong, nonatomic) UIView *screen;
 @property (strong, nonatomic) UIScrollView *tagsScrollview;
 @property (strong, nonatomic) UIButton *btnShowMore;
+@property (strong, nonatomic) UIView *cover;
+@property (strong, nonatomic) UILabel *lblConfirmation;
 @end
 
 @implementation FZTagsMenuViewController
@@ -68,9 +70,22 @@
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
     [self.tagsScrollview addSubview:btnNext];
     
-//    [self layoutTags];
-
     [view addSubview:self.tagsScrollview];
+    
+    
+    self.cover = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+    self.cover.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.cover.backgroundColor = kOrange;
+    self.cover.alpha = 0.0f;
+    
+    self.lblConfirmation = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, -22.0f, frame.size.width, 22.0f)];
+    self.lblConfirmation.textAlignment = NSTextAlignmentCenter;
+    self.lblConfirmation.textColor = [UIColor whiteColor];
+    self.lblConfirmation.font = [UIFont boldSystemFontOfSize:16.0f];
+    self.lblConfirmation.text = @"Flashtags Added";
+    [self.cover addSubview:self.lblConfirmation];
+    
+    [view addSubview:self.cover];
     
     self.view = view;
 }
@@ -214,7 +229,23 @@
 
 - (void)exit
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    
+    [UIView animateWithDuration:0.6f
+                          delay:0
+         usingSpringWithDamping:0.6f
+          initialSpringVelocity:0.0f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.cover.alpha = 1.0f;
+                         CGPoint center = self.lblConfirmation.center;
+                         center.y = 0.5f*self.view.frame.size.height;
+                         self.lblConfirmation.center = center;
+                     }
+                     completion:^(BOOL finished){
+                         [self.navigationController popViewControllerAnimated:NO];
+                     }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
