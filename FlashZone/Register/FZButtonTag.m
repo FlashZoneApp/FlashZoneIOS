@@ -8,12 +8,17 @@
 
 #import "FZButtonTag.h"
 
+@interface FZButtonTag ()
+@property (strong, nonatomic) UIImageView *selectedIcon;
+@end
+
 @implementation FZButtonTag
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -21,9 +26,28 @@
         [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         
+        self.selectedIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 12.0f, 12.0f, 12.0f)];
+        self.selectedIcon.image = [UIImage imageNamed:@"iconPlus.png"];
+        [self addSubview:self.selectedIcon];
+        
     }
     return self;
 }
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    CGRect iconFrame = self.selectedIcon.frame;
+    self.selectedIcon.frame = CGRectMake(frame.size.width-iconFrame.size.width-6.0f, iconFrame.origin.y, iconFrame.size.width, iconFrame.size.height);
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    self.selectedIcon.image = (selected) ? [UIImage imageNamed:@"iconCheckMark.png"] : [UIImage imageNamed:@"iconPlus.png"];
+}
+
 
 
 
