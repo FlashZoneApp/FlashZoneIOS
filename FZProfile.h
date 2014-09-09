@@ -42,6 +42,7 @@ typedef enum {
 @property (copy, nonatomic) NSString *image;
 @property (strong, nonatomic) UIImage *imageData;
 @property (strong, nonatomic) NSMutableArray *tags;
+@property (strong, nonatomic) NSMutableArray *suggestedTags;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic) FZRegistrationType registrationType;

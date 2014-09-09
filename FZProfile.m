@@ -35,7 +35,7 @@
 @synthesize registrationType;
 @synthesize googleId;
 @synthesize googleImage;
-
+@synthesize suggestedTags;
 
 - (id)init
 {
@@ -70,6 +70,7 @@
 - (void)restoreDefaults
 {
     self.tags = [NSMutableArray array];
+    self.suggestedTags = [NSMutableArray array];
     self.uniqueId = @"none";
     self.fullname = @"none";
     self.email = @"none";
