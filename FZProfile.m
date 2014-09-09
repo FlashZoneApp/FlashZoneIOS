@@ -34,6 +34,7 @@
 @synthesize tags;
 @synthesize registrationType;
 @synthesize googleId;
+@synthesize googleImage;
 
 
 - (id)init
@@ -86,6 +87,7 @@
     self.linkedinId = @"none";
     self.linkedinImage = @"none";
     self.googleId = @"none";
+    self.googleImage = @"none";
     
 }
 
@@ -135,6 +137,9 @@
 
         if ([key isEqualToString:@"googleId"])
             self.googleId = [info objectForKey:key];
+
+        if ([key isEqualToString:@"googleImage"])
+            self.googleImage = [info objectForKey:key];
 
         if ([key isEqualToString:@"latitude"])
             self.latitude = [[info objectForKey:key] doubleValue];
@@ -267,9 +272,6 @@
                                           
                                       }
                                       else{
-//                                          NSData *imgData = (NSData *)result;
-//                                          self.imageData = [UIImage imageWithData:imgData];
-                                          
                                           self.imageData = (UIImage *)result;
                                           completion(YES, nil);
                                           
@@ -349,16 +351,13 @@
 
 }
 
-- (void)requestGooglePlusProfilePic:(GTLPlusPerson *)person completion:(void (^)(BOOL success, NSError *error))completion
+- (void)requestGooglePlusProfilePic:(void (^)(BOOL success, NSError *error))completion
 {
-    NSArray *parts = [person.image.url componentsSeparatedByString:@".com/"];
+    NSArray *parts = [self.googleImage componentsSeparatedByString:@".com/"];
     NSString *baseUrl = parts[0];
     baseUrl = [baseUrl stringByAppendingString:@".com"];
     
     NSString *path = (parts.count>1) ? parts[1] : @"";
-//    if (parts.count > 1){
-//        
-//    }
 
     [[FZWebServices sharedInstance] fetchWebImage:baseUrl
                                          withPath:path
