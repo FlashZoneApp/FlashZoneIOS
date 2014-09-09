@@ -215,7 +215,22 @@
             [self resizeProfileIcon];
         }
     }];
-    
+}
+
+- (void)requestGoogleProfilePic
+{
+    [self.loadingIndicator startLoading];
+    [self.profile requestGooglePlusProfilePic:^(BOOL success, NSError *error){
+        [self.loadingIndicator stopLoading];
+        if (error){
+            [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+        }
+        else{
+            self.photoIcon.image = self.profile.imageData;
+            [self resizeProfileIcon];
+        }
+    }];
+
 }
 
 
@@ -337,7 +352,70 @@
     
     
     if (tag==1002){ // google plus
+        if ([self.profile.googleId isEqualToString:@"none"]==NO && [self.profile.googleImage isEqualToString:@"none"]==NO){
+            [self requestGoogleProfilePic];
+            return;
+        }
+        
+        [self.socialAccountsMgr requestGooglePlusAccess:@[@"profile"] completion:^(id result, NSError *error){
+            if (error){
+                [self.loadingIndicator stopLoading];
+                NSLog(@"GOOGLE PLUS LOGIN FAILED");
+                
+            }
+            else {
+                GTMOAuth2Authentication *auth = (GTMOAuth2Authentication *)result;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
+                        GTLPlusPerson *person = (GTLPlusPerson *)result;
+                        for (GTLPlusPersonEmailsItem *email in person.emails){
+                            NSLog(@"EMAIL: %@", [email description]);
+                            if (email.value)
+                                self.profile.email = email.value;
+                        }
+                        
+                        if (person.identifier)
+                            self.profile.googleId = person.identifier;
+                        
+                        if (person.displayName)
+                            self.profile.fullname = person.displayName;
+                        
+                        if (person.occupation){
+                            [self.profile.tags addObject:@{@"name":person.occupation, @"id":@"-1"}];
+                        }
+                        
+                        if (person.skills){
+                            NSArray *skills = [person.skills componentsSeparatedByString:@","];
+                            for (int i=0; i<skills.count; i++) {
+                                NSString *skill = skills[i];
+                                skill = [skill stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                                [self.profile.tags addObject:@{@"name":skill, @"id":@"-1"}];
+                            }
+                        }
+                        
+                        if (person.image){
+                            self.profile.googleImage = person.image.url;
+                            NSLog(@"GOOGLE PLUS IMAGE: %@", self.profile.googleImage);
+                            
+                            
+                        }
+                        
+                        self.profile.registrationType = FZRegistrationTypeGoogle;
+                        [self requestGoogleProfilePic];
+                        
+                    }];
+                });
+                
+            }
+        }];
+        
+        
+        
     }
+    
+    
+    
     
     
     if (tag==1003){ // linked in
@@ -382,8 +460,7 @@
                 
                 if (linkedInInfo[@"industry"]){
                     NSString *industry = linkedInInfo[@"industry"];
-                    if ([self.profile.tags containsObject:industry]==NO)
-                        [self.profile.tags addObject:industry];
+                    [self.profile.tags addObject:@{@"name":industry, @"id":@"-1"}];
                 }
                 
                 if (linkedInInfo[@"interests"]){
@@ -393,8 +470,7 @@
                     for (int i=0; i<a.count; i++){
                         NSString *interest = a[i];
                         interest = [interest stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                        if ([self.profile.tags containsObject:interest]==NO)
-                            [self.profile.tags addObject:interest];
+                        [self.profile.tags addObject:@{@"name":interest, @"id":@"-1"}];
                     }
                 }
                 
