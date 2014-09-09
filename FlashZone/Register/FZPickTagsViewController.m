@@ -204,6 +204,8 @@
     tagsMenuVc.backgroundImage = [self.view screenshot];
     [self.navigationController pushViewController:tagsMenuVc animated:NO];
     
+    [self performSelector:@selector(nextSlide) withObject:nil afterDelay:1.0f];
+    
 }
 
 
