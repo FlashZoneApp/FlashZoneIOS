@@ -100,7 +100,6 @@
                     [self.profile.suggestedTags addObject:tag];
                 }
                 
-//                NSLog(@"TAGS LIST: %@", [self.profile.suggestedTags description]);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self layoutTags];
                 });
@@ -200,9 +199,16 @@
 {
     int index = (int)btn.tag-1000;
     NSDictionary *flashTag = self.profile.suggestedTags[index];
-    NSLog(@"pickTag: %@", flashTag[@"name"]);
+//    NSLog(@"pickTag: %@", flashTag[@"name"]);
     btn.selected = !btn.selected;
     btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
+    
+    if (btn.selected)
+        [self.profile.tags addObject:flashTag];
+    else
+        [self.profile.tags removeObject:flashTag];
+    
+    NSLog(@"CURRENT TAGS: %@", [self.profile.tags description]);
     
 }
 
