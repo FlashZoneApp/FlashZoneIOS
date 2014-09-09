@@ -11,7 +11,6 @@
 
 
 @interface FZTagsMenuViewController ()
-@property (strong, nonatomic) NSMutableArray *tagsList;
 @property (strong, nonatomic) UIView *screen;
 @property (strong, nonatomic) UIScrollView *tagsScrollview;
 @property (strong, nonatomic) UIButton *btnShowMore;
@@ -25,8 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
-//        self.profile.tags = [NSMutableArray array];
+        
     }
     return self;
 }
@@ -70,7 +68,7 @@
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
     [self.tagsScrollview addSubview:btnNext];
     
-    [self layoutTags];
+//    [self layoutTags];
 
     [view addSubview:self.tagsScrollview];
     
@@ -81,9 +79,7 @@
 {
     [super viewDidLoad];
     
-    if (self.profile.tags.count > 0){
-        self.tagsList = [NSMutableArray arrayWithArray:self.profile.tags];
-        self.profile.tags = [NSMutableArray array];
+    if (self.profile.suggestedTags.count > 0){
         [self layoutTags];
         return;
     }
@@ -98,14 +94,13 @@
             NSString *confirmation = results[@"confirmation"];
             if ([confirmation isEqualToString:@"success"]){
                 
-                self.tagsList = [NSMutableArray array];
                 NSArray *tags = results[@"flashTags"];
                 for (int i=0; i<tags.count; i++){
                     NSString *tag = tags[i];
-                    [self.tagsList addObject:tag];
+                    [self.profile.suggestedTags addObject:tag];
                 }
                 
-                NSLog(@"TAGS LIST: %@", [self.tagsList description]);
+//                NSLog(@"TAGS LIST: %@", [self.profile.suggestedTags description]);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self layoutTags];
                 });
@@ -145,8 +140,8 @@
     CGFloat x = 0.0f;
     BOOL nextLine = NO;
     
-    for (int i=0; i<self.tagsList.count; i++) {
-        NSDictionary *tag = self.tagsList[i];
+    for (int i=0; i<self.profile.suggestedTags.count; i++) {
+        NSDictionary *tag = self.profile.suggestedTags[i];
         NSString *tagName = tag[@"name"];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
         btnTag.tag = 1000+i;
@@ -204,7 +199,7 @@
 - (void)pickTag:(UIButton *)btn
 {
     int index = (int)btn.tag-1000;
-    NSDictionary *flashTag = self.tagsList[index];
+    NSDictionary *flashTag = self.profile.suggestedTags[index];
     NSLog(@"pickTag: %@", flashTag[@"name"]);
     btn.selected = !btn.selected;
     btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
