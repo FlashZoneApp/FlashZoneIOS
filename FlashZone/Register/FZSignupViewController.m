@@ -304,7 +304,7 @@
                             self.profile.fullname = person.displayName;
 
                         if (person.occupation){
-                            [self.profile.tags addObject:@{@"name":person.occupation, @"id":@"-1"}];
+                            [self.profile.suggestedTags addObject:@{@"name":person.occupation, @"id":@"-1"}];
                         }
 
                         if (person.skills){
@@ -312,7 +312,7 @@
                             for (int i=0; i<skills.count; i++) {
                                 NSString *skill = skills[i];
                                 skill = [skill stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                                [self.profile.tags addObject:@{@"name":skill, @"id":@"-1"}];
+                                [self.profile.suggestedTags addObject:@{@"name":skill, @"id":@"-1"}];
                             }
                         }
                         
@@ -368,7 +368,7 @@
                 
                 if (linkedInInfo[@"industry"]){
                     NSString *industry = linkedInInfo[@"industry"];
-                    [self.profile.tags addObject:@{@"name":industry, @"id":@"-1"}];
+                    [self.profile.suggestedTags addObject:@{@"name":industry, @"id":@"-1"}];
                 }
                 
                 if (linkedInInfo[@"interests"]){
@@ -378,7 +378,7 @@
                     for (int i=0; i<a.count; i++){
                         NSString *interest = a[i];
                         interest = [interest stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                        [self.profile.tags addObject:@{@"name":interest, @"id":@"-1"}];
+                        [self.profile.suggestedTags addObject:@{@"name":interest, @"id":@"-1"}];
                     }
                     
                     
