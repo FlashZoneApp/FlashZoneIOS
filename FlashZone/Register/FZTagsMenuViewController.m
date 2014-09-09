@@ -155,7 +155,7 @@
         if (x==0.0)
             x = 10+arc4random()%130;
         
-        btnTag.frame = CGRectMake(x, y, boudingRect.size.width+36.0f, h);
+        btnTag.frame = CGRectMake(x, y, boudingRect.size.width+44.0f, h);
         btnTag.layer.cornerRadius = 0.5f*h;
         [self.tagsScrollview addSubview:btnTag];
         NSLog(@"%@ == %.2f", tag, btnTag.center.x);
