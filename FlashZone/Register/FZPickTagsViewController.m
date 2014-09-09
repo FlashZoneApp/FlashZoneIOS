@@ -14,7 +14,6 @@
 
 
 @interface FZPickTagsViewController ()
-@property (strong, nonatomic) NSMutableArray *tagsMenu;
 @property (strong, nonatomic) UIScrollView *theScrollview;
 @property (strong, nonatomic) FZTagsIntroView *introSlide;
 @property (strong, nonatomic) FZTagsSelectNetworkView *selectNetworkSlide;
@@ -27,7 +26,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tagsMenu = [NSMutableArray array];
         
     }
     return self;
@@ -104,13 +102,13 @@
                     for (int i=0; i<likes.count; i++) {
                         NSDictionary *likeInfo = likes[i];
                         if (likeInfo[@"name"])
-                            [self.profile.tags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
+                            [self.profile.suggestedTags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
                         
                         NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
                         for (NSDictionary *categoryInfo in categoryList) {
                             NSString *categoryName = categoryInfo[@"name"];
                             if (categoryName != nil)
-                                [self.profile.tags addObject:@{@"name":categoryName, @"id":@"-1"}];
+                                [self.profile.suggestedTags addObject:@{@"name":categoryName, @"id":@"-1"}];
                             
                         }
                     }
@@ -134,6 +132,7 @@
             else{
                 NSArray *tweets = (NSArray *)result;
                 
+                NSMutableArray *tags = [NSMutableArray array];
                 for (NSDictionary *tweet in tweets) {
                     NSDictionary *entities = tweet[@"entities"];
                     if (entities==nil)
@@ -145,11 +144,20 @@
                     
                     for (NSDictionary *hashtag in hashtags) {
                         NSString *t = hashtag[@"text"];
-                        NSLog(@"HASH TAG: %@", t);
-                        [self.profile.tags addObject:@{@"name":t, @"id":@"-1"}];
+                        if ([tags containsObject:t]==NO){
+                            [tags addObject:t];
+                            NSLog(@"HASH TAG: %@", t);
+                        }
+                        
+//                        [self.profile.suggestedTags addObject:@{@"name":t, @"id":@"-1"}];
                     }
-                    
                 }
+                
+                for (NSString *tag in tags)
+                    [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
+                
+                NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
+                
             }
         }];
         
