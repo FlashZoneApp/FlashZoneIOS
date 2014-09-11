@@ -9,7 +9,6 @@
 #import "FZTagsSelectNetworkView.h"
 
 @implementation FZTagsSelectNetworkView
-//@synthesize theScrollview;
 @synthesize btnNext;
 @synthesize btnGetStarted;
 
