@@ -60,7 +60,6 @@
 
     
     self.exploreTagsSlide = [[FZExploreTagsView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
-    self.exploreTagsSlide.theScrollview.delegate = self;
     self.exploreTagsSlide.searchField.delegate = self;
     self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.theScrollview addSubview:self.exploreTagsSlide];
