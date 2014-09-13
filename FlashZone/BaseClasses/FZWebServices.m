@@ -15,6 +15,7 @@
 #define kPathLogin @"/api/login/"
 #define kPathUpload @"/api/upload/"
 #define kPathFlashTags @"/api/flashtags/"
+#define kPathCategoryList @"/api/categorylists/"
 
 
 @implementation FZWebServices
@@ -191,6 +192,36 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
          }];
 }
 
+
+- (void)fetchCategoryList:(FZWebServiceRequestCompletionBlock)completionBlock
+{
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseUrl]];
+    
+    [manager GET:kPathCategoryList
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+             NSDictionary *results = [responseDictionary objectForKey:@"results"];
+             NSString *confirmation = [results objectForKey:@"confirmation"];
+             
+             if ([confirmation isEqualToString:@"success"]){ // profile successfully registered
+                 if (completionBlock)
+                     completionBlock(results, nil);
+             }
+             else{ // registration failed.
+                 if (completionBlock)
+                     completionBlock(results, [NSError errorWithDomain:@"com.flashzone.ios" code:0 userInfo:@{NSLocalizedDescriptionKey:results[@"message"]}]);
+                 
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"FAILURE BLOCK: %@", [error localizedDescription]);
+             if (completionBlock)
+                 completionBlock(nil, error);
+         }];
+    
+    
+}
 
 - (void)fetchFlashTags:(FZWebServiceRequestCompletionBlock)completionBlock
 {
