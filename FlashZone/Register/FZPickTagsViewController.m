@@ -18,6 +18,7 @@
 @property (strong, nonatomic) FZTagsIntroView *introSlide;
 @property (strong, nonatomic) FZTagsSelectNetworkView *selectNetworkSlide;
 @property (strong, nonatomic) FZExploreTagsView *exploreTagsSlide;
+@property (strong, nonatomic) UIPageControl *pageControl;
 @end
 
 @implementation FZPickTagsViewController
@@ -68,6 +69,12 @@
     self.theScrollview.contentSize = CGSizeMake(3*frame.size.width, 0);
     
     [view addSubview:self.theScrollview];
+    
+    
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, frame.size.height-30.0f, frame.size.width, 24.0f)];
+    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.pageControl.numberOfPages = 3;
+    [view addSubview:self.pageControl];
     
     self.view = view;
 }
@@ -220,8 +227,18 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.exploreTagsSlide.searchField resignFirstResponder];
+    
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+
+    NSLog(@"scrollViewDidScroll: %.2f", scrollView.contentOffset.x);
+    
+    int page = (int)(scrollView.contentOffset.x/scrollView.frame.size.width);
+    self.pageControl.currentPage = page;
+
+}
 
 
 - (void)didReceiveMemoryWarning
