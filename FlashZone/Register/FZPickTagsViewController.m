@@ -19,6 +19,7 @@
 @property (strong, nonatomic) FZTagsSelectNetworkView *selectNetworkSlide;
 @property (strong, nonatomic) FZExploreTagsView *exploreTagsSlide;
 @property (strong, nonatomic) UIPageControl *pageControl;
+@property (strong, nonatomic) NSArray *categories;
 @end
 
 @implementation FZPickTagsViewController
@@ -57,13 +58,6 @@
     [self.selectNetworkSlide.btnNext addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
     [self.selectNetworkSlide.btnGetStarted addTarget:self action:@selector(showTagsMenu) forControlEvents:UIControlEventTouchUpInside];
     [self.theScrollview addSubview:self.selectNetworkSlide];
-    x += self.selectNetworkSlide.frame.size.width;
-
-    
-    self.exploreTagsSlide = [[FZExploreTagsView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
-    self.exploreTagsSlide.searchField.delegate = self;
-    self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    [self.theScrollview addSubview:self.exploreTagsSlide];
 
     
     self.theScrollview.contentSize = CGSizeMake(3*frame.size.width, 0);
@@ -93,8 +87,19 @@
         else{
             NSDictionary *results = (NSDictionary *)result;
             NSDictionary *categoryList = results[@"categorylist"];
-            NSArray *categories = categoryList[@"categories"];
-            NSLog(@"CATEGORIES: %@", [categories description]);
+            self.categories = categoryList[@"categories"];
+            NSLog(@"CATEGORIES: %@", [self.categories description]);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGFloat x = self.selectNetworkSlide.frame.origin.x+self.selectNetworkSlide.frame.size.width;
+
+                self.exploreTagsSlide = [FZExploreTagsView viewWithCategories:self.categories withFrame:CGRectMake(x, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
+                self.exploreTagsSlide.searchField.delegate = self;
+                self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+                [self.theScrollview addSubview:self.exploreTagsSlide];
+            });
+            
+
         }
         
     }];
