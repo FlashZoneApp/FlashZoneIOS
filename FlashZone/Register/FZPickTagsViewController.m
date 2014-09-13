@@ -84,17 +84,36 @@
     [super viewDidLoad];
 }
 
+- (void)fetchCategoryList
+{
+    [[FZWebServices sharedInstance] fetchCategoryList:^(id result, NSError *error){
+        if (error){
+            
+        }
+        else{
+            NSDictionary *results = (NSDictionary *)result;
+            NSDictionary *categoryList = results[@"categorylist"];
+            NSArray *categories = categoryList[@"categories"];
+            NSLog(@"CATEGORIES: %@", [categories description]);
+        }
+        
+    }];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if (self.profile.suggestedTags.count > 0)
+    if (self.profile.suggestedTags.count > 0){
+        [self fetchCategoryList];
         return;
+    }
     
     
     if (self.profile.registrationType==FZRegistrationTypeEmail){
         NSLog(@"REGISTRATION - EMAIL");
-        
+        [self fetchCategoryList];
         return;
     }
     
@@ -123,9 +142,7 @@
                         }
                     }
                 }
-                
-                
-
+                [self fetchCategoryList];
             }
         }];
         
@@ -158,8 +175,6 @@
                             [tags addObject:t];
                             NSLog(@"HASH TAG: %@", t);
                         }
-                        
-//                        [self.profile.suggestedTags addObject:@{@"name":t, @"id":@"-1"}];
                     }
                 }
                 
@@ -167,7 +182,7 @@
                     [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
                 
                 NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
-                
+                [self fetchCategoryList];
             }
         }];
         
@@ -176,9 +191,11 @@
 
     if (self.profile.registrationType==FZRegistrationTypeGoogle){
         NSLog(@"REGISTRATION - GOOGLE");
+        [self fetchCategoryList];
         return;
     }
 
+    [self fetchCategoryList];
     // linkedIn and reddit automatically returns interests on sign in so it is parsed on registration - no need to do it here
 
 }
