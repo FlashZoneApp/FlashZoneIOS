@@ -9,8 +9,10 @@
 #import "FZExploreTagsView.h"
 
 @interface FZExploreTagsView ()
-@property (strong, nonatomic) UIScrollView *tagsScrollview;
+
 @end
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation FZExploreTagsView
 @synthesize searchField;
@@ -20,6 +22,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        UIColorFromRGB(0);
+        
         NSLog(@"HEIGHT: %.2f", frame.size.height);
         BOOL iPhone5 = (frame.size.height > 500);
         NSString *background = (iPhone5) ? @"bg_explore_tags.png" : @"bg_explore_tags_480.png";
@@ -48,23 +53,8 @@
         [self addSubview:bgSearchBar];
         
         y = (iPhone5) ? 190.0f : 155.0f;
-        int categoryCount = 12;
         self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 105.0f)];
         self.tagsScrollview.backgroundColor = [UIColor clearColor];
-        self.tagsScrollview.contentSize = CGSizeMake(categoryCount*100, 0);
-        
-        for (int i=0; i<categoryCount; i++) {
-            UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
-            btnCategory.backgroundColor = [UIColor redColor];
-            btnCategory.frame = CGRectMake(0, 12.5f, 80.0f, 80.0f);
-            btnCategory.layer.cornerRadius = 0.5f*btnCategory.frame.size.width;
-            btnCategory.center = CGPointMake(50+i*100, btnCategory.center.y);
-            [btnCategory setTitle:@"Category" forState:UIControlStateNormal];
-            btnCategory.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-            [self.tagsScrollview addSubview:btnCategory];
-        }
-        
-        self.tagsScrollview.contentOffset = CGPointMake(50.0f, 0);
         [self addSubview:self.tagsScrollview];
         
         
@@ -100,7 +90,39 @@
     return self;
 }
 
++ (FZExploreTagsView *)viewWithCategories:(NSArray *)categories withFrame:(CGRect)frame
+{
+    FZExploreTagsView *tagsView = [[FZExploreTagsView alloc] initWithFrame:frame];
 
+    tagsView.tagsScrollview.contentSize = CGSizeMake(categories.count*100, 0);
+    for (int i=0; i<categories.count; i++) {
+        NSDictionary *category = categories[i];
+        UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnCategory.backgroundColor = [FZExploreTagsView colorFromHexString:[NSString stringWithFormat:@"#%@", category[@"color"]]];
+        btnCategory.frame = CGRectMake(0, 12.5f, 80.0f, 80.0f);
+        btnCategory.layer.cornerRadius = 0.5f*btnCategory.frame.size.width;
+        btnCategory.center = CGPointMake(50+i*100, btnCategory.center.y);
+        [btnCategory setTitle:category[@"name"] forState:UIControlStateNormal];
+        btnCategory.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+        [tagsView.tagsScrollview addSubview:btnCategory];
+    }
+
+    tagsView.tagsScrollview.contentOffset = CGPointMake(50.0f, 0);
+
+    
+    return tagsView;
+}
+
+
++ (UIColor *)colorFromHexString:(NSString *)hexString
+{
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0
+                           green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
