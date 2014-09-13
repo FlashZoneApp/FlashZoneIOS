@@ -14,41 +14,44 @@
 
 @implementation FZExploreTagsView
 @synthesize searchField;
-@synthesize theScrollview;
 
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.theScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
-        
-        self.theScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        self.theScrollview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_explore_tags.png"]];
-        
+        NSLog(@"HEIGHT: %.2f", frame.size.height);
+        BOOL iPhone5 = (frame.size.height > 500);
+        NSString *background = (iPhone5) ? @"bg_explore_tags.png" : @"bg_explore_tags_480.png";
+        NSLog(@"BACKGROUND: %@", background);
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
+
         UIButton *btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
         [btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btnNext setTitle:@"I'm Ready" forState:UIControlStateNormal];
         btnNext.titleLabel.textAlignment = NSTextAlignmentRight;
         btnNext.frame = CGRectMake(frame.size.width-100.0f, 24.0f, 90.0f, 24.0f);
-        [theScrollview addSubview:btnNext];
+        [self addSubview:btnNext];
         
         UIImage *imgSearchBar = [UIImage imageNamed:@"bgSearchBar.png"];
         UIView *bgSearchBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imgSearchBar.size.width, imgSearchBar.size.height)];
         bgSearchBar.backgroundColor = [UIColor colorWithPatternImage:imgSearchBar];
-        bgSearchBar.center = CGPointMake(0.5f*frame.size.width, 80.0f);
+        
+        CGFloat y = (iPhone5) ? 80.0f : 70.0f;
+        bgSearchBar.center = CGPointMake(0.5f*frame.size.width, y);
         
         self.searchField = [[UITextField alloc] initWithFrame:CGRectMake(40.0f, 6.0f, bgSearchBar.frame.size.width-50.0f, bgSearchBar.frame.size.height-12.0f)];
         self.searchField.textColor = [UIColor whiteColor];
         self.searchField.placeholder = @"Search for flashtag interests";
         [bgSearchBar addSubview:self.searchField];
         
-        [self.theScrollview addSubview:bgSearchBar];
+        [self addSubview:bgSearchBar];
         
-        self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, 190.0f, frame.size.width-20.0f, 105.0f)];
+        y = (iPhone5) ? 190.0f : 155.0f;
+        self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 105.0f)];
         self.tagsScrollview.backgroundColor = [UIColor redColor];
         self.tagsScrollview.contentSize = CGSizeMake(500, 0);
-        [self.theScrollview addSubview:self.tagsScrollview];
+        [self addSubview:self.tagsScrollview];
         
         
         NSArray *icons = @[@"fb-rndsquare.png", @"twt-rndsquare.png", @"g-rndsquare.png", @"linkd-rndsquare.png", @"redd-rndsquare.png"];
@@ -57,34 +60,33 @@
         CGFloat padding = 12.0f;
         CGFloat span = (icons.count-1)*padding+icons.count*icon.size.width;
         CGFloat x = 0.5f*(frame.size.width-span);
+        y = (iPhone5) ? 400.0f : 350.0f;
+
         for (int i=0; i<icons.count; i++) {
             UIImage *img = [UIImage imageNamed:icons[i]];
             UIButton *btnNetwork = [UIButton buttonWithType:UIButtonTypeCustom];
             [btnNetwork setBackgroundImage:img forState:UIControlStateNormal];
-            btnNetwork.frame = CGRectMake(x, 400.0f, img.size.width, img.size.height);
-            [theScrollview addSubview:btnNetwork];
+            btnNetwork.frame = CGRectMake(x, y, img.size.width, img.size.height);
+            [self addSubview:btnNetwork];
             x += img.size.width+padding;
         }
         
+        y += 60.0f;
         CGFloat width = 0.6f*frame.size.width;
         UIButton *btnGetStarted = [UIButton buttonWithType:UIButtonTypeCustom];
-        btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), 460.0f, width, 44.0f);
+        btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), y, width, 44.0f);
         btnGetStarted.backgroundColor = [UIColor grayColor];
         btnGetStarted.layer.cornerRadius = 4.0f;
         btnGetStarted.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
         [btnGetStarted setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btnGetStarted setTitle:@"Okay I'm ready" forState:UIControlStateNormal];
-        [self.theScrollview addSubview:btnGetStarted];
+        [self addSubview:btnGetStarted];
         
-
-        
-        
-        self.theScrollview.contentSize = CGSizeMake(0, 568.0f);
-        
-        [self addSubview:self.theScrollview];
     }
     return self;
 }
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

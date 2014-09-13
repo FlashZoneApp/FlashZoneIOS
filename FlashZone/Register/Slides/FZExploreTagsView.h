@@ -11,5 +11,4 @@
 @interface FZExploreTagsView : UIView
 
 @property (strong, nonatomic) UITextField *searchField;
-@property (strong, nonatomic) UIScrollView *theScrollview;
 @end
