@@ -99,7 +99,7 @@
         return;
     }
 
-    
+    // fetch suggested tags:
     [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
         if (error){
             
