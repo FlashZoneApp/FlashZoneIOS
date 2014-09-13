@@ -71,7 +71,7 @@
             x += img.size.width+padding;
         }
         
-        y += 60.0f;
+        y += 54.0f;
         CGFloat width = 0.6f*frame.size.width;
         UIButton *btnGetStarted = [UIButton buttonWithType:UIButtonTypeCustom];
         btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), y, width, 44.0f);
