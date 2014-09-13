@@ -48,9 +48,23 @@
         [self addSubview:bgSearchBar];
         
         y = (iPhone5) ? 190.0f : 155.0f;
+        int categoryCount = 12;
         self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 105.0f)];
-        self.tagsScrollview.backgroundColor = [UIColor redColor];
-        self.tagsScrollview.contentSize = CGSizeMake(500, 0);
+        self.tagsScrollview.backgroundColor = [UIColor clearColor];
+        self.tagsScrollview.contentSize = CGSizeMake(categoryCount*100, 0);
+        
+        for (int i=0; i<categoryCount; i++) {
+            UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
+            btnCategory.backgroundColor = [UIColor redColor];
+            btnCategory.frame = CGRectMake(0, 12.5f, 80.0f, 80.0f);
+            btnCategory.layer.cornerRadius = 0.5f*btnCategory.frame.size.width;
+            btnCategory.center = CGPointMake(50+i*100, btnCategory.center.y);
+            [btnCategory setTitle:@"Category" forState:UIControlStateNormal];
+            btnCategory.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+            [self.tagsScrollview addSubview:btnCategory];
+        }
+        
+        self.tagsScrollview.contentOffset = CGPointMake(50.0f, 0);
         [self addSubview:self.tagsScrollview];
         
         
