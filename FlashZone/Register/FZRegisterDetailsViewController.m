@@ -301,7 +301,6 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
-                [self adjustProfileIcon];
                 self.profileIcon.image = self.profile.imageData;
             });
             
@@ -317,7 +316,6 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestTwitterProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
-                [self adjustProfileIcon];
                 self.profileIcon.image = self.profile.imageData;
             });
             
@@ -332,7 +330,6 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
-                [self adjustProfileIcon];
                 self.profileIcon.image = self.profile.imageData;
             });
             
@@ -368,6 +365,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         return;
     
     
+    [self adjustProfileIcon];
     [UIView transitionWithView:self.profileIcon
                       duration:0.5f
                        options:UIViewAnimationOptionTransitionFlipFromLeft
