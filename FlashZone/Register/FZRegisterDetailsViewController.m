@@ -73,17 +73,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     [self.iconBase addSubview:self.profileIcon];
     
     [self.scrollView addSubview:self.iconBase];
-
-    
-    
-//    self.profileIcon = [[UIImageView alloc] initWithImage:imageIcon];
-//    self.profileIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-//    self.profileIcon.center = CGPointMake(0.5f*frame.size.width, 120.0f);
-//    self.profileIcon.layer.cornerRadius = 0.5f*self.profileIcon.frame.size.width;
-//    self.profileIcon.layer.masksToBounds = YES;
-//    [self.profileIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
-//    [self.scrollView addSubview:self.profileIcon];
-    y += self.profileIcon.frame.size.height+padding;
+    y += self.iconBase.frame.size.height+padding;
 
     
     self.attributes = @[@"Full name", @"Username:", @"Password:", @"Confirm:", @"Email:", @"Location: (your exact location won't be shown)"];
