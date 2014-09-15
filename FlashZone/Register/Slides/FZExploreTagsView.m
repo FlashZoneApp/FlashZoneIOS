@@ -47,6 +47,7 @@
         
         self.searchField = [[UITextField alloc] initWithFrame:CGRectMake(40.0f, 6.0f, bgSearchBar.frame.size.width-50.0f, bgSearchBar.frame.size.height-12.0f)];
         self.searchField.textColor = [UIColor whiteColor];
+        self.searchField.returnKeyType = UIReturnKeyDone;
         self.searchField.placeholder = @"Search for flashtag interests";
         [bgSearchBar addSubview:self.searchField];
         
