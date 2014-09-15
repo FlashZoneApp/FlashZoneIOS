@@ -12,7 +12,8 @@
 
 
 @interface FZPickPhotoViewController ()
-@property (strong, nonatomic) UIImageView *photoIcon;
+@property (strong, nonatomic) UIView *iconBase;
+@property (strong, nonatomic) UIImageView *profileIcon;
 @property (strong, nonatomic) UITableView *twitterAccountsTable;
 @end
 
@@ -40,30 +41,34 @@
     CGRect frame = view.frame;
     
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
+    self.iconBase = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, imageIcon.size.width, imageIcon.size.height)];
+    self.iconBase.center = CGPointMake(0.5f*frame.size.width, 0.24f*frame.size.height);
+    self.iconBase.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.iconBase.layer.cornerRadius = 0.5f*self.iconBase.frame.size.width;
+    self.iconBase.layer.masksToBounds = YES;
+    self.iconBase.backgroundColor = [UIColor lightGrayColor];
+
     if (self.profile.imageData){
-        self.photoIcon = [[UIImageView alloc] initWithImage:self.profile.imageData];
-        CGRect iconFrame = self.photoIcon.frame;
-        CGFloat maxWidth = imageIcon.size.width;
-        if (iconFrame.size.width > maxWidth) {
-            double scale = maxWidth/iconFrame.size.width;
-            iconFrame.size.width = maxWidth;
-            iconFrame.size.height *= scale;
-            self.photoIcon.frame = iconFrame;
-        }
+        self.profileIcon = [[UIImageView alloc] initWithImage:self.profile.imageData];
+        [self adjustProfileIcon];
     }
     else{
-        self.photoIcon = [[UIImageView alloc] initWithImage:imageIcon];
-        self.photoIcon.layer.cornerRadius = 0.5*imageIcon.size.height;
-        self.photoIcon.layer.masksToBounds = YES;
-        self.photoIcon.userInteractionEnabled = YES;
+        self.profileIcon = [[UIImageView alloc] initWithImage:imageIcon];
+        self.profileIcon.layer.cornerRadius = 0.5*imageIcon.size.height;
+        self.profileIcon.layer.masksToBounds = YES;
+        self.profileIcon.userInteractionEnabled = YES;
     }
 
-    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.12f*frame.size.height);
-    [self.photoIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)]];
-    [self.photoIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
-    [view addSubview:self.photoIcon];
+    self.profileIcon.center = CGPointMake(0.5f*self.iconBase.frame.size.width, 0.5f*self.iconBase.frame.size.height);
+    [self.profileIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)]];
+    [self.profileIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
+    [self.iconBase addSubview:self.profileIcon];
     
-    CGFloat y = 180.0f;
+
+    [view addSubview:self.iconBase];
+
+    
+    CGFloat y = 200.0f;
     NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin"];
     for (int i=0; i<buttons.count; i++) {
         NSString *network = buttons[i];
@@ -75,12 +80,12 @@
         [button setTitle:[NSString stringWithFormat:@"            Use my %@ Photo", network] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         button.frame = CGRectMake(0, 0, btnImage.size.width, btnImage.size.height);
-        button.center = CGPointMake(self.photoIcon.center.x, y);
+        button.center = CGPointMake(self.iconBase.center.x, y);
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         [button addTarget:self action:@selector(selectSocialIcon:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:button];
-        y += button.frame.size.height+12.0f;
+        y += button.frame.size.height+10.0f;
     }
 
     
@@ -111,7 +116,7 @@
 
 - (void)dealloc
 {
-    [self.photoIcon removeObserver:self forKeyPath:@"image"];
+    [self.profileIcon removeObserver:self forKeyPath:@"image"];
 }
 
 
@@ -131,34 +136,43 @@
     if ([keyPath isEqualToString:@"image"]==NO)
          return;
     
-    [UIView transitionWithView:self.photoIcon
+    [self adjustProfileIcon];
+    [UIView transitionWithView:self.profileIcon
                       duration:0.6f
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{
-                        self.photoIcon.alpha = 1.0f;
+                        self.profileIcon.alpha = 1.0f;
                     }
                     completion:NULL];
 }
 
-- (void)resizeProfileIcon
+
+- (void)adjustProfileIcon
 {
-    CGRect iconFrame = self.photoIcon.frame;
-    if (self.profile.imageData.size.width > kMaxDimen) {
-        double scale = kMaxDimen/self.profile.imageData.size.width;
-        iconFrame.size.width = kMaxDimen;
-        iconFrame.size.height = scale*self.profile.imageData.size.height;
+    UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
+    CGFloat w = self.profile.imageData.size.width;
+    CGFloat h = self.profile.imageData.size.height;
+    
+    double scale = 0.0f;
+    if (w != imageIcon.size.width){
+        scale = imageIcon.size.width/w;
+        w = imageIcon.size.width;
+        h *= scale;
+    }
+    if (h < imageIcon.size.height){
+        scale = imageIcon.size.height/h;
+        h = imageIcon.size.height;
+        w *= scale;
     }
     
-    if (self.profile.imageData.size.height > kMaxDimen) {
-        double scale = kMaxDimen/self.profile.imageData.size.height;
-        iconFrame.size.height = kMaxDimen;
-        iconFrame.size.width = scale*self.profile.imageData.size.width;
-    }
+    CGRect iconFrame = self.profileIcon.frame;
+    iconFrame.size.width = w;
+    iconFrame.size.height = h;
+    self.profileIcon.frame = iconFrame;
+    self.profileIcon.center = CGPointMake(0.5f*self.iconBase.frame.size.width, 0.5f*self.iconBase.frame.size.height);
     
-    self.photoIcon.frame = iconFrame;
-    CGRect frame = self.view.frame;
-    self.photoIcon.center = CGPointMake(0.5f*frame.size.width, 0.12f*frame.size.height);
 }
+
 
 
 - (void)selectPhoto:(UIGestureRecognizer *)tap
@@ -195,8 +209,7 @@
             [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
         }
         else{
-            self.photoIcon.image = self.profile.imageData;
-            [self resizeProfileIcon];
+            self.profileIcon.image = self.profile.imageData;
         }
     }];
 
@@ -211,8 +224,7 @@
             [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
         }
         else{
-            self.photoIcon.image = self.profile.imageData;
-            [self resizeProfileIcon];
+            self.profileIcon.image = self.profile.imageData;
         }
     }];
 }
@@ -226,8 +238,7 @@
             [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
         }
         else{
-            self.photoIcon.image = self.profile.imageData;
-            [self resizeProfileIcon];
+            self.profileIcon.image = self.profile.imageData;
         }
     }];
 
@@ -245,8 +256,7 @@
         if ([self.profile.facebookId isEqualToString:@"none"]==NO){
             [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.photoIcon.image = self.profile.imageData;
-                    [self resizeProfileIcon];
+                    self.profileIcon.image = self.profile.imageData;
                 });
                 
             }];
@@ -272,8 +282,7 @@
                             if (success){
                                 
                                 [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
-                                    self.photoIcon.image = self.profile.imageData;
-                                    [self resizeProfileIcon];
+                                    self.profileIcon.image = self.profile.imageData;
                                 }];
                             }
                             else{
@@ -592,7 +601,7 @@
     if (w != h)
         image = [self cropImage:image];
     
-    self.photoIcon.image = image;
+    self.profileIcon.image = image;
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
