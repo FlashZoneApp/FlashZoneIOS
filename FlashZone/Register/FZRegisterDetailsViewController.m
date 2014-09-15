@@ -296,47 +296,49 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 {
     [super viewWillAppear:animated];
     
-    if ([self.profile.facebookId isEqualToString:@"none"]==NO){
-        [self.loadingIndicator startLoading];
-        [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.loadingIndicator stopLoading];
-                self.profileIcon.image = self.profile.imageData;
-            });
-            
-        }];
-        
-        return;
+    if (self.profile.registrationType==FZRegistrationTypeFacebook){
+        if ([self.profile.facebookId isEqualToString:@"none"]==NO){
+            [self.loadingIndicator startLoading];
+            [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.loadingIndicator stopLoading];
+                    self.profileIcon.image = self.profile.imageData;
+                });
+            }];
+            return;
+        }
+    }
+    
+    if (self.profile.registrationType==FZRegistrationTypeTwitter){
+        if ([self.profile.twitterImage isEqualToString:@"none"]==NO){
+            NSLog(@"FOUND TWITTER PROFILE PIC: %@", self.profile.twitterImage);
+            [self.loadingIndicator startLoading];
+            [self.profile requestTwitterProfilePic:^(BOOL success, NSError *error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.loadingIndicator stopLoading];
+                    self.profileIcon.image = self.profile.imageData;
+                });
+                
+            }];
+            return;
+        }
     }
     
     
-    if ([self.profile.twitterImage isEqualToString:@"none"]==NO){
-        NSLog(@"FOUND TWITTER PROFILE PIC: %@", self.profile.twitterImage);
-        [self.loadingIndicator startLoading];
-        [self.profile requestTwitterProfilePic:^(BOOL success, NSError *error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.loadingIndicator stopLoading];
-                self.profileIcon.image = self.profile.imageData;
-            });
-            
-        }];
-        
-        return;
+    if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
+        if ([self.profile.linkedinImage isEqualToString:@"none"]==NO){
+            [self.loadingIndicator startLoading];
+            [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.loadingIndicator stopLoading];
+                    self.profileIcon.image = self.profile.imageData;
+                });
+                
+            }];
+            return;
+        }
     }
     
-    
-    if ([self.profile.linkedinImage isEqualToString:@"none"]==NO){
-        [self.loadingIndicator startLoading];
-        [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.loadingIndicator stopLoading];
-                self.profileIcon.image = self.profile.imageData;
-            });
-            
-        }];
-        
-        return;
-    }
 
 }
 
