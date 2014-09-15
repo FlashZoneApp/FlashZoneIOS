@@ -96,6 +96,7 @@
                 self.exploreTagsSlide = [FZExploreTagsView viewWithCategories:self.categories withFrame:CGRectMake(x, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
                 self.exploreTagsSlide.searchField.delegate = self;
                 self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+                self.exploreTagsSlide.tagsScrollview.delegate = self;
                 [self.theScrollview addSubview:self.exploreTagsSlide];
             });
             
@@ -249,7 +250,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.exploreTagsSlide.searchField resignFirstResponder];
-    
+    if ([scrollView isEqual:self.theScrollview]==NO){
+        self.theScrollview.scrollEnabled = NO;
+        return;
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -257,9 +261,23 @@
 
     NSLog(@"scrollViewDidScroll: %.2f", scrollView.contentOffset.x);
     
+    if ([scrollView isEqual:self.theScrollview]==NO){
+        self.theScrollview.scrollEnabled = YES;
+        return;
+    }
+
+    
     int page = (int)(scrollView.contentOffset.x/scrollView.frame.size.width);
     self.pageControl.currentPage = page;
 
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if ([scrollView isEqual:self.theScrollview]==NO){
+        self.theScrollview.scrollEnabled = YES;
+        return;
+    }
 }
 
 
