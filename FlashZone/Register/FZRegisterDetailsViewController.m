@@ -19,6 +19,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UIButton *btnRegister;
 @property (strong, nonatomic) NSCharacterSet *invalidCharacters;
+@property (strong, nonatomic) UIView *iconBase;
 @property (strong, nonatomic) UIImageView *profileIcon;
 @property (nonatomic) NSTimeInterval now;
 @end
@@ -59,11 +60,29 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     CGFloat y = padding;
     
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
+    self.iconBase = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imageIcon.size.width, imageIcon.size.height)];
+    self.iconBase.center = CGPointMake(0.5f*frame.size.width, 120.0f);
+    self.iconBase.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.iconBase.layer.cornerRadius = 0.5f*self.iconBase.frame.size.width;
+    self.iconBase.layer.masksToBounds = YES;
+    self.iconBase.backgroundColor = [UIColor lightGrayColor];
+    
     self.profileIcon = [[UIImageView alloc] initWithImage:imageIcon];
-    self.profileIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    self.profileIcon.center = CGPointMake(0.5f*frame.size.width, 120.0f);
+    self.profileIcon.center = CGPointMake(0.5f*self.iconBase.frame.size.width, 0.5f*self.iconBase.frame.size.height);
     [self.profileIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
-    [self.scrollView addSubview:self.profileIcon];
+    [self.iconBase addSubview:self.profileIcon];
+    
+    [self.scrollView addSubview:self.iconBase];
+
+    
+    
+//    self.profileIcon = [[UIImageView alloc] initWithImage:imageIcon];
+//    self.profileIcon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    self.profileIcon.center = CGPointMake(0.5f*frame.size.width, 120.0f);
+//    self.profileIcon.layer.cornerRadius = 0.5f*self.profileIcon.frame.size.width;
+//    self.profileIcon.layer.masksToBounds = YES;
+//    [self.profileIcon addObserver:self forKeyPath:@"image" options:0 context:nil];
+//    [self.scrollView addSubview:self.profileIcon];
     y += self.profileIcon.frame.size.height+padding;
 
     
@@ -248,6 +267,31 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(exit)];
 }
 
+- (void)adjustProfileIcon
+{
+    CGFloat w = self.profile.imageData.size.width;
+    CGFloat h = self.profile.imageData.size.height;
+    
+    double scale = 0.0f;
+    CGRect iconFrame = self.profileIcon.frame;
+    if (w != iconFrame.size.width){
+        scale = iconFrame.size.width/w;
+        w = iconFrame.size.width;
+        h *= scale;
+    }
+    if (h<iconFrame.size.height){
+        scale = iconFrame.size.height/h;
+        h = iconFrame.size.height;
+        w *= scale;
+    }
+    
+    iconFrame.size.width = w;
+    iconFrame.size.height = h;
+    self.profileIcon.frame = iconFrame;
+    self.profileIcon.center = CGPointMake(0.5f*self.iconBase.frame.size.width, 0.5f*self.iconBase.frame.size.height);
+
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -257,22 +301,8 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestFacebookProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
-                UIImage *croppedImage = [self.profile.imageData croppedImage];
-                NSLog(@"CROPPED IMAGE: %.2f, %.2f", croppedImage.size.width, croppedImage.size.height);
-                
-//                self.profileIcon.image = croppedImage;
-                
-                UIImage *img = self.profile.imageData;
-                self.profileIcon.image = img;
-                CGRect frame = self.profileIcon.frame;
-                frame.size.width = img.size.width;
-                frame.size.height = img.size.height;
-                self.profileIcon.frame = frame;
-                
-                CGPoint ctr = self.profileIcon.center;
-                ctr.x = 0.5f*self.view.frame.size.width;
-                self.profileIcon.center = ctr;
-                
+                [self adjustProfileIcon];
+                self.profileIcon.image = self.profile.imageData;
             });
             
         }];
@@ -287,6 +317,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestTwitterProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
+                [self adjustProfileIcon];
                 self.profileIcon.image = self.profile.imageData;
             });
             
@@ -301,6 +332,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         [self.profile requestLinkedinProfilePic:^(BOOL success, NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingIndicator stopLoading];
+                [self adjustProfileIcon];
                 self.profileIcon.image = self.profile.imageData;
             });
             
@@ -315,6 +347,8 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 {
     [super viewDidAppear:animated];
 }
+
+
 
 - (void)setCanRegister:(BOOL)canRegister
 {
