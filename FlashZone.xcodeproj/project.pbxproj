@@ -43,6 +43,7 @@
 		5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */; };
 		5C1BCAA219CA0B5500926CD3 /* iconReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9D19CA0B5500926CD3 /* iconReddit@2x.png */; };
 		5C1BCAA319CA0B5500926CD3 /* iconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9E19CA0B5500926CD3 /* iconTwitter@2x.png */; };
+		5C1BCAA619CA0E9400926CD3 /* UIColor+FZColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1BCAA519CA0E9400926CD3 /* UIColor+FZColorAdditions.m */; };
 		5C20234219BF804700F9C067 /* iconCheckMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C20234119BF804700F9C067 /* iconCheckMark@2x.png */; };
 		5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3338831997FD1800B5E58E /* atSign@2x.png */; };
 		5C35AD7A199A824600D99CAF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD70199A824600D99CAF /* LIALinkedInApplication.m */; };
@@ -169,6 +170,8 @@
 		5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLinkedin@2x.png"; sourceTree = "<group>"; };
 		5C1BCA9D19CA0B5500926CD3 /* iconReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconReddit@2x.png"; sourceTree = "<group>"; };
 		5C1BCA9E19CA0B5500926CD3 /* iconTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconTwitter@2x.png"; sourceTree = "<group>"; };
+		5C1BCAA419CA0E9400926CD3 /* UIColor+FZColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FZColorAdditions.h"; sourceTree = "<group>"; };
+		5C1BCAA519CA0E9400926CD3 /* UIColor+FZColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FZColorAdditions.m"; sourceTree = "<group>"; };
 		5C20234119BF804700F9C067 /* iconCheckMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCheckMark@2x.png"; sourceTree = "<group>"; };
 		5C3338831997FD1800B5E58E /* atSign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atSign@2x.png"; sourceTree = "<group>"; };
 		5C35AD6F199A824600D99CAF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 				5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */,
 				5C4A33F519B2A67D001D5502 /* UIView+FZViewAdditions.h */,
 				5C4A33F619B2A67D001D5502 /* UIView+FZViewAdditions.m */,
+				5C1BCAA419CA0E9400926CD3 /* UIColor+FZColorAdditions.h */,
+				5C1BCAA519CA0E9400926CD3 /* UIColor+FZColorAdditions.m */,
 				5C3C293019C9FE9B00465F03 /* FZSocialButton.h */,
 				5C3C293119C9FE9B00465F03 /* FZSocialButton.m */,
 			);
@@ -794,6 +799,7 @@
 				5C35AD98199A836900D99CAF /* AFSecurityPolicy.m in Sources */,
 				5C4A33EA19B28C3E001D5502 /* FZExploreTagsView.m in Sources */,
 				5C35AD94199A836900D99CAF /* AFHTTPRequestOperation.m in Sources */,
+				5C1BCAA619CA0E9400926CD3 /* UIColor+FZColorAdditions.m in Sources */,
 				5CF9D09E19A671AE0080DB44 /* FZRedditLoginViewController.m in Sources */,
 				5C9BC8E2198759C4007BAD1E /* FZProfile.m in Sources */,
 				5C9BC91119875EA8007BAD1E /* SignalCheck.m in Sources */,
