@@ -82,45 +82,45 @@
 
     UIButton *btnSignupWithEmail = [UIButton buttonWithType:UIButtonTypeCustom];
     btnSignupWithEmail.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnSignupWithEmail.frame = CGRectMake(padding, y-3.0f, w, h);
+    btnSignupWithEmail.frame = CGRectMake(padding, y-5.0f, w, h);
     btnSignupWithEmail.backgroundColor = [UIColor clearColor];
     [btnSignupWithEmail setTitle:@"Sign up with Email" forState:UIControlStateNormal];
-    btnSignupWithEmail.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    btnSignupWithEmail.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     [btnSignupWithEmail addTarget:self action:@selector(signupWithEmail:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btnSignupWithEmail];
     
     
     // The following views are pinned to the bottom:
     
-    y = frame.size.height-40.0f;
+    y = frame.size.height-46.0f;
     
     UILabel *lblAgreement = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, y, frame.size.width, 44.0f)];
     lblAgreement.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     lblAgreement.textColor = [UIColor whiteColor];
-    lblAgreement.font = [UIFont systemFontOfSize:12.0f];
+    lblAgreement.font = [UIFont systemFontOfSize:11.0f];
     lblAgreement.textAlignment = NSTextAlignmentCenter;
     lblAgreement.numberOfLines = 2;
     lblAgreement.lineBreakMode = NSLineBreakByWordWrapping;
-    lblAgreement.text = @"By signing up, you agree to FlashZone's\nTerms of Service and Privacy Policy.";
+    lblAgreement.text = @"By signing up, you agree to FlashZone's\nTerms of Service & Privacy Policy.";
     [view addSubview:lblAgreement];
 
-    y -= (h+7.0f);
+    y -= (frame.size.height > 500) ? (h+24.0f) : (h+1.0f); // iphone 4 vs iphone 5
 
-    UILabel *lblAreadyRegistered = [[UILabel alloc] initWithFrame:CGRectMake(padding+5.0f, y, 0.7f*w, h)];
+    UILabel *lblAreadyRegistered = [[UILabel alloc] initWithFrame:CGRectMake(padding+30.0f, y, 0.7f*w, h)];
     lblAreadyRegistered.textColor = [UIColor whiteColor];
     lblAreadyRegistered.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     lblAreadyRegistered.backgroundColor = [UIColor clearColor];
-    lblAreadyRegistered.font = [UIFont boldSystemFontOfSize:16.0f];
+    lblAreadyRegistered.font = [UIFont boldSystemFontOfSize:13.0f];
     lblAreadyRegistered.text = @"Already have an account?";
     [view addSubview:lblAreadyRegistered];
     
     UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     btnLogin.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnLogin.frame = CGRectMake(frame.size.width-86.0f-padding-5.0f, y, 86.0f, h);
+    btnLogin.frame = CGRectMake(frame.size.width-70.0f-padding-30.0f, y, 70.0f, h);
     btnLogin.backgroundColor = [UIColor lightGrayColor];
-    btnLogin.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    btnLogin.titleLabel.font = [UIFont boldSystemFontOfSize:13.0f];
     btnLogin.layer.cornerRadius = 4.0f;
-    [btnLogin setTitle:@"Login" forState:UIControlStateNormal];
+    [btnLogin setTitle:@"Log in" forState:UIControlStateNormal];
     [btnLogin addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btnLogin];
     
