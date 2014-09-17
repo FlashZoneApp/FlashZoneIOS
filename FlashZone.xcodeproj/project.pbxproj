@@ -23,7 +23,6 @@
 		5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C116C2A19898FB5004AFC22 /* btnSelected@2x.png */; };
 		5C116C2D19899499004AFC22 /* bgButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C116C2C19899498004AFC22 /* bgButton@2x.png */; };
 		5C12A01F1995A9D400703CCA /* FZPickPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */; };
-		5C12A0211995AE6F00703CCA /* photoPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C12A0201995AE6F00703CCA /* photoPlaceholder@2x.png */; };
 		5C133E7119B9228300FB4AEC /* fb-active-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E6719B9228300FB4AEC /* fb-active-rndsquare@2x.png */; };
 		5C133E7219B9228300FB4AEC /* fb-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E6819B9228300FB4AEC /* fb-rndsquare@2x.png */; };
 		5C133E7319B9228300FB4AEC /* g-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E6919B9228300FB4AEC /* g-activestate-rndsquare@2x.png */; };
@@ -59,6 +58,7 @@
 		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C4685E919C93E9E00F22683 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4685E819C93E9E00F22683 /* backArrow@2x.png */; };
 		5C4685EC19C9432100F22683 /* FZSelectTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */; };
+		5C4685EE19C94E3C00F22683 /* photoPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4685ED19C94E3C00F22683 /* photoPlaceholder@2x.png */; };
 		5C4A33BD19B26CB1001D5502 /* FZTagsIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */; };
 		5C4A33C019B26F6E001D5502 /* FZTagsSelectNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BF19B26F6E001D5502 /* FZTagsSelectNetworkView.m */; };
 		5C4A33C419B27442001D5502 /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C319B27442001D5502 /* bg_select_network@2x.png */; };
@@ -143,7 +143,6 @@
 		5C116C2C19899498004AFC22 /* bgButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgButton@2x.png"; sourceTree = "<group>"; };
 		5C12A01D1995A9D400703CCA /* FZPickPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickPhotoViewController.h; sourceTree = "<group>"; };
 		5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickPhotoViewController.m; sourceTree = "<group>"; };
-		5C12A0201995AE6F00703CCA /* photoPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photoPlaceholder@2x.png"; sourceTree = "<group>"; };
 		5C133E6719B9228300FB4AEC /* fb-active-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-active-rndsquare@2x.png"; sourceTree = "<group>"; };
 		5C133E6819B9228300FB4AEC /* fb-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-rndsquare@2x.png"; sourceTree = "<group>"; };
 		5C133E6919B9228300FB4AEC /* g-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
@@ -195,6 +194,7 @@
 		5C4685E819C93E9E00F22683 /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
 		5C4685EA19C9432100F22683 /* FZSelectTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectTwitterViewController.h; sourceTree = "<group>"; };
 		5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSelectTwitterViewController.m; sourceTree = "<group>"; };
+		5C4685ED19C94E3C00F22683 /* photoPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photoPlaceholder@2x.png"; sourceTree = "<group>"; };
 		5C4A33BB19B26CB1001D5502 /* FZTagsIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsIntroView.h; sourceTree = "<group>"; };
 		5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsIntroView.m; sourceTree = "<group>"; };
 		5C4A33BE19B26F6E001D5502 /* FZTagsSelectNetworkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsSelectNetworkView.h; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 				5C133E7D19B9255900FB4AEC /* btnLinkedin@2x.png */,
 				5C133E7E19B9255900FB4AEC /* btnReddit@2x.png */,
 				5C133E7F19B9255900FB4AEC /* btnTwitter@2x.png */,
-				5C12A0201995AE6F00703CCA /* photoPlaceholder@2x.png */,
+				5C4685ED19C94E3C00F22683 /* photoPlaceholder@2x.png */,
 				5CF8A00D198EA22C00DE17C5 /* bgMap@2x.png */,
 				5CF89FFF198E9D9700DE17C5 /* flashzonelogo@2x.png */,
 				5CD47BF519B90EF000BC4FDB /* loginGoogle@2x.png */,
@@ -721,9 +721,9 @@
 				5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */,
 				5C133E8219B9255900FB4AEC /* btnLinkedin@2x.png in Resources */,
 				5C133E8119B9255900FB4AEC /* btnGoogle@2x.png in Resources */,
+				5C4685EE19C94E3C00F22683 /* photoPlaceholder@2x.png in Resources */,
 				5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */,
 				5CCA38E719C24B45001904D2 /* bg_explore_tags_480@2x.png in Resources */,
-				5C12A0211995AE6F00703CCA /* photoPlaceholder@2x.png in Resources */,
 				5C133E8019B9255900FB4AEC /* btnFacebook@2x.png in Resources */,
 				5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */,
 				5C58D9CB19BF71A700E070E4 /* iconPlus@2x.png in Resources */,
