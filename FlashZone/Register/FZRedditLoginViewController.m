@@ -104,10 +104,14 @@
     self.loadingIndicator.alpha = 0.0f;
     [self.view addSubview:self.loadingIndicator];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"back"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(exit)];
+    UIImage *imgBack = [UIImage imageNamed:@"backArrow.png"];
+    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnBack setBackgroundImage:imgBack forState:UIControlStateNormal];
+    btnBack.frame = CGRectMake(0.0f, 0.0f, imgBack.size.width, imgBack.size.height);
+    [btnBack addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
+
     
     
     
