@@ -64,11 +64,14 @@ BOOL handlingRedirectURL;
 		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 
-//	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(tappedCancelButton:)];
-//	self.navigationItem.leftBarButtonItem = cancelButton;
-
+    UIImage *imgBack = [UIImage imageNamed:@"backArrow.png"];
+    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnBack setBackgroundImage:imgBack forState:UIControlStateNormal];
+    btnBack.frame = CGRectMake(0.0f, 0.0f, imgBack.size.width, imgBack.size.height);
+    [btnBack addTarget:self action:@selector(tappedCancelButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStylePlain target:self action:@selector(tappedCancelButton:)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
     
 
   self.authenticationWebView = [[UIWebView alloc] init];
