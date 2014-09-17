@@ -203,6 +203,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     [self.btnRegister setTitle:@"Get in the FlashZone" forState:UIControlStateNormal];
     [btnFemale setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.btnRegister setBackgroundColor:[UIColor lightGrayColor]];
+    self.btnRegister.layer.cornerRadius = 3.0f;
     [self.btnRegister addTarget:self action:@selector(registerProfile:) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.btnRegister];
     y += self.btnRegister.frame.size.height+padding;
