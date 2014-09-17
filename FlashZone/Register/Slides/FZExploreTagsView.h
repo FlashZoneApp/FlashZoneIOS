@@ -14,5 +14,4 @@
 @property (strong, nonatomic) UIScrollView *tagsScrollview;
 
 + (FZExploreTagsView *)viewWithCategories:(NSArray *)categories withFrame:(CGRect)frame;
-+ (UIColor *)colorFromHexString:(NSString *)hexString;
 @end
