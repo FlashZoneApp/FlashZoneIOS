@@ -8,6 +8,6 @@
 
 #import "FZViewController.h"
 
-@interface FZPickPhotoViewController : FZViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FZPickPhotoViewController : FZViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
