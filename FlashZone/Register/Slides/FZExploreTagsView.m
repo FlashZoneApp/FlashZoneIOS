@@ -93,6 +93,7 @@
 
     CGFloat dimen = 90.0f;
     tagsView.tagsScrollview.contentSize = CGSizeMake(categories.count*(dimen+20.0f), 0);
+    tagsView.tagsScrollview.contentOffset = CGPointMake(0.5f*(dimen+20.0f), 0);
     for (int i=0; i<categories.count; i++) {
         NSDictionary *category = categories[i];
         UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -106,7 +107,7 @@
         [tagsView.tagsScrollview addSubview:btnCategory];
     }
 
-    tagsView.tagsScrollview.contentOffset = CGPointMake(0.5f*(dimen+20.0f), 0);
+//    tagsView.tagsScrollview.contentOffset = CGPointMake(0.5f*(dimen+20.0f), 0);
 
     
     return tagsView;
