@@ -81,7 +81,7 @@
     self.lblConfirmation = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, -22.0f, frame.size.width, 22.0f)];
     self.lblConfirmation.textAlignment = NSTextAlignmentCenter;
     self.lblConfirmation.textColor = [UIColor whiteColor];
-    self.lblConfirmation.font = [UIFont boldSystemFontOfSize:16.0f];
+    self.lblConfirmation.font = [UIFont boldSystemFontOfSize:20.0f];
     self.lblConfirmation.text = @"Flashtags Added";
     [self.cover addSubview:self.lblConfirmation];
     
@@ -230,7 +230,7 @@
 - (void)exit
 {
     
-    [UIView animateWithDuration:0.6f
+    [UIView animateWithDuration:0.75f
                           delay:0
          usingSpringWithDamping:0.6f
           initialSpringVelocity:0.0f
