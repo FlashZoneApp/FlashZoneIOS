@@ -71,23 +71,16 @@
 
     
     CGFloat y = 200.0f;
-    NSArray *buttons = @[@"Facebook", @"Twitter", @"Google", @"Linkedin"];
-    for (int i=0; i<buttons.count; i++) {
-        NSString *network = buttons[i];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = 1000+i;
-        button.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        UIImage *btnImage = [UIImage imageNamed:[NSString stringWithFormat:@"btn%@.png", network]];
-        [button setBackgroundImage:btnImage forState:UIControlStateNormal];
-        [button setTitle:[NSString stringWithFormat:@"            Use my %@ Photo", network] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        button.frame = CGRectMake(0, 0, btnImage.size.width, btnImage.size.height);
-        button.center = CGPointMake(self.iconBase.center.x, y);
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
-        [button addTarget:self action:@selector(selectSocialIcon:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:button];
-        y += button.frame.size.height+10.0f;
+    NSArray *socialogins = [FZSocialButton socialNetworks];
+    for (int i=0; i<socialogins.count-1; i++){ // ignore reddit button
+        NSString *network = socialogins[i];
+        FZSocialButton *btnLogin = [FZSocialButton buttonWithFrame:CGRectMake(0.0f, y, 242.f, 46.0f) socialNetwork:i];
+        btnLogin.tag = 1000+i;
+        btnLogin.center = CGPointMake(self.iconBase.center.x, y);
+        [btnLogin addTarget:self action:@selector(selectSocialIcon:) forControlEvents:UIControlEventTouchUpInside];
+        btnLogin.lblNetwork.text = [NSString stringWithFormat:@"Use my %@ Photo", network];
+        [view addSubview:btnLogin];
+        y += btnLogin.frame.size.height+10.0f;
     }
 
     
