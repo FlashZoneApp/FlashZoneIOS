@@ -91,20 +91,22 @@
 {
     FZExploreTagsView *tagsView = [[FZExploreTagsView alloc] initWithFrame:frame];
 
-    tagsView.tagsScrollview.contentSize = CGSizeMake(categories.count*100, 0);
+    CGFloat dimen = 90.0f;
+    tagsView.tagsScrollview.contentSize = CGSizeMake(categories.count*(dimen+20.0f), 0);
     for (int i=0; i<categories.count; i++) {
         NSDictionary *category = categories[i];
         UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
         btnCategory.backgroundColor = [FZExploreTagsView colorFromHexString:[NSString stringWithFormat:@"#%@", category[@"color"]]];
-        btnCategory.frame = CGRectMake(0, 12.5f, 80.0f, 80.0f);
+        btnCategory.frame = CGRectMake(0, 12.5f, dimen, dimen);
         btnCategory.layer.cornerRadius = 0.5f*btnCategory.frame.size.width;
-        btnCategory.center = CGPointMake(50+i*100, btnCategory.center.y);
+        btnCategory.center = CGPointMake(50+i*(dimen+20.0f), btnCategory.center.y);
         [btnCategory setTitle:category[@"name"] forState:UIControlStateNormal];
         btnCategory.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+        btnCategory.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [tagsView.tagsScrollview addSubview:btnCategory];
     }
 
-    tagsView.tagsScrollview.contentOffset = CGPointMake(50.0f, 0);
+    tagsView.tagsScrollview.contentOffset = CGPointMake(0.5f*(dimen+20.0f), 0);
 
     
     return tagsView;
