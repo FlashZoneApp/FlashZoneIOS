@@ -9,6 +9,10 @@
 #import "FZSocialButton.h"
 #import "Config.h"
 
+@interface FZSocialButton ()
+@property (strong, nonatomic) UIImageView *icon;
+@end
+
 @implementation FZSocialButton
 @synthesize lblNetwork;
 @synthesize socialNetwork = _socialNetwork;
@@ -22,6 +26,10 @@
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         self.layer.cornerRadius = 5.0f;
+        
+        self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
+        self.icon.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.icon];
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.height, 0.0f, 0.5f, frame.size.height-0.5f)];
         line.backgroundColor = [UIColor grayColor];
@@ -57,21 +65,31 @@
 - (void)setSocialNetwork:(FZSocialNetwork)socialNetwork
 {
     _socialNetwork = socialNetwork;
+    CGRect frame = self.icon.frame;
     if (socialNetwork==FZSocialNetworkFacebook){
         self.backgroundColor = kFacebookBlue;
+        self.icon.image = [UIImage imageNamed:@"iconFacebook.png"];
     }
     if (socialNetwork==FZSocialNetworkTwitter){
         self.backgroundColor = kTwitterBlue;
+        self.icon.image = [UIImage imageNamed:@"iconTwitter.png"];
     }
     if (socialNetwork==FZSocialNetworkGoogle){
         self.backgroundColor = kGoogleRed;
+        self.icon.image = [UIImage imageNamed:@"iconGoogle.png"];
     }
     if (socialNetwork==FZSocialNetworkLinkedin){
         self.backgroundColor = kLinkedinBlue;
+        self.icon.image = [UIImage imageNamed:@"iconLinkedin.png"];
     }
     if (socialNetwork==FZSocialNetworkReddit){
         self.backgroundColor = kRedditRed;
+        self.icon.image = [UIImage imageNamed:@"iconReddit.png"];
     }
+    
+    self.icon.frame = CGRectMake(frame.origin.x, frame.origin.y, self.icon.image.size.width, self.icon.image.size.height);
+    self.icon.center = CGPointMake(0.5f*self.frame.size.height, 0.5f*self.frame.size.height);
+
 }
 
 @end
