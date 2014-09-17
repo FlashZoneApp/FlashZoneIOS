@@ -70,7 +70,7 @@
     CGRect frame = self.icon.frame;
     if (socialNetwork==FZSocialNetworkFacebook){
         self.backgroundColor = [UIColor colorFromHexString:kFacebookBlue];
-        self.line.backgroundColor = [UIColor colorFromHexString:@"#15649d"];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#324c81"];
         self.icon.image = [UIImage imageNamed:@"iconFacebook.png"];
     }
     if (socialNetwork==FZSocialNetworkTwitter){
