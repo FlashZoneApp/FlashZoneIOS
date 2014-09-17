@@ -228,7 +228,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     x = btnPrivacy.frame.origin.x+btnPrivacy.frame.size.width+padding;
     UILabel *lblAlreadyHaveAnAccount = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 150.0f, 26.0f)];
     lblAlreadyHaveAnAccount.text = @"Already have an account?";
-    lblAlreadyHaveAnAccount.font = [UIFont boldSystemFontOfSize:12.0f];
+    lblAlreadyHaveAnAccount.font = [UIFont systemFontOfSize:12.0f];
     [self.scrollView addSubview:lblAlreadyHaveAnAccount];
     
     x = lblAlreadyHaveAnAccount.frame.origin.x+lblAlreadyHaveAnAccount.frame.size.width;
@@ -237,7 +237,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     btnLogin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [btnLogin setTitle:@"Sign In" forState:UIControlStateNormal];
     [btnLogin setTitleColor:kOrange forState:UIControlStateNormal];
-    btnLogin.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    btnLogin.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     [self.scrollView addSubview:btnLogin];
 
     
