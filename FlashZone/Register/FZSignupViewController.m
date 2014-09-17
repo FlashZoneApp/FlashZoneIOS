@@ -445,7 +445,7 @@
     }
     
     ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"@%@", twitterAccount.username];
+    cell.textLabel.text = [NSString stringWithFormat:@"@%@", twitterAccount.username.uppercaseString];
     return cell;
 }
 
