@@ -14,6 +14,7 @@
 #import "FZSocialAccountsMgr.h"
 #import "UIView+FZViewAdditions.h"
 #import "UIImage+FZImageEffects.h"
+#import "FZSocialButton.h"
 
 
 @interface FZViewController : UIViewController

@@ -55,6 +55,7 @@
 		5C35AD9A199A836900D99CAF /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD8F199A836900D99CAF /* AFURLRequestSerialization.m */; };
 		5C35AD9B199A836900D99CAF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD91199A836900D99CAF /* AFURLResponseSerialization.m */; };
 		5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD93199A836900D99CAF /* AFURLSessionManager.m */; };
+		5C3C293219C9FE9B00465F03 /* FZSocialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C293119C9FE9B00465F03 /* FZSocialButton.m */; };
 		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C4685E919C93E9E00F22683 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4685E819C93E9E00F22683 /* backArrow@2x.png */; };
 		5C4685EC19C9432100F22683 /* FZSelectTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */; };
@@ -189,6 +190,8 @@
 		5C35AD91199A836900D99CAF /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		5C35AD92199A836900D99CAF /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		5C35AD93199A836900D99CAF /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		5C3C293019C9FE9B00465F03 /* FZSocialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSocialButton.h; sourceTree = "<group>"; };
+		5C3C293119C9FE9B00465F03 /* FZSocialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSocialButton.m; sourceTree = "<group>"; };
 		5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickTagsViewController.h; sourceTree = "<group>"; };
 		5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickTagsViewController.m; sourceTree = "<group>"; };
 		5C4685E819C93E9E00F22683 /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
@@ -588,6 +591,8 @@
 				5C6A17B5199FD5F6004E9CCE /* UIImage+FZImageEffects.m */,
 				5C4A33F519B2A67D001D5502 /* UIView+FZViewAdditions.h */,
 				5C4A33F619B2A67D001D5502 /* UIView+FZViewAdditions.m */,
+				5C3C293019C9FE9B00465F03 /* FZSocialButton.h */,
+				5C3C293119C9FE9B00465F03 /* FZSocialButton.m */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -755,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C35AD9A199A836900D99CAF /* AFURLRequestSerialization.m in Sources */,
+				5C3C293219C9FE9B00465F03 /* FZSocialButton.m in Sources */,
 				5C35AD99199A836900D99CAF /* AFURLConnectionOperation.m in Sources */,
 				5CFF7D2619894C4900867679 /* FZContainerViewController.m in Sources */,
 				5C9BC8E619875B0F007BAD1E /* FZViewController.m in Sources */,
