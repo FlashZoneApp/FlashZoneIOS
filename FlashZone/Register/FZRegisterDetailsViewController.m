@@ -76,7 +76,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     y += self.iconBase.frame.size.height+padding;
 
     
-    self.attributes = @[@"Full name", @"Username:", @"Password:", @"Confirm:", @"Email:", @"Location: (your exact location won't be shown)"];
+    self.attributes = @[@"First Name:", @"Username:", @"Password:", @"Confirm:", @"Email:", @"Location: (your exact location won't be shown)"];
     CGFloat width = frame.size.width-2*padding;
     UIFont *font = [UIFont boldSystemFontOfSize:14.0f];
     for (int i=0; i<self.attributes.count; i++){
