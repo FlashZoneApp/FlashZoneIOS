@@ -205,6 +205,11 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     [self.btnRegister setBackgroundColor:[UIColor lightGrayColor]];
     self.btnRegister.layer.cornerRadius = 3.0f;
     [self.btnRegister addTarget:self action:@selector(registerProfile:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImageView *iconFlashZone = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconFlashZone.png"]];
+    iconFlashZone.center = CGPointMake(0.75f*self.btnRegister.frame.size.height, 0.5f*self.btnRegister.frame.size.height);
+    [self.btnRegister addSubview:iconFlashZone];
+    
     [self.scrollView addSubview:self.btnRegister];
     y += self.btnRegister.frame.size.height+padding;
     
