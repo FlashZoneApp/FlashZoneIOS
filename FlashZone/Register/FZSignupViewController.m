@@ -57,20 +57,13 @@
     NSArray *socialogins = @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
     for (int i=0; i<socialogins.count; i++){
         NSString *network = socialogins[i];
-        UIImage *loginImage = [UIImage imageNamed:[NSString stringWithFormat:@"btn%@.png", network]];
-        UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
+        FZSocialButton *btnLogin = [FZSocialButton buttonWithFrame:CGRectMake(0.0f, y, 242.f, 46.0f) socialNetwork:i];
         btnLogin.tag = 1000+i;
-        btnLogin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        btnLogin.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        btnLogin.frame = CGRectMake(0.0f, y, loginImage.size.width, loginImage.size.height);
         btnLogin.center = CGPointMake(0.5f*frame.size.width+1, btnLogin.center.y);
-        [btnLogin setBackgroundImage:loginImage forState:UIControlStateNormal];
         [btnLogin addTarget:self action:@selector(signupSocialNetwork:) forControlEvents:UIControlEventTouchUpInside];
-        [btnLogin setTitle:[NSString stringWithFormat:@"            Connect with %@", network] forState:UIControlStateNormal];
-        [btnLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        btnLogin.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+        btnLogin.lblNetwork.text = [NSString stringWithFormat:@"Connect with %@", network];
         [view addSubview:btnLogin];
-        y += loginImage.size.height+padding;
+        y += btnLogin.frame.size.height+padding;
     }
     
     h = 34.0f;
