@@ -46,6 +46,8 @@ BOOL handlingRedirectURL;
 - (id)initWithApplication:(LIALinkedInApplication *)application success:(LIAAuthorizationCodeSuccessCallback)success cancel:(LIAAuthorizationCodeCancelCallback)cancel failure:(LIAAuthorizationCodeFailureCallback)failure {
     self = [super init];
     if (self) {
+        self.title = @"Connect";
+
         self.application = application;
         self.successCallback = success;
         self.cancelCallback = cancel;
@@ -62,8 +64,12 @@ BOOL handlingRedirectURL;
 		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 
-	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(tappedCancelButton:)];
-	self.navigationItem.leftBarButtonItem = cancelButton;
+//	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(tappedCancelButton:)];
+//	self.navigationItem.leftBarButtonItem = cancelButton;
+
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStylePlain target:self action:@selector(tappedCancelButton:)];
+    
 
   self.authenticationWebView = [[UIWebView alloc] init];
   self.authenticationWebView.delegate = self;
