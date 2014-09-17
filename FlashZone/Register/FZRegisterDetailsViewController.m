@@ -243,7 +243,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     
     y += btnTerms.frame.size.height;
 
-    self.scrollView.contentSize = CGSizeMake(0, y);
+    self.scrollView.contentSize = CGSizeMake(0, y+10.0f);
     [view addSubview:self.scrollView];
     
     self.view = view;
