@@ -12,6 +12,7 @@
 
 @interface FZSocialButton ()
 @property (strong, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UIView *line;
 @end
 
 @implementation FZSocialButton
@@ -32,9 +33,9 @@
         self.icon.backgroundColor = [UIColor clearColor];
         [self addSubview:self.icon];
         
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.height, 0.0f, 0.5f, frame.size.height-0.5f)];
-        line.backgroundColor = [UIColor grayColor];
-        [self addSubview:line];
+        self.line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.height, 0.0f, 0.5f, frame.size.height-0.5f)];
+        self.line.backgroundColor = [UIColor grayColor];
+        [self addSubview:self.line];
         
         CGFloat x = frame.size.height+10.0f;
         self.lblNetwork = [[UILabel alloc] initWithFrame:CGRectMake(x, 12.0f, frame.size.width-x, 22.0f)];
@@ -69,22 +70,27 @@
     CGRect frame = self.icon.frame;
     if (socialNetwork==FZSocialNetworkFacebook){
         self.backgroundColor = [UIColor colorFromHexString:kFacebookBlue];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#15649d"];
         self.icon.image = [UIImage imageNamed:@"iconFacebook.png"];
     }
     if (socialNetwork==FZSocialNetworkTwitter){
         self.backgroundColor = [UIColor colorFromHexString:kTwitterBlue];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#2ba0c8"];
         self.icon.image = [UIImage imageNamed:@"iconTwitter.png"];
     }
     if (socialNetwork==FZSocialNetworkGoogle){
         self.backgroundColor = [UIColor colorFromHexString:kGoogleRed];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#bc4031"];
         self.icon.image = [UIImage imageNamed:@"iconGoogle.png"];
     }
     if (socialNetwork==FZSocialNetworkLinkedin){
         self.backgroundColor = [UIColor colorFromHexString:kLinkedinBlue];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#00699a"];
         self.icon.image = [UIImage imageNamed:@"iconLinkedin.png"];
     }
     if (socialNetwork==FZSocialNetworkReddit){
         self.backgroundColor = [UIColor colorFromHexString:kRedditRed];
+        self.line.backgroundColor = [UIColor colorFromHexString:@"#d93b00"];
         self.icon.image = [UIImage imageNamed:@"iconReddit.png"];
     }
     
