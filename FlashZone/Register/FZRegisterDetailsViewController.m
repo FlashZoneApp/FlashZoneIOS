@@ -97,7 +97,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
             [self.scrollView addSubview:subLbl];
         }
         
-        y += height;
+        y += height+4.0f;
         
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(padding, y, width, 36.0f)];
         textField.tag = 1000+i;
