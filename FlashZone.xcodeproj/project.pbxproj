@@ -58,6 +58,7 @@
 		5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD93199A836900D99CAF /* AFURLSessionManager.m */; };
 		5C3D95CC19A2C11A0015F9DC /* FZPickTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */; };
 		5C4685E919C93E9E00F22683 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4685E819C93E9E00F22683 /* backArrow@2x.png */; };
+		5C4685EC19C9432100F22683 /* FZSelectTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */; };
 		5C4A33BD19B26CB1001D5502 /* FZTagsIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */; };
 		5C4A33C019B26F6E001D5502 /* FZTagsSelectNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A33BF19B26F6E001D5502 /* FZTagsSelectNetworkView.m */; };
 		5C4A33C419B27442001D5502 /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4A33C319B27442001D5502 /* bg_select_network@2x.png */; };
@@ -192,6 +193,8 @@
 		5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPickTagsViewController.h; sourceTree = "<group>"; };
 		5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZPickTagsViewController.m; sourceTree = "<group>"; };
 		5C4685E819C93E9E00F22683 /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
+		5C4685EA19C9432100F22683 /* FZSelectTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectTwitterViewController.h; sourceTree = "<group>"; };
+		5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSelectTwitterViewController.m; sourceTree = "<group>"; };
 		5C4A33BB19B26CB1001D5502 /* FZTagsIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsIntroView.h; sourceTree = "<group>"; };
 		5C4A33BC19B26CB1001D5502 /* FZTagsIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZTagsIntroView.m; sourceTree = "<group>"; };
 		5C4A33BE19B26F6E001D5502 /* FZTagsSelectNetworkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTagsSelectNetworkView.h; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				5CF42485198EDB2E00338D55 /* FZForgotPasswordViewController.m */,
 				5CF9D09C19A671AE0080DB44 /* FZRedditLoginViewController.h */,
 				5CF9D09D19A671AE0080DB44 /* FZRedditLoginViewController.m */,
+				5C4685EA19C9432100F22683 /* FZSelectTwitterViewController.h */,
+				5C4685EB19C9432100F22683 /* FZSelectTwitterViewController.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -753,6 +758,7 @@
 				5C35AD99199A836900D99CAF /* AFURLConnectionOperation.m in Sources */,
 				5CFF7D2619894C4900867679 /* FZContainerViewController.m in Sources */,
 				5C9BC8E619875B0F007BAD1E /* FZViewController.m in Sources */,
+				5C4685EC19C9432100F22683 /* FZSelectTwitterViewController.m in Sources */,
 				5C4A33BD19B26CB1001D5502 /* FZTagsIntroView.m in Sources */,
 				5C9BC8BF1987595D007BAD1E /* FZAppDelegate.m in Sources */,
 				5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */,
