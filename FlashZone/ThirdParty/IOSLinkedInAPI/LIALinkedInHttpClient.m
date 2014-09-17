@@ -120,7 +120,8 @@
   if (self.presentingViewController == nil)
     self.presentingViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
 
-  UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:authorizationViewController];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:authorizationViewController];
+    nc.navigationBar.barTintColor = [UIColor colorWithRed:255.0f/255.0f green:173.0f/255.0f blue:15.0f/255.0f alpha:1.0f];
 
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
     nc.modalPresentationStyle = UIModalPresentationFormSheet;
