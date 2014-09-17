@@ -8,6 +8,7 @@
 
 #import "FZSocialButton.h"
 #import "Config.h"
+#import "UIColor+FZColorAdditions.h"
 
 @interface FZSocialButton ()
 @property (strong, nonatomic) UIImageView *icon;
@@ -67,23 +68,23 @@
     _socialNetwork = socialNetwork;
     CGRect frame = self.icon.frame;
     if (socialNetwork==FZSocialNetworkFacebook){
-        self.backgroundColor = kFacebookBlue;
+        self.backgroundColor = [UIColor colorFromHexString:kFacebookBlue];
         self.icon.image = [UIImage imageNamed:@"iconFacebook.png"];
     }
     if (socialNetwork==FZSocialNetworkTwitter){
-        self.backgroundColor = kTwitterBlue;
+        self.backgroundColor = [UIColor colorFromHexString:kTwitterBlue];
         self.icon.image = [UIImage imageNamed:@"iconTwitter.png"];
     }
     if (socialNetwork==FZSocialNetworkGoogle){
-        self.backgroundColor = kGoogleRed;
+        self.backgroundColor = [UIColor colorFromHexString:kGoogleRed];
         self.icon.image = [UIImage imageNamed:@"iconGoogle.png"];
     }
     if (socialNetwork==FZSocialNetworkLinkedin){
-        self.backgroundColor = kLinkedinBlue;
+        self.backgroundColor = [UIColor colorFromHexString:kLinkedinBlue];
         self.icon.image = [UIImage imageNamed:@"iconLinkedin.png"];
     }
     if (socialNetwork==FZSocialNetworkReddit){
-        self.backgroundColor = kRedditRed;
+        self.backgroundColor = [UIColor colorFromHexString:kRedditRed];
         self.icon.image = [UIImage imageNamed:@"iconReddit.png"];
     }
     
