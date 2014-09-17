@@ -22,13 +22,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        UIColorFromRGB(0);
-        
-        NSLog(@"HEIGHT: %.2f", frame.size.height);
         BOOL iPhone5 = (frame.size.height > 500);
         NSString *background = (iPhone5) ? @"bg_explore_tags.png" : @"bg_explore_tags_480.png";
-        NSLog(@"BACKGROUND: %@", background);
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
 
         UIButton *btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -39,8 +34,9 @@
         [self addSubview:btnNext];
         
         UIImage *imgSearchBar = [UIImage imageNamed:@"bgSearchBar.png"];
-        UIView *bgSearchBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imgSearchBar.size.width, imgSearchBar.size.height)];
+        UIView *bgSearchBar = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, imgSearchBar.size.width, imgSearchBar.size.height)];
         bgSearchBar.backgroundColor = [UIColor colorWithPatternImage:imgSearchBar];
+        [bgSearchBar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSearchKeyboard:)]];
         
         CGFloat y = (iPhone5) ? 80.0f : 70.0f;
         bgSearchBar.center = CGPointMake(0.5f*frame.size.width, y);
@@ -112,6 +108,11 @@
 
     
     return tagsView;
+}
+
+- (void)showSearchKeyboard:(UIGestureRecognizer *)tapGesture
+{
+    [self.searchField becomeFirstResponder];
 }
 
 
