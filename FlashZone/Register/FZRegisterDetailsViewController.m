@@ -61,7 +61,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
     self.iconBase = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imageIcon.size.width, imageIcon.size.height)];
-    self.iconBase.center = CGPointMake(0.5f*frame.size.width, 120.0f);
+    self.iconBase.center = CGPointMake(0.5f*frame.size.width, 110.0f);
     self.iconBase.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.iconBase.layer.cornerRadius = 0.5f*self.iconBase.frame.size.width;
     self.iconBase.layer.masksToBounds = YES;
