@@ -10,6 +10,6 @@
 #import "FZViewController.h"
 
 
-@interface FZSignupViewController : FZViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FZSignupViewController : FZViewController
 
 @end
