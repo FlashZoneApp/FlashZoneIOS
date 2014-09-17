@@ -22,8 +22,6 @@
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         self.layer.cornerRadius = 5.0f;
-//        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.height, 0.0f, 0.5f, frame.size.height-0.5f)];
         line.backgroundColor = [UIColor grayColor];
@@ -32,7 +30,6 @@
         CGFloat x = frame.size.height+10.0f;
         self.lblNetwork = [[UILabel alloc] initWithFrame:CGRectMake(x, 12.0f, frame.size.width-x, 22.0f)];
         self.lblNetwork.textAlignment = NSTextAlignmentLeft;
-//        self.lblNetwork.text = @"Network";
         self.lblNetwork.font = [UIFont systemFontOfSize:16.0f];
         self.lblNetwork.textColor = [UIColor whiteColor];
 

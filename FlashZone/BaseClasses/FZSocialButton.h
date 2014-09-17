@@ -11,8 +11,8 @@
 typedef enum {
     FZSocialNetworkFacebook = 0,
     FZSocialNetworkTwitter,
-    FZSocialNetworkLinkedin,
     FZSocialNetworkGoogle,
+    FZSocialNetworkLinkedin,
     FZSocialNetworkReddit
 } FZSocialNetwork;
 
