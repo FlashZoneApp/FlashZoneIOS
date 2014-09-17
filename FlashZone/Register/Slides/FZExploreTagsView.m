@@ -107,9 +107,6 @@
         [tagsView.tagsScrollview addSubview:btnCategory];
     }
 
-//    tagsView.tagsScrollview.contentOffset = CGPointMake(0.5f*(dimen+20.0f), 0);
-
-    
     return tagsView;
 }
 
