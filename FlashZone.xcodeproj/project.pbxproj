@@ -38,6 +38,11 @@
 		5C133E8219B9255900FB4AEC /* btnLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E7D19B9255900FB4AEC /* btnLinkedin@2x.png */; };
 		5C133E8319B9255900FB4AEC /* btnReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E7E19B9255900FB4AEC /* btnReddit@2x.png */; };
 		5C133E8419B9255900FB4AEC /* btnTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E7F19B9255900FB4AEC /* btnTwitter@2x.png */; };
+		5C1BCA9F19CA0B5500926CD3 /* iconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9A19CA0B5500926CD3 /* iconFacebook@2x.png */; };
+		5C1BCAA019CA0B5500926CD3 /* iconGoogle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9B19CA0B5500926CD3 /* iconGoogle@2x.png */; };
+		5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */; };
+		5C1BCAA219CA0B5500926CD3 /* iconReddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9D19CA0B5500926CD3 /* iconReddit@2x.png */; };
+		5C1BCAA319CA0B5500926CD3 /* iconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9E19CA0B5500926CD3 /* iconTwitter@2x.png */; };
 		5C20234219BF804700F9C067 /* iconCheckMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C20234119BF804700F9C067 /* iconCheckMark@2x.png */; };
 		5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3338831997FD1800B5E58E /* atSign@2x.png */; };
 		5C35AD7A199A824600D99CAF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35AD70199A824600D99CAF /* LIALinkedInApplication.m */; };
@@ -159,6 +164,11 @@
 		5C133E7D19B9255900FB4AEC /* btnLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnLinkedin@2x.png"; sourceTree = "<group>"; };
 		5C133E7E19B9255900FB4AEC /* btnReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReddit@2x.png"; sourceTree = "<group>"; };
 		5C133E7F19B9255900FB4AEC /* btnTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnTwitter@2x.png"; sourceTree = "<group>"; };
+		5C1BCA9A19CA0B5500926CD3 /* iconFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconFacebook@2x.png"; sourceTree = "<group>"; };
+		5C1BCA9B19CA0B5500926CD3 /* iconGoogle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconGoogle@2x.png"; sourceTree = "<group>"; };
+		5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLinkedin@2x.png"; sourceTree = "<group>"; };
+		5C1BCA9D19CA0B5500926CD3 /* iconReddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconReddit@2x.png"; sourceTree = "<group>"; };
+		5C1BCA9E19CA0B5500926CD3 /* iconTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconTwitter@2x.png"; sourceTree = "<group>"; };
 		5C20234119BF804700F9C067 /* iconCheckMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCheckMark@2x.png"; sourceTree = "<group>"; };
 		5C3338831997FD1800B5E58E /* atSign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atSign@2x.png"; sourceTree = "<group>"; };
 		5C35AD6F199A824600D99CAF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
@@ -352,6 +362,11 @@
 				5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */,
 				5CCA38E619C24B45001904D2 /* bg_explore_tags_480@2x.png */,
 				5C4A33EB19B28F30001D5502 /* bgSearchBar@2x.png */,
+				5C1BCA9A19CA0B5500926CD3 /* iconFacebook@2x.png */,
+				5C1BCA9B19CA0B5500926CD3 /* iconGoogle@2x.png */,
+				5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */,
+				5C1BCA9D19CA0B5500926CD3 /* iconReddit@2x.png */,
+				5C1BCA9E19CA0B5500926CD3 /* iconTwitter@2x.png */,
 				5C133E6619B9228300FB4AEC /* socialIcons */,
 			);
 			path = images;
@@ -715,6 +730,7 @@
 				5C7A707419B24ED300CDB4F6 /* user-popup02@2x.png in Resources */,
 				5C35AD7E199A824600D99CAF /* 01-refresh.png in Resources */,
 				5C133E7519B9228300FB4AEC /* linkd-activestate-rndsquare@2x.png in Resources */,
+				5C1BCAA019CA0B5500926CD3 /* iconGoogle@2x.png in Resources */,
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
 				5CD47BF419B90E8D00BC4FDB /* loginLinkedin@2x.png in Resources */,
@@ -725,15 +741,19 @@
 				5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */,
 				5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */,
 				5C133E8219B9255900FB4AEC /* btnLinkedin@2x.png in Resources */,
+				5C1BCA9F19CA0B5500926CD3 /* iconFacebook@2x.png in Resources */,
 				5C133E8119B9255900FB4AEC /* btnGoogle@2x.png in Resources */,
 				5C4685EE19C94E3C00F22683 /* photoPlaceholder@2x.png in Resources */,
 				5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */,
+				5C1BCAA319CA0B5500926CD3 /* iconTwitter@2x.png in Resources */,
 				5CCA38E719C24B45001904D2 /* bg_explore_tags_480@2x.png in Resources */,
 				5C133E8019B9255900FB4AEC /* btnFacebook@2x.png in Resources */,
 				5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */,
 				5C58D9CB19BF71A700E070E4 /* iconPlus@2x.png in Resources */,
+				5C1BCAA219CA0B5500926CD3 /* iconReddit@2x.png in Resources */,
 				5CD47BF619B90EF000BC4FDB /* loginGoogle@2x.png in Resources */,
 				5CD47BFA19B9109800BC4FDB /* loginReddit@2x.png in Resources */,
+				5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */,
 				5C133E7219B9228300FB4AEC /* fb-rndsquare@2x.png in Resources */,
 				5C116C2D19899499004AFC22 /* bgButton@2x.png in Resources */,
 				5C133E7619B9228300FB4AEC /* linkd-rndsquare@2x.png in Resources */,
