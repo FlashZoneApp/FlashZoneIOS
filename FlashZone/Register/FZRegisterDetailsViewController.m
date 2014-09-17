@@ -352,7 +352,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 {
     _canRegister = canRegister;
     if (canRegister){
-        [self.btnRegister setBackgroundImage:[UIImage imageNamed:@"bgButton.png"] forState:UIControlStateNormal];
+        self.btnRegister.backgroundColor = kOrange;
         return;
     }
     
