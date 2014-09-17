@@ -22,4 +22,5 @@ typedef enum {
 @property (nonatomic) FZSocialNetwork socialNetwork;
 @property (strong, nonatomic) UILabel *lblNetwork;
 + (FZSocialButton *)buttonWithFrame:(CGRect)frame socialNetwork:(FZSocialNetwork)network;
++ (NSArray *)socialNetworks;
 @end

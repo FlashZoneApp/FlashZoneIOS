@@ -48,6 +48,11 @@
     return socialBtn;
 }
 
++ (NSArray *)socialNetworks
+{
+    return @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
+}
+
 
 - (void)setSocialNetwork:(FZSocialNetwork)socialNetwork
 {

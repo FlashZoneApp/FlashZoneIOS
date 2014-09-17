@@ -54,7 +54,7 @@
     static CGFloat padding = 8.0f;
     CGFloat w = frame.size.width-2*padding;
     
-    NSArray *socialogins = @[@"Facebook", @"Twitter", @"Google", @"Linkedin", @"Reddit"];
+    NSArray *socialogins = [FZSocialButton socialNetworks];
     for (int i=0; i<socialogins.count; i++){
         NSString *network = socialogins[i];
         FZSocialButton *btnLogin = [FZSocialButton buttonWithFrame:CGRectMake(0.0f, y, 242.f, 46.0f) socialNetwork:i];
