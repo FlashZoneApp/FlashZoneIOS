@@ -104,9 +104,9 @@
     lblAgreement.text = @"By signing up, you agree to FlashZone's\nTerms of Service and Privacy Policy.";
     [view addSubview:lblAgreement];
 
-    y -= (h+8.0f);
+    y -= (h+7.0f);
 
-    UILabel *lblAreadyRegistered = [[UILabel alloc] initWithFrame:CGRectMake(padding, y, 0.7f*w, h)];
+    UILabel *lblAreadyRegistered = [[UILabel alloc] initWithFrame:CGRectMake(padding+5.0f, y, 0.7f*w, h)];
     lblAreadyRegistered.textColor = [UIColor whiteColor];
     lblAreadyRegistered.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     lblAreadyRegistered.backgroundColor = [UIColor clearColor];
@@ -116,7 +116,7 @@
     
     UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     btnLogin.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    btnLogin.frame = CGRectMake(padding+0.7f*w, y, 86.0f, h);
+    btnLogin.frame = CGRectMake(frame.size.width-86.0f-padding-5.0f, y, 86.0f, h);
     btnLogin.backgroundColor = [UIColor lightGrayColor];
     btnLogin.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     btnLogin.layer.cornerRadius = 4.0f;
