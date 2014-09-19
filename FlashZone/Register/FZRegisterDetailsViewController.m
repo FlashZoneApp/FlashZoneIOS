@@ -679,7 +679,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     
 
     if (textField.tag >= 1000 && textField.tag <= 1001){
-        [self shiftUp:80.0f];
+        [self shiftUp:50.0f];
     }
     
 
@@ -688,7 +688,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
         self.scrollView.delegate = nil;
         [self.scrollView setContentOffset:CGPointMake(0, 100.0f) animated:YES];
         [self performSelector:@selector(connectScrollViewDelegate) withObject:nil afterDelay:0.60f];
-        [self shiftUp:116.0f];
+        [self shiftUp:86.0f];
     }
     
     if (textField.tag==1004){
