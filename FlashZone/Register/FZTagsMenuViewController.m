@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIButton *btnShowMore;
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) UILabel *lblConfirmation;
+@property (copy, nonatomic) NSString *category;
 @end
 
 @implementation FZTagsMenuViewController
@@ -24,12 +25,24 @@
 @synthesize backgroundImage;
 @synthesize useSocialNetwork;
 @synthesize screenColor;
+@synthesize lblCategory;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.useSocialNetwork = YES;
+        
+    }
+    return self;
+}
+
+- (id)initWithCategory:(NSString *)category
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        self.useSocialNetwork = NO;
+        self.category = category;
         
     }
     return self;
@@ -91,6 +104,15 @@
     UIImageView *networkIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
     networkIcon.center = CGPointMake(0.5f*frame.size.width, 36.0f);
     [self.tagsScrollview addSubview:networkIcon];
+    
+    
+    self.lblCategory = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 22.0f)];
+    self.lblCategory.center = networkIcon.center;
+    self.lblCategory.textColor = [UIColor whiteColor];
+    self.lblCategory.textAlignment = NSTextAlignmentCenter;
+    self.lblCategory.font = [UIFont boldSystemFontOfSize:14.0f];
+    self.lblCategory.text = self.category;
+    [self.tagsScrollview addSubview:self.lblCategory];
 
     
     UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 54.0f, frame.size.width, 24.0f)];

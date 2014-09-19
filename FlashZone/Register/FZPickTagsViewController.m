@@ -280,14 +280,14 @@
                                              options:UIViewAnimationOptionCurveLinear
                                           animations:^{
                                               lblCategory.transform = CGAffineTransformIdentity;
-                                              lblCategory.center = CGPointMake(0.5f*self.view.frame.size.width, 48.0f);
+                                              lblCategory.center = CGPointMake(0.5f*self.view.frame.size.width, 36.0f);
                                           }
                                           completion:^(BOOL finished){
                                               btn.alpha = 1.0f;
                                               btn.titleLabel.alpha = 1.0f;
                                               
                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                  FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
+                                                  FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] initWithCategory:btn.titleLabel.text];
                                                   tagsMenuVc.screenColor = btn.backgroundColor;
                                                   tagsMenuVc.useSocialNetwork = NO;
                                                   tagsMenuVc.backgroundImage = [snapshot screenshot];

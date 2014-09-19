@@ -13,5 +13,7 @@
 @property (strong, nonatomic) UIImage *backgroundImage;
 @property (strong, nonatomic) UIImageView *blurryBackground;
 @property (strong, nonatomic) UIColor *screenColor;
+@property (strong, nonatomic) UILabel *lblCategory;
 @property (nonatomic) BOOL useSocialNetwork;
+- (id)initWithCategory:(NSString *)category;
 @end
