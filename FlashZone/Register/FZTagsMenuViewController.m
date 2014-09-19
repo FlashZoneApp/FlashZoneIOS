@@ -22,11 +22,14 @@
 @implementation FZTagsMenuViewController
 @synthesize blurryBackground;
 @synthesize backgroundImage;
+@synthesize useSocialNetwork;
+@synthesize screenColor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.useSocialNetwork = YES;
         
     }
     return self;
@@ -36,7 +39,7 @@
 {
     UIView *view = [self baseView:NO];
     CGRect frame = view.frame;
-    view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    view.backgroundColor = [UIColor colorWithPatternImage:self.backgroundImage];
     
     
     
@@ -47,26 +50,29 @@
     [view addSubview:self.blurryBackground];
     
     NSString *icon = @"";
-    UIColor *screenColor = [UIColor blackColor];
-    if (self.profile.registrationType==FZRegistrationTypeFacebook){
-        icon = @"iconFacebook.png";
-        screenColor = [UIColor colorFromHexString:kFacebookBlue];
-    }
-    if (self.profile.registrationType==FZRegistrationTypeTwitter){
-        icon = @"iconTwitter.png";
-        screenColor = [UIColor colorFromHexString:kTwitterBlue];
-    }
-    if (self.profile.registrationType==FZRegistrationTypeGoogle){
-        icon = @"iconGoogle.png";
-        screenColor = [UIColor colorFromHexString:kGoogleRed];
-    }
-    if (self.profile.registrationType==FZRegistrationTypeReddit){
-        icon = @"iconReddit.png";
-        screenColor = [UIColor colorFromHexString:kRedditRed];
-    }
-    if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
-        icon = @"iconLinkedin.png";
-        screenColor = [UIColor colorFromHexString:kLinkedinBlue];
+//    self.screenColor = [UIColor blackColor];
+    
+    if (self.useSocialNetwork){
+        if (self.profile.registrationType==FZRegistrationTypeFacebook){
+            icon = @"iconFacebook.png";
+            self.screenColor = [UIColor colorFromHexString:kFacebookBlue];
+        }
+        if (self.profile.registrationType==FZRegistrationTypeTwitter){
+            icon = @"iconTwitter.png";
+            self.screenColor = [UIColor colorFromHexString:kTwitterBlue];
+        }
+        if (self.profile.registrationType==FZRegistrationTypeGoogle){
+            icon = @"iconGoogle.png";
+            self.screenColor = [UIColor colorFromHexString:kGoogleRed];
+        }
+        if (self.profile.registrationType==FZRegistrationTypeReddit){
+            icon = @"iconReddit.png";
+            self.screenColor = [UIColor colorFromHexString:kRedditRed];
+        }
+        if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
+            icon = @"iconLinkedin.png";
+            self.screenColor = [UIColor colorFromHexString:kLinkedinBlue];
+        }
     }
     
 
