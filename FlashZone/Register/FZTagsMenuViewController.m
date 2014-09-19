@@ -204,6 +204,12 @@
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1.0f)];
         line.backgroundColor = [UIColor whiteColor];
         [self.btnShowMore addSubview:line];
+        
+        
+        UIImageView *reload = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconReload.png"]];
+        reload.center = CGPointMake(0.7f*frame.size.width, 22.0f);
+        [self.btnShowMore addSubview:reload];
+        
         [self.tagsScrollview addSubview:self.btnShowMore];
     }
     
