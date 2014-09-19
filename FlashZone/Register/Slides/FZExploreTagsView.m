@@ -15,12 +15,15 @@
 
 @implementation FZExploreTagsView
 @synthesize searchField;
+@synthesize buttonsArray;
+@synthesize tagsScrollview;
 
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.buttonsArray = [NSMutableArray array];
         BOOL iPhone5 = (frame.size.height > 500);
         NSString *background = (iPhone5) ? @"bg_explore_tags.png" : @"bg_explore_tags_480.png";
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
@@ -97,6 +100,7 @@
     for (int i=0; i<categories.count; i++) {
         NSDictionary *category = categories[i];
         UIButton *btnCategory = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnCategory.tag = 1000+i;
         btnCategory.backgroundColor = [UIColor colorFromHexString:[NSString stringWithFormat:@"#%@", category[@"color"]]];
         btnCategory.frame = CGRectMake(0, 12.5f, dimen, dimen);
         btnCategory.layer.cornerRadius = 0.5f*btnCategory.frame.size.width;
@@ -105,6 +109,7 @@
         btnCategory.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
         btnCategory.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [tagsView.tagsScrollview addSubview:btnCategory];
+        [tagsView.buttonsArray addObject:btnCategory];
     }
 
     return tagsView;

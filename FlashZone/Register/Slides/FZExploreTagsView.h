@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UITextField *searchField;
 @property (strong, nonatomic) UIScrollView *tagsScrollview;
+@property (strong, nonatomic) NSMutableArray *buttonsArray;
 
 + (FZExploreTagsView *)viewWithCategories:(NSArray *)categories withFrame:(CGRect)frame;
 @end
