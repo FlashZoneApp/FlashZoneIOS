@@ -12,13 +12,14 @@
 @property (strong, nonatomic) UIImageView *pulse;
 @property (strong, nonatomic) NSMutableArray *userPopups;
 @property (strong, nonatomic) UILabel *lblCoffee;
-@property (strong, nonatomic) UIImageView *profileIcon;
 @end
 
 
 @implementation FZTagsIntroView
 @synthesize btnNext;
 @synthesize btnGotit;
+@synthesize profileIcon;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -59,6 +60,8 @@
         [self addSubview:self.lblCoffee];
 
         self.profileIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profileIcon.png"]];
+        self.profileIcon.layer.cornerRadius = 0.5f*self.profileIcon.frame.size.width;
+        self.profileIcon.layer.masksToBounds = YES;
         self.profileIcon.center = CGPointMake(0.5f*frame.size.width, -self.profileIcon.frame.size.height);
         [self addSubview:self.profileIcon];
 

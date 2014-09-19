@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIButton *btnNext;
 @property (strong, nonatomic) UIButton *btnGotit;
+@property (strong, nonatomic) UIImageView *profileIcon;
 - (void)animate;
 @end
