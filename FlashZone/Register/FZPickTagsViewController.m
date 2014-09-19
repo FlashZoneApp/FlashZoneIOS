@@ -217,12 +217,17 @@
 
 - (void)nextSlide
 {
-    NSLog(@"NEXT SLIDE");
-    
+//    NSLog(@"NEXT SLIDE");
     CGFloat x = self.theScrollview.contentOffset.x;
     x += self.theScrollview.frame.size.width;
     
     [self.theScrollview setContentOffset:CGPointMake(x, self.theScrollview.contentOffset.y) animated:YES];
+    
+    int page = (int)(self.theScrollview.contentOffset.x/self.theScrollview.frame.size.width);
+    self.pageControl.currentPage = page;
+    if (page==2)
+        self.theScrollview.scrollEnabled = NO;
+
 }
 
 - (void)showTagsMenu
@@ -247,38 +252,37 @@
 
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollViewWillBeginDragging:");
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.exploreTagsSlide.searchField resignFirstResponder];
-    if ([scrollView isEqual:self.theScrollview]==NO){
-        self.theScrollview.scrollEnabled = NO;
-        return;
-    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 
-    NSLog(@"scrollViewDidScroll: %.2f", scrollView.contentOffset.x);
+    NSLog(@"scrollViewDidEndDecelerating: %.2f", scrollView.contentOffset.x);
     
     if ([scrollView isEqual:self.theScrollview]==NO){
-        self.theScrollview.scrollEnabled = YES;
         return;
     }
+    
 
     
     int page = (int)(scrollView.contentOffset.x/scrollView.frame.size.width);
     self.pageControl.currentPage = page;
-
+    if (page==2)
+        self.theScrollview.scrollEnabled = NO;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if ([scrollView isEqual:self.theScrollview]==NO){
-        self.theScrollview.scrollEnabled = YES;
-        return;
-    }
-}
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning
