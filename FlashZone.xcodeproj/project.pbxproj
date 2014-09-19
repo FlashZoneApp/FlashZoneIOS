@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C04D62319CC8EE3009060A9 /* iconReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C04D62219CC8EE3009060A9 /* iconReload@2x.png */; };
 		5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E319A25949002A4EF9 /* AddressBook.framework */; };
 		5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */; };
 		5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */; };
@@ -124,6 +125,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C04D62219CC8EE3009060A9 /* iconReload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconReload@2x.png"; sourceTree = "<group>"; };
 		5C0A99E319A25949002A4EF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				5C58D9CA19BF71A700E070E4 /* iconPlus@2x.png */,
+				5C04D62219CC8EE3009060A9 /* iconReload@2x.png */,
 				5C4685E819C93E9E00F22683 /* backArrow@2x.png */,
 				5C20234119BF804700F9C067 /* iconCheckMark@2x.png */,
 				5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */,
@@ -700,6 +703,7 @@
 				5C133E7A19B9228300FB4AEC /* twt-rndsquare@2x.png in Resources */,
 				5C30C85419CA274E00871A4A /* iconFlashZone@2x.png in Resources */,
 				5C133E7119B9228300FB4AEC /* fb-active-rndsquare@2x.png in Resources */,
+				5C04D62319CC8EE3009060A9 /* iconReload@2x.png in Resources */,
 				5C133E7419B9228300FB4AEC /* g-rndsquare@2x.png in Resources */,
 				5C0FDE1219BC253C00531C80 /* bg_select_network_480@2x.png in Resources */,
 				5C7A707419B24ED300CDB4F6 /* user-popup02@2x.png in Resources */,
