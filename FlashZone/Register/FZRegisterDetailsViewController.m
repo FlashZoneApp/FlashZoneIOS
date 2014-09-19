@@ -10,6 +10,7 @@
 #import "FZWebViewController.h"
 #import "FZPickPhotoViewController.h"
 #import "UIImage+FZImageEffects.h"
+#import "UIColor+FZColorAdditions.h"
 
 
 @interface FZRegisterDetailsViewController ()
@@ -200,7 +201,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     
     self.btnRegister = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnRegister.frame = CGRectMake(padding, y, width, 44.0f);
-    [self.btnRegister setTitle:@"Get in the FlashZone" forState:UIControlStateNormal];
+    [self.btnRegister setTitle:@"         Get in the FlashZone" forState:UIControlStateNormal];
     [btnFemale setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.btnRegister setBackgroundColor:[UIColor lightGrayColor]];
     self.btnRegister.layer.cornerRadius = 3.0f;
@@ -210,7 +211,7 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
     iconFlashZone.center = CGPointMake(0.75f*dimen, 0.5f*dimen);
     [self.btnRegister addSubview:iconFlashZone];
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(1.25f*dimen, 0, 1, dimen)];
-    line.backgroundColor = [UIColor grayColor];
+    line.backgroundColor = [UIColor colorFromHexString:@"#d68d00"];
     [self.btnRegister addSubview:line];
     
     [self.scrollView addSubview:self.btnRegister];
