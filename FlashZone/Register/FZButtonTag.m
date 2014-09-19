@@ -22,6 +22,7 @@
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        
         self.backgroundColor = [UIColor whiteColor];
         [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -39,7 +40,7 @@
     [super setFrame:frame];
     
     CGRect iconFrame = self.selectedIcon.frame;
-    self.selectedIcon.frame = CGRectMake(frame.size.width-iconFrame.size.width-6.0f, iconFrame.origin.y, iconFrame.size.width, iconFrame.size.height);
+    self.selectedIcon.frame = CGRectMake(frame.size.width-iconFrame.size.width-8.0f, iconFrame.origin.y, iconFrame.size.width, iconFrame.size.height);
 }
 
 - (void)setSelected:(BOOL)selected

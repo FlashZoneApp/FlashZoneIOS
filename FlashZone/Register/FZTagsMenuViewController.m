@@ -159,7 +159,7 @@
         NSString *tagName = tag[@"name"];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
         btnTag.tag = 1000+i;
-        [btnTag setTitle:[NSString stringWithFormat:@" #%@", tagName] forState:UIControlStateNormal];
+        [btnTag setTitle:[NSString stringWithFormat:@"  #%@", tagName] forState:UIControlStateNormal];
         [btnTag addTarget:self action:@selector(pickTag:) forControlEvents:UIControlEventTouchUpInside];
         
         CGRect boudingRect = [tagName boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
