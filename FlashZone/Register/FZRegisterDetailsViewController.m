@@ -739,9 +739,14 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-//    NSLog(@"textView shouldChangeTextInRange: %d", textView.tag);
-    if (textView.text.length==150 && text.length>0){
+//    NSLog(@"textView shouldChangeTextInRange: %@", text);
+    if (textView.text.length == 150 && text.length>0){
         [self showAlertWithtTitle:@"Character Limit Reached" message:@"Please limit the bio to 150 characters or less."];            return NO;
+    }
+
+    if ((textView.text.length + text.length) > 150){
+        textView.text = [NSString stringWithFormat:@"%@%@", textView.text, [text substringToIndex:(150-textView.text.length)]];
+        return NO;
     }
 
     
