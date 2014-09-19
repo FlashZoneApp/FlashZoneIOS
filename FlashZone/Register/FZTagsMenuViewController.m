@@ -46,12 +46,12 @@
     self.blurryBackground = [[UIImageView alloc] initWithImage:[backgroundImage applyBlurOnImage:0.45f]];
     self.blurryBackground.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight);
     self.blurryBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    self.blurryBackground.alpha = 0.0f;
+    if (self.useSocialNetwork)
+        self.blurryBackground.alpha = 0.0f;
+    
     [view addSubview:self.blurryBackground];
     
     NSString *icon = @"";
-//    self.screenColor = [UIColor blackColor];
-    
     if (self.useSocialNetwork){
         if (self.profile.registrationType==FZRegistrationTypeFacebook){
             icon = @"iconFacebook.png";
@@ -77,9 +77,11 @@
     
 
     self.screen = [[UIView alloc] initWithFrame:frame];
-    self.screen.backgroundColor = screenColor;
+    self.screen.backgroundColor = self.screenColor;
     self.screen.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.screen.alpha = 0.0f;
+    if (self.useSocialNetwork)
+        self.screen.alpha = 0.0f;
+    
     [view addSubview:self.screen];
     
     
