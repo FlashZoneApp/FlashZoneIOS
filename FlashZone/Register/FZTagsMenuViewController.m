@@ -55,7 +55,7 @@
     self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
     self.tagsScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, frame.size.width, 24.0f)];
+    UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 54.0f, frame.size.width, 24.0f)];
     lblDirections.textColor = [UIColor whiteColor];
     lblDirections.textAlignment = NSTextAlignmentCenter;
     lblDirections.text = @"Tap a few things you like";
@@ -150,7 +150,7 @@
     CGRect frame = self.tagsScrollview.frame;
     
     CGFloat h = 36.0f;
-    CGFloat y = 60.0f;
+    CGFloat y = 94.0f;
     CGFloat x = 0.0f;
     BOOL nextLine = NO;
     
