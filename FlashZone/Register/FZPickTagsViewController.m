@@ -250,27 +250,56 @@
 {
     NSLog(@"categorySelected: %d", (int)btn.tag);
     
-    UIView *snapshot = [btn snapshotViewAfterScreenUpdates:NO];
+    btn.titleLabel.alpha = 0.0f;
+    UIView *snapshot = [btn snapshotViewAfterScreenUpdates:YES];
     snapshot.center = [self.exploreTagsSlide.tagsScrollview convertPoint:btn.center toView:self.view];
     [self.view addSubview:snapshot];
+    
+    UILabel *lblCategory = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, btn.frame.size.width, 22.0f)];
+    lblCategory.center = snapshot.center;
+    lblCategory.textColor = [UIColor whiteColor];
+    lblCategory.textAlignment = NSTextAlignmentCenter;
+    lblCategory.font = [UIFont boldSystemFontOfSize:14.0f];
+    lblCategory.text = btn.titleLabel.text;
+    [self.view addSubview:lblCategory];
+    
+    btn.alpha = 0.0f;
     
     [UIView animateWithDuration:0.20f
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
                          snapshot.transform = CGAffineTransformMakeScale(8.0f, 8.0f);
-                         snapshot.alpha = 0.0f;
+                         snapshot.alpha = 0.95f;
+                         lblCategory.transform = CGAffineTransformMakeScale(3.0f, 3.0f);
                      }
                      completion:^(BOOL finished){
                          
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                             FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
-                             tagsMenuVc.screenColor = btn.backgroundColor;
-                             tagsMenuVc.useSocialNetwork = NO;
-                             tagsMenuVc.backgroundImage = [snapshot screenshot];
-                             [self.navigationController pushViewController:tagsMenuVc animated:NO];
-                             [snapshot performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0f];
-                         });
+                         [UIView animateWithDuration:0.20f
+                                               delay:0
+                                             options:UIViewAnimationOptionCurveLinear
+                                          animations:^{
+                                              lblCategory.transform = CGAffineTransformIdentity;
+                                              lblCategory.center = CGPointMake(0.5f*self.view.frame.size.width, 48.0f);
+                                          }
+                                          completion:^(BOOL finished){
+                                              btn.alpha = 1.0f;
+                                              btn.titleLabel.alpha = 1.0f;
+                                              
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
+                                                  tagsMenuVc.screenColor = btn.backgroundColor;
+                                                  tagsMenuVc.useSocialNetwork = NO;
+                                                  tagsMenuVc.backgroundImage = [snapshot screenshot];
+                                                  [self.navigationController pushViewController:tagsMenuVc animated:NO];
+                                                  [snapshot performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0f];
+                                                  
+                                                  [lblCategory performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0f];
+
+                                              });
+                                          }];
+                         
+                         
                          
                      }];
 
