@@ -198,6 +198,7 @@
     if (self.btnShowMore==nil) {
         self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
         self.btnShowMore.backgroundColor = [UIColor clearColor];
+        self.btnShowMore.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1.0f)];
