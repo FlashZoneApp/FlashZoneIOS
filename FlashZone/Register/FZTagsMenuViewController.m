@@ -8,6 +8,7 @@
 
 #import "FZTagsMenuViewController.h"
 #import "FZButtonTag.h"
+#import "UIColor+FZColorAdditions.h"
 
 
 @interface FZTagsMenuViewController ()
@@ -44,9 +45,33 @@
     self.blurryBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     self.blurryBackground.alpha = 0.0f;
     [view addSubview:self.blurryBackground];
+    
+    NSString *icon = @"";
+    UIColor *screenColor = [UIColor blackColor];
+    if (self.profile.registrationType==FZRegistrationTypeFacebook){
+        icon = @"iconFacebook.png";
+        screenColor = [UIColor colorFromHexString:kFacebookBlue];
+    }
+    if (self.profile.registrationType==FZRegistrationTypeTwitter){
+        icon = @"iconTwitter.png";
+        screenColor = [UIColor colorFromHexString:kTwitterBlue];
+    }
+    if (self.profile.registrationType==FZRegistrationTypeGoogle){
+        icon = @"iconGoogle.png";
+        screenColor = [UIColor colorFromHexString:kGoogleRed];
+    }
+    if (self.profile.registrationType==FZRegistrationTypeReddit){
+        icon = @"iconReddit.png";
+        screenColor = [UIColor colorFromHexString:kRedditRed];
+    }
+    if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
+        icon = @"iconLinkedin.png";
+        screenColor = [UIColor colorFromHexString:kLinkedinBlue];
+    }
+    
 
     self.screen = [[UIView alloc] initWithFrame:frame];
-    self.screen.backgroundColor = [UIColor blackColor];
+    self.screen.backgroundColor = screenColor;
     self.screen.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.screen.alpha = 0.0f;
     [view addSubview:self.screen];
@@ -54,6 +79,11 @@
     
     self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
     self.tagsScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
+    UIImageView *networkIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+    networkIcon.center = CGPointMake(0.5f*frame.size.width, 36.0f);
+    [self.tagsScrollview addSubview:networkIcon];
+
     
     UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 54.0f, frame.size.width, 24.0f)];
     lblDirections.textColor = [UIColor whiteColor];
