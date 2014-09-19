@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UIImage *backgroundImage;
 @property (strong, nonatomic) UIImageView *blurryBackground;
+@property (strong, nonatomic) UIColor *screenColor;
+@property (nonatomic) BOOL useSocialNetwork;
 @end

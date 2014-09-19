@@ -99,10 +99,12 @@
                 self.exploreTagsSlide.searchField.delegate = self;
                 self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
                 self.exploreTagsSlide.tagsScrollview.delegate = self;
+                
+                for (UIButton *btn in self.exploreTagsSlide.buttonsArray)
+                    [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
+                
                 [self.theScrollview addSubview:self.exploreTagsSlide];
             });
-            
-
         }
         
     }];
@@ -244,6 +246,36 @@
     
 }
 
+- (void)categorySelected:(UIButton *)btn
+{
+    NSLog(@"categorySelected: %d", (int)btn.tag);
+    
+    UIView *snapshot = [btn snapshotViewAfterScreenUpdates:NO];
+    snapshot.center = [self.exploreTagsSlide.tagsScrollview convertPoint:btn.center toView:self.view];
+    [self.view addSubview:snapshot];
+    
+    [UIView animateWithDuration:0.20f
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         snapshot.transform = CGAffineTransformMakeScale(8.0f, 8.0f);
+                         snapshot.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
+                             tagsMenuVc.screenColor = btn.backgroundColor;
+                             tagsMenuVc.useSocialNetwork = NO;
+                             tagsMenuVc.backgroundImage = [snapshot screenshot];
+                             [self.navigationController pushViewController:tagsMenuVc animated:NO];
+                             [snapshot performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0f];
+                         });
+                         
+                     }];
+
+    
+}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
