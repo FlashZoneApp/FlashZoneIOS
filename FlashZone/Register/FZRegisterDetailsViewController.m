@@ -708,8 +708,15 @@ static NSString *bioPlaceholder = @"Share a little bit about yourself.";
 //    NSLog(@"textField shouldChangeCharactersInRange: %@", string);
     if (textField.tag==1001){ // check username character limit
         if (textField.text.length==30 && string.length>0){
-            [self showAlertWithtTitle:@"Character Limit Reached" message:@"Please limit the username to 30 characters or less."];            return NO;
+            [self showAlertWithtTitle:@"Character Limit Reached" message:@"Please limit the username to 30 characters or less."];
+            return NO;
         }
+        
+        if ((textField.text.length + string.length) > 30){
+            textField.text = [NSString stringWithFormat:@"%@%@", textField.text, [string substringToIndex:(30-textField.text.length)]];
+            return NO;
+        }
+
     }
 
     [self performSelector:@selector(updateProfile) withObject:self afterDelay:0.1f];
