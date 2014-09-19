@@ -48,6 +48,8 @@
     CGFloat x = 0.0f;
     self.introSlide = [[FZTagsIntroView alloc] initWithFrame:CGRectMake(x, 0.0f, frame.size.width, frame.size.height)];
     self.introSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    if (self.profile.imageData)
+        self.introSlide.profileIcon.image = self.profile.imageData;
     [self.introSlide.btnGotit addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
     [self.introSlide.btnNext addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
     [self.theScrollview addSubview:self.introSlide];
