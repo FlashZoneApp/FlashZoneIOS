@@ -51,6 +51,7 @@
         y = (iPhone5) ? 190.0f : 155.0f;
         self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(10.0f, y, frame.size.width-20.0f, 105.0f)];
         self.tagsScrollview.backgroundColor = [UIColor clearColor];
+        self.tagsScrollview.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.tagsScrollview];
         
         
