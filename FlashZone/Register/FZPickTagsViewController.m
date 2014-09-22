@@ -28,7 +28,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        self.categories = nil;
     }
     return self;
 }
@@ -82,6 +82,9 @@
 
 - (void)fetchCategoryList
 {
+    if (self.categories) // already done. don't do it again.
+        return;
+
     [[FZWebServices sharedInstance] fetchCategoryList:^(id result, NSError *error){
         if (error){
             
