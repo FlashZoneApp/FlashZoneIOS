@@ -160,7 +160,9 @@
     }
 
     // fetch suggested tags:
+    [self.loadingIndicator startLoading];
     [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
+        [self.loadingIndicator stopLoading];
         if (error){
             
         }
