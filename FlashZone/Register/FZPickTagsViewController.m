@@ -107,6 +107,8 @@
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [self.theScrollview addSubview:self.exploreTagsSlide];
+                
+                [self.theScrollview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
             });
         }
         
@@ -218,9 +220,14 @@
     [super viewDidAppear:animated];
     
     [self.introSlide animate];
-    
-    
 }
+
+- (void)dismissKeyboard:(UIGestureRecognizer *)tap
+{
+    NSLog(@"dismissKeyboard:");
+    [self.exploreTagsSlide.searchField resignFirstResponder];
+}
+                           
 
 - (void)nextSlide
 {
