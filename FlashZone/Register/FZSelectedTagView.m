@@ -7,6 +7,7 @@
 //
 
 #import "FZSelectedTagView.h"
+#import "Config.h"
 
 @implementation FZSelectedTagView
 @synthesize lblTitle;
@@ -15,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = kOrange;
         self.lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(14, 10, frame.size.width-20.0f, 22.0f)];
         self.lblTitle.textColor = [UIColor whiteColor];
         self.lblTitle.font = [UIFont boldSystemFontOfSize:18.0f];
