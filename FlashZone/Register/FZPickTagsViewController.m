@@ -346,6 +346,10 @@
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        
+        UIImageView *iconPlus = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconPlus.png"]];
+        iconPlus.center = CGPointMake(tableView.frame.size.width-30.0f, 22.0f);
+        [cell.contentView addSubview:iconPlus];
     }
     
     cell.textLabel.text = self.searchResults[indexPath.row];
