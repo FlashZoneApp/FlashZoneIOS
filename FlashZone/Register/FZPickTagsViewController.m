@@ -115,7 +115,7 @@
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [self.theScrollview addSubview:self.exploreTagsSlide];
-                [self.theScrollview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
+//                [self.theScrollview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
                 
                 CGFloat y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
                 self.searchTable = [[UITableView alloc] initWithFrame:CGRectMake(x, y, self.view.frame.size.width, self.view.frame.size.height-y) style:UITableViewStylePlain];
@@ -355,6 +355,15 @@
     cell.textLabel.text = self.searchResults[indexPath.row];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"tableView didSelectRowAtIndexPath:");
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = kOrange;
+}
+
+
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
