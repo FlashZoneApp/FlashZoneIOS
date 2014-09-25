@@ -358,9 +358,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"tableView didSelectRowAtIndexPath:");
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.contentView.backgroundColor = kOrange;
+    
+    UIView *cellCopy = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 44.0f)];
+    cellCopy.center = [self.view convertPoint:cell.center fromView:self.searchTable];
+    cellCopy.backgroundColor = kOrange;
+    [self.view addSubview:cellCopy];
 }
 
 
