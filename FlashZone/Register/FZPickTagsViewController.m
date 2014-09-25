@@ -114,6 +114,8 @@
                 self.searchTable = [[UITableView alloc] initWithFrame:CGRectMake(x, y, self.view.frame.size.width, self.view.frame.size.height-y) style:UITableViewStylePlain];
                 self.searchTable.dataSource = self;
                 self.searchTable.delegate = self;
+                self.searchTable.backgroundColor = [UIColor whiteColor];
+                self.searchTable.alpha = 0.85f;
                 self.searchTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
                 [self.theScrollview addSubview:self.searchTable];
             });
@@ -333,6 +335,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
