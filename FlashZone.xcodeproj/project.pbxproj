@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C04D62319CC8EE3009060A9 /* iconReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C04D62219CC8EE3009060A9 /* iconReload@2x.png */; };
+		5C051F0819D47E8700DDF04A /* FZSelectedTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */; };
 		5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E319A25949002A4EF9 /* AddressBook.framework */; };
 		5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */; };
 		5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */; };
@@ -126,6 +127,8 @@
 
 /* Begin PBXFileReference section */
 		5C04D62219CC8EE3009060A9 /* iconReload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconReload@2x.png"; sourceTree = "<group>"; };
+		5C051F0619D47E8700DDF04A /* FZSelectedTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectedTagView.h; sourceTree = "<group>"; };
+		5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSelectedTagView.m; sourceTree = "<group>"; };
 		5C0A99E319A25949002A4EF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -542,6 +545,8 @@
 				5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */,
 				5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */,
 				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
+				5C051F0619D47E8700DDF04A /* FZSelectedTagView.h */,
+				5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */,
 				5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */,
 				5C4A33F019B299CE001D5502 /* FZTagsMenuViewController.m */,
 				5C4A33F219B2A2BF001D5502 /* FZButtonTag.h */,
@@ -763,6 +768,7 @@
 				5C35AD9C199A836900D99CAF /* AFURLSessionManager.m in Sources */,
 				5C35AD7C199A824600D99CAF /* LIALinkedInHttpClient.m in Sources */,
 				5C12A01F1995A9D400703CCA /* FZPickPhotoViewController.m in Sources */,
+				5C051F0819D47E8700DDF04A /* FZSelectedTagView.m in Sources */,
 				5C9BC8EC19875DCB007BAD1E /* FZWebServices.m in Sources */,
 				5C35AD98199A836900D99CAF /* AFSecurityPolicy.m in Sources */,
 				5C4A33EA19B28C3E001D5502 /* FZExploreTagsView.m in Sources */,
