@@ -349,7 +349,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         
-        UIImageView *iconPlus = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconPlus.png"]];
+        UIImageView *iconPlus = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconPlus18.png"]];
         iconPlus.tag = 1000;
         iconPlus.center = CGPointMake(tableView.frame.size.width-30.0f, 22.0f);
         [cell.contentView addSubview:iconPlus];

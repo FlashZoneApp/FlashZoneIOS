@@ -22,7 +22,7 @@
         self.lblTitle.font = [UIFont boldSystemFontOfSize:18.0f];
         [self addSubview:self.lblTitle];
         
-        UIImageView *checkMark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconCheckMark.png"]];
+        UIImageView *checkMark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconCheckmark45.png"]];
         checkMark.center = CGPointMake(frame.size.width-30.0f, self.lblTitle.center.y);
         [self addSubview:checkMark];
     }

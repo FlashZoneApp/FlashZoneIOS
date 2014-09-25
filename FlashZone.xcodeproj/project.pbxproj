@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C04D62319CC8EE3009060A9 /* iconReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C04D62219CC8EE3009060A9 /* iconReload@2x.png */; };
 		5C051F0819D47E8700DDF04A /* FZSelectedTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */; };
+		5C064D3219D49EAF0020315C /* iconCheckmark45@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C064D3019D49EAF0020315C /* iconCheckmark45@2x.png */; };
+		5C064D3319D49EAF0020315C /* iconPlus18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C064D3119D49EAF0020315C /* iconPlus18@2x.png */; };
 		5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E319A25949002A4EF9 /* AddressBook.framework */; };
 		5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */; };
 		5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */; };
@@ -129,6 +131,8 @@
 		5C04D62219CC8EE3009060A9 /* iconReload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconReload@2x.png"; sourceTree = "<group>"; };
 		5C051F0619D47E8700DDF04A /* FZSelectedTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectedTagView.h; sourceTree = "<group>"; };
 		5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSelectedTagView.m; sourceTree = "<group>"; };
+		5C064D3019D49EAF0020315C /* iconCheckmark45@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCheckmark45@2x.png"; sourceTree = "<group>"; };
+		5C064D3119D49EAF0020315C /* iconPlus18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPlus18@2x.png"; sourceTree = "<group>"; };
 		5C0A99E319A25949002A4EF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -322,6 +326,8 @@
 			children = (
 				5C58D9CA19BF71A700E070E4 /* iconPlus@2x.png */,
 				5C04D62219CC8EE3009060A9 /* iconReload@2x.png */,
+				5C064D3019D49EAF0020315C /* iconCheckmark45@2x.png */,
+				5C064D3119D49EAF0020315C /* iconPlus18@2x.png */,
 				5C4685E819C93E9E00F22683 /* backArrow@2x.png */,
 				5C20234119BF804700F9C067 /* iconCheckMark@2x.png */,
 				5CF0CAD119B58C96004AE0D2 /* bg_orange@2x.png */,
@@ -716,6 +722,7 @@
 				5C133E7519B9228300FB4AEC /* linkd-activestate-rndsquare@2x.png in Resources */,
 				5C1BCAA019CA0B5500926CD3 /* iconGoogle@2x.png in Resources */,
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
+				5C064D3319D49EAF0020315C /* iconPlus18@2x.png in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
 				5C133E7719B9228300FB4AEC /* redd-activestate-rndsquare@2x.png in Resources */,
@@ -730,6 +737,7 @@
 				5CCA38E719C24B45001904D2 /* bg_explore_tags_480@2x.png in Resources */,
 				5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */,
 				5C58D9CB19BF71A700E070E4 /* iconPlus@2x.png in Resources */,
+				5C064D3219D49EAF0020315C /* iconCheckmark45@2x.png in Resources */,
 				5C1BCAA219CA0B5500926CD3 /* iconReddit@2x.png in Resources */,
 				5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */,
 				5C133E7219B9228300FB4AEC /* fb-rndsquare@2x.png in Resources */,
