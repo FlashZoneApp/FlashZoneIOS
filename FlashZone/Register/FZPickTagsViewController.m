@@ -346,9 +346,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         
         UIImageView *iconPlus = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconPlus.png"]];
+        iconPlus.tag = 1000;
         iconPlus.center = CGPointMake(tableView.frame.size.width-30.0f, 22.0f);
         [cell.contentView addSubview:iconPlus];
     }
@@ -360,14 +362,34 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.contentView.backgroundColor = kOrange;
+    cell.textLabel.alpha = 0.0f;
+    UIView *iconPlus = [cell.contentView viewWithTag:1000];
+    iconPlus.alpha = 0;
     
     FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, tableView.frame.size.width, 44.0f)];
     cellCopy.lblTitle.text = self.searchResults[indexPath.row];
-
-    cellCopy.center = [self.view convertPoint:cell.center fromView:self.searchTable];
-    cellCopy.backgroundColor = kOrange;
+    CGPoint center = [self.view convertPoint:cell.center fromView:self.searchTable];
+    center.x -= 160.0f;
+    cellCopy.center = center;
     [self.view addSubview:cellCopy];
+    
+    [UIView animateWithDuration:0.35f
+                          delay:0.1f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         cellCopy.layer.anchorPoint = CGPointMake(0, 0.5); // hinge around the left edge
+                         CATransform3D leftTransform = CATransform3DIdentity;
+                         leftTransform.m34 = -1.0f/500; //dark magic to set the 3D perspective
+                         leftTransform = CATransform3DRotate(leftTransform, -M_PI_2, 0, 1, 0); //rotate 90 degrees about the Y axis
+                         cellCopy.layer.transform = leftTransform;
+                     }
+                     completion:^(BOOL finished){
+                         [self.searchTable beginUpdates];
+                         [self.searchResults removeObjectAtIndex:indexPath.row];
+                         [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                         [self.searchTable endUpdates];
+                     }];
+
 }
 
 
