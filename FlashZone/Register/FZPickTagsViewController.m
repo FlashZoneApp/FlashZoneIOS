@@ -20,6 +20,7 @@
 @property (strong, nonatomic) FZExploreTagsView *exploreTagsSlide;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) UITableView *searchTable;
 @end
 
 @implementation FZPickTagsViewController
@@ -107,8 +108,14 @@
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [self.theScrollview addSubview:self.exploreTagsSlide];
-                
                 [self.theScrollview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
+                
+                CGFloat y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
+                self.searchTable = [[UITableView alloc] initWithFrame:CGRectMake(x, y, self.view.frame.size.width, self.view.frame.size.height-y) style:UITableViewStylePlain];
+                self.searchTable.dataSource = self;
+                self.searchTable.delegate = self;
+                self.searchTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+                [self.theScrollview addSubview:self.searchTable];
             });
         }
         
@@ -310,6 +317,26 @@
                                           }];
                      }];
     
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellId = @"cellId";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    return cell;
 }
 
 #pragma mark - UITextFieldDelegate

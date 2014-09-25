@@ -8,6 +8,6 @@
 
 #import "FZViewController.h"
 
-@interface FZPickTagsViewController : FZViewController <UITextFieldDelegate, UIScrollViewDelegate>
+@interface FZPickTagsViewController : FZViewController <UITextFieldDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
