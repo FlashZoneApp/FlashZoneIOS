@@ -345,6 +345,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0f];
     }
     
     cell.textLabel.text = self.searchResults[indexPath.row];
@@ -354,7 +355,7 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.searchTable.alpha = 0.85f;
+    self.searchTable.alpha = 0.90f;
     return YES;
 }
 
