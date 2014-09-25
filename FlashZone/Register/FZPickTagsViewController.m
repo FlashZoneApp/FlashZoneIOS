@@ -20,6 +20,7 @@
 @property (strong, nonatomic) FZExploreTagsView *exploreTagsSlide;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) UITableView *searchTable;
 @end
 
@@ -30,6 +31,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.categories = nil;
+        self.searchResults = [NSMutableArray array];
+        
+        [self.searchResults addObject:@"#camping"];
+        [self.searchResults addObject:@"#hiking"];
+        [self.searchResults addObject:@"#outdoors"];
+
     }
     return self;
 }
@@ -327,7 +334,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -340,7 +347,7 @@
         cell.backgroundColor = [UIColor clearColor];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.textLabel.text = self.searchResults[indexPath.row];
     return cell;
 }
 
