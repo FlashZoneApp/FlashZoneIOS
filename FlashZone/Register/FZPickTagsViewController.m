@@ -11,6 +11,7 @@
 #import "FZTagsSelectNetworkView.h"
 #import "FZExploreTagsView.h"
 #import "FZTagsMenuViewController.h"
+#import "FZSelectedTagView.h"
 
 
 @interface FZPickTagsViewController ()
@@ -361,7 +362,9 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.contentView.backgroundColor = kOrange;
     
-    UIView *cellCopy = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 44.0f)];
+    FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, tableView.frame.size.width, 44.0f)];
+    cellCopy.lblTitle.text = self.searchResults[indexPath.row];
+
     cellCopy.center = [self.view convertPoint:cell.center fromView:self.searchTable];
     cellCopy.backgroundColor = kOrange;
     [self.view addSubview:cellCopy];
