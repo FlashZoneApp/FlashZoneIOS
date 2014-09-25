@@ -378,7 +378,8 @@
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          cellCopy.layer.anchorPoint = CGPointMake(0, 0.5); // hinge around the left edge
-                         CATransform3D leftTransform = CATransform3DIdentity;
+//                         CATransform3D leftTransform = CATransform3DIdentity;
+                         CATransform3D leftTransform = CATransform3DMakeScale(1, 4, 1);
                          leftTransform.m34 = -1.0f/500; //dark magic to set the 3D perspective
                          leftTransform = CATransform3DRotate(leftTransform, -M_PI_2, 0, 1, 0); //rotate 90 degrees about the Y axis
                          cellCopy.layer.transform = leftTransform;
