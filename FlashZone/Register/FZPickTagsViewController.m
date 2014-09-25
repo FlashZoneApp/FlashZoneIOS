@@ -115,7 +115,7 @@
                 self.searchTable.dataSource = self;
                 self.searchTable.delegate = self;
                 self.searchTable.backgroundColor = [UIColor whiteColor];
-                self.searchTable.alpha = 0.85f;
+                self.searchTable.alpha = 0.0f;
                 self.searchTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
                 [self.theScrollview addSubview:self.searchTable];
             });
@@ -344,6 +344,12 @@
 }
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.searchTable.alpha = 0.85f;
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
