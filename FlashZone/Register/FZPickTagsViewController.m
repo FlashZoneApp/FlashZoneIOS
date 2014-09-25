@@ -117,6 +117,7 @@
                 self.searchTable.backgroundColor = [UIColor whiteColor];
                 self.searchTable.alpha = 0.0f;
                 self.searchTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+                [self.searchTable setSeparatorInset:UIEdgeInsetsZero];
                 [self.theScrollview addSubview:self.searchTable];
             });
         }
