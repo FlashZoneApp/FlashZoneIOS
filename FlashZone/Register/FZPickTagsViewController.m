@@ -386,6 +386,7 @@
                          [self.searchResults removeObjectAtIndex:indexPath.row];
                          [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                          [self.searchTable endUpdates];
+                         [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
                      }];
     
 }
