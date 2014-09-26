@@ -12,6 +12,7 @@
 #import "FZExploreTagsView.h"
 #import "FZTagsMenuViewController.h"
 #import "FZSelectedTagView.h"
+#import "FZSearchCell.h"
 
 
 @interface FZPickTagsViewController ()
@@ -341,32 +342,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-        
-        UIImageView *iconPlus = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconPlus18.png"]];
-        iconPlus.tag = 1000;
-        iconPlus.center = CGPointMake(tableView.frame.size.width-30.0f, 22.0f);
-        [cell.contentView addSubview:iconPlus];
+    FZSearchCell *cell = (FZSearchCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell==nil){
+        cell = [[FZSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        [cell.btnPlus addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    cell.btnPlus.tag = 1000+indexPath.row;
     cell.textLabel.text = self.searchResults[indexPath.row];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)selectTag:(UIButton *)btn
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"selectTag: %d", btn.tag);
+    int row = btn.tag-1000;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    UITableViewCell *cell = [self.searchTable cellForRowAtIndexPath:indexPath];
     cell.textLabel.alpha = 0.0f;
     UIView *iconPlus = [cell.contentView viewWithTag:1000];
     iconPlus.alpha = 0;
     
-    FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, tableView.frame.size.width, 44.0f)];
+    FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, self.searchTable.frame.size.width, 44.0f)];
     cellCopy.lblTitle.text = self.searchResults[indexPath.row];
     CGPoint center = [self.view convertPoint:cell.center fromView:self.searchTable];
     center.x -= 160.0f;
@@ -389,7 +387,7 @@
                          [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                          [self.searchTable endUpdates];
                      }];
-
+    
 }
 
 
