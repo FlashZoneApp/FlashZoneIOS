@@ -37,6 +37,7 @@
 		5C133E7819B9228300FB4AEC /* redd-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E6E19B9228300FB4AEC /* redd-rndsquare@2x.png */; };
 		5C133E7919B9228300FB4AEC /* twt-activestate-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E6F19B9228300FB4AEC /* twt-activestate-rndsquare@2x.png */; };
 		5C133E7A19B9228300FB4AEC /* twt-rndsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C133E7019B9228300FB4AEC /* twt-rndsquare@2x.png */; };
+		5C1B044819D5FC9600177D96 /* FZSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1B044719D5FC9600177D96 /* FZSearchCell.m */; };
 		5C1BCA9F19CA0B5500926CD3 /* iconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9A19CA0B5500926CD3 /* iconFacebook@2x.png */; };
 		5C1BCAA019CA0B5500926CD3 /* iconGoogle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9B19CA0B5500926CD3 /* iconGoogle@2x.png */; };
 		5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */; };
@@ -160,6 +161,8 @@
 		5C133E6E19B9228300FB4AEC /* redd-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redd-rndsquare@2x.png"; sourceTree = "<group>"; };
 		5C133E6F19B9228300FB4AEC /* twt-activestate-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twt-activestate-rndsquare@2x.png"; sourceTree = "<group>"; };
 		5C133E7019B9228300FB4AEC /* twt-rndsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twt-rndsquare@2x.png"; sourceTree = "<group>"; };
+		5C1B044619D5FC9600177D96 /* FZSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSearchCell.h; sourceTree = "<group>"; };
+		5C1B044719D5FC9600177D96 /* FZSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSearchCell.m; sourceTree = "<group>"; };
 		5C1BCA9A19CA0B5500926CD3 /* iconFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconFacebook@2x.png"; sourceTree = "<group>"; };
 		5C1BCA9B19CA0B5500926CD3 /* iconGoogle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconGoogle@2x.png"; sourceTree = "<group>"; };
 		5C1BCA9C19CA0B5500926CD3 /* iconLinkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLinkedin@2x.png"; sourceTree = "<group>"; };
@@ -551,6 +554,8 @@
 				5C12A01E1995A9D400703CCA /* FZPickPhotoViewController.m */,
 				5C3D95CA19A2C11A0015F9DC /* FZPickTagsViewController.h */,
 				5C3D95CB19A2C11A0015F9DC /* FZPickTagsViewController.m */,
+				5C1B044619D5FC9600177D96 /* FZSearchCell.h */,
+				5C1B044719D5FC9600177D96 /* FZSearchCell.m */,
 				5C051F0619D47E8700DDF04A /* FZSelectedTagView.h */,
 				5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */,
 				5C4A33EF19B299CE001D5502 /* FZTagsMenuViewController.h */,
@@ -768,6 +773,7 @@
 				5C35AD9A199A836900D99CAF /* AFURLRequestSerialization.m in Sources */,
 				5C3C293219C9FE9B00465F03 /* FZSocialButton.m in Sources */,
 				5C35AD99199A836900D99CAF /* AFURLConnectionOperation.m in Sources */,
+				5C1B044819D5FC9600177D96 /* FZSearchCell.m in Sources */,
 				5CFF7D2619894C4900867679 /* FZContainerViewController.m in Sources */,
 				5C9BC8E619875B0F007BAD1E /* FZViewController.m in Sources */,
 				5C4685EC19C9432100F22683 /* FZSelectTwitterViewController.m in Sources */,
