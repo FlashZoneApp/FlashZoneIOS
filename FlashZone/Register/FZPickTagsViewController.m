@@ -117,7 +117,6 @@
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [self.theScrollview addSubview:self.exploreTagsSlide];
-//                [self.theScrollview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)]];
                 
                 CGFloat y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
                 self.searchTable = [[UITableView alloc] initWithFrame:CGRectMake(x, y, self.view.frame.size.width, self.view.frame.size.height-y) style:UITableViewStylePlain];
