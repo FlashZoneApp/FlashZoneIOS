@@ -111,34 +111,6 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
-    
-//    [UIView animateWithDuration:1.1f
-//                          delay:0.0f
-//         usingSpringWithDamping:0.6f
-//          initialSpringVelocity:0.0f
-//                        options:UIViewAnimationOptionCurveEaseInOut
-//                     animations:^{
-//                         self.twitterAccountsTable.frame = CGRectMake(0.0f, self.view.frame.size.height, self.twitterAccountsTable.frame.size.width, self.twitterAccountsTable.frame.size.height);
-//                         
-//                     }
-//                     completion:NULL];
-//    
-//    
-//    [self.loadingIndicator startLoading];
-//    [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.loadingIndicator stopLoading];
-//            if (success){
-//                self.profile.registrationType = FZRegistrationTypeTwitter;
-//                self.twitterAccountsTable.alpha = 0;
-//                [self showProfileDetailsScreen];
-//            }
-//            else{
-//                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
-//            }
-//        });
-//        
-//    }];
 }
 
 
