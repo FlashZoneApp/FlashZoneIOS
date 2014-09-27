@@ -161,7 +161,7 @@
 
     // fetch suggested tags:
     [self.loadingIndicator startLoading];
-    [[FZWebServices sharedInstance] fetchFlashTags:^(id result, NSError *error){
+    [[FZWebServices sharedInstance] fetchInterests:^(id result, NSError *error){
         [self.loadingIndicator stopLoading];
         if (error){
             
@@ -171,7 +171,7 @@
             NSString *confirmation = results[@"confirmation"];
             if ([confirmation isEqualToString:@"success"]){
                 
-                NSArray *tags = results[@"flashTags"];
+                NSArray *tags = results[@"interests"];
                 for (int i=0; i<tags.count; i++){
                     NSString *tag = tags[i];
                     [self.profile.suggestedTags addObject:tag];
