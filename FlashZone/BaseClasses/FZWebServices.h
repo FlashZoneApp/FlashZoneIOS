@@ -28,8 +28,9 @@ typedef void (^FZWebServiceRequestCompletionBlock)(id result, NSError *error);
 - (void)fetchUploadString:(FZWebServiceRequestCompletionBlock)completionBlock;
 - (void)uploadImage:(NSDictionary *)image toUrl:(NSString *)uploadUrl completion:(FZWebServiceRequestCompletionBlock)completionBlock;
 
-// FlashTags
+// Interests
 - (void)fetchCategoryList:(FZWebServiceRequestCompletionBlock)completionBlock;
+- (void)fetchInterests:(FZWebServiceRequestCompletionBlock)completionBlock;
 - (void)fetchFlashTags:(FZWebServiceRequestCompletionBlock)completionBlock;
 
 
