@@ -138,6 +138,13 @@
         return;
     
     self.requestTwitterAccess = NO;
+
+    if (!self.socialAccountsMgr.selectedTwitterAccount){
+        [self.loadingIndicator stopLoading];
+        return;
+    }
+
+    
     [self.profile requestTwitterProfileInfo:self.socialAccountsMgr.selectedTwitterAccount completion:^(BOOL success, NSError *error){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.loadingIndicator stopLoading];
@@ -149,9 +156,7 @@
                 [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
             }
         });
-        
     }];
-
 
 }
 
