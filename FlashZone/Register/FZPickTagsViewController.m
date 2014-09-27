@@ -127,10 +127,47 @@
                 self.searchTable.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
                 [self.searchTable setSeparatorInset:UIEdgeInsetsZero];
                 [self.theScrollview addSubview:self.searchTable];
+                
+                [self fetchGeneralInterests];
             });
         }
         
     }];
+}
+
+- (void)fetchGeneralInterests
+{
+    [[FZWebServices sharedInstance] fetchInterests:^(id result, NSError *error){
+        if (error){
+            
+        }
+        else{
+            NSDictionary *results = (NSDictionary *)result;
+            NSString *confirmation = results[@"confirmation"];
+            if ([confirmation isEqualToString:@"success"]){
+                
+                NSArray *interests = results[@"interests"];
+                for (int i=0; i<interests.count; i++){
+                    NSDictionary *interest = (NSDictionary *)interests[i];
+                    NSLog(@"INTEREST: %@", interest);
+//                    [self.profile.suggestedTags addObject:tag];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+//                    [self layoutTags];
+                    
+                });
+            }
+            else{
+                [self showAlertWithtTitle:@"Error" message:results[@"message"]];
+            }
+            
+            
+        }
+        
+    }];
+
 }
 
 
