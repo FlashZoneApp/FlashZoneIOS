@@ -167,6 +167,9 @@
 
 - (void)adjustProfileIcon
 {
+    if (!self.profile.imageData)
+        return;
+    
     UIImage *imageIcon = [UIImage imageNamed:@"photoPlaceholder.png"];
     CGFloat w = self.profile.imageData.size.width;
     CGFloat h = self.profile.imageData.size.height;
@@ -603,10 +606,10 @@
     NSLog(@"imagePickerController: didFinishPickingMediaWithInfo: %@", [info description]);
     
     UIImage *image = info[UIImagePickerControllerEditedImage];
-    CGFloat w = image.size.width;
-    CGFloat h = image.size.height;
-    if (w != h)
-        image = [self cropImage:image];
+//    CGFloat w = image.size.width;
+//    CGFloat h = image.size.height;
+//    if (w != h)
+//        image = [self cropImage:image];
     
     self.profileIcon.image = image;
     [picker dismissViewControllerAnimated:YES completion:^{
@@ -626,6 +629,7 @@
 
 - (UIImage *)cropImage:(UIImage *)image
 {
+    NSLog(@"cropImage:");
     CGFloat w = image.size.width;
     CGFloat h = image.size.height;
     if (w != h){
