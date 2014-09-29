@@ -37,9 +37,9 @@
         self.searchResults = [NSMutableArray array];
         self.allInterests = [NSMutableArray array];
         
-        [self.searchResults addObject:@"#camping"];
-        [self.searchResults addObject:@"#hiking"];
-        [self.searchResults addObject:@"#outdoors"];
+//        [self.searchResults addObject:@"camping"];
+//        [self.searchResults addObject:@"hiking"];
+//        [self.searchResults addObject:@"outdoors"];
 
     }
     return self;
@@ -393,7 +393,7 @@
     }
     
     cell.btnPlus.tag = 1000+indexPath.row;
-    cell.textLabel.text = self.searchResults[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
     return cell;
 }
 
@@ -435,12 +435,37 @@
     
 }
 
+- (void)updateSearchResults
+{
+    NSLog(@"updateSearchResults");
+    NSString *searchTerm = [self.exploreTagsSlide.searchField.text lowercaseString];
+    if (searchTerm.length==0)
+        return;
+    
+    [self.searchResults removeAllObjects];
+    
+    for (NSString *interest in self.allInterests) {
+        if ([interest hasPrefix:searchTerm]){
+            if ([self.searchResults containsObject:interest]==NO)
+                [self.searchResults addObject:interest];
+        }
+    }
+    
+    [self.searchTable reloadData];
+}
+
 
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     self.searchTable.alpha = 0.90f;
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self performSelector:@selector(updateSearchResults) withObject:nil afterDelay:0.05f];
     return YES;
 }
 
