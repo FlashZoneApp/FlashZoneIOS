@@ -437,12 +437,14 @@
 
 - (void)updateSearchResults
 {
-    NSLog(@"updateSearchResults");
-    NSString *searchTerm = [self.exploreTagsSlide.searchField.text lowercaseString];
-    if (searchTerm.length==0)
-        return;
-    
     [self.searchResults removeAllObjects];
+    NSString *searchTerm = [self.exploreTagsSlide.searchField.text lowercaseString];
+//    NSLog(@"updateSearchResults: %@", searchTerm);
+    if (searchTerm.length==0){
+        [self.searchTable reloadData];
+        return;
+    }
+    
     
     for (NSString *interest in self.allInterests) {
         if ([interest hasPrefix:searchTerm]){
