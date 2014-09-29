@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSMutableArray *searchResults;
+@property (strong, nonatomic) NSMutableArray *allInterests; // combination of categories and subcategories
 @property (strong, nonatomic) UITableView *searchTable;
 @end
 
@@ -34,6 +35,7 @@
     if (self) {
         self.categories = nil;
         self.searchResults = [NSMutableArray array];
+        self.allInterests = [NSMutableArray array];
         
         [self.searchResults addObject:@"#camping"];
         [self.searchResults addObject:@"#hiking"];
@@ -149,12 +151,18 @@
                 NSArray *interests = results[@"interests"];
                 for (int i=0; i<interests.count; i++){
                     NSDictionary *interest = (NSDictionary *)interests[i];
-                    NSLog(@"INTEREST: %@", interest);
-//                    [self.profile.suggestedTags addObject:tag];
+//                    NSLog(@"INTEREST: %@", interest);
+                    NSString *name = [interest[@"name"] lowercaseString];
+                    if ([self.allInterests containsObject:name]==NO)
+                        [self.allInterests addObject:name];
+                    
+                    NSString *category = [interest[@"category"] lowercaseString];
+                    if ([self.allInterests containsObject:category]==NO)
+                        [self.allInterests addObject:category];
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    
+                    NSLog(@"ALL INTEREST: %@", [self.allInterests description]);
 //                    [self layoutTags];
                     
                 });
