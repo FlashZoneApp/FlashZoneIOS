@@ -304,8 +304,6 @@
 
 - (void)showTagsMenu
 {
-    NSLog(@"SHOW TAGS MENU");
-
     FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
     tagsMenuVc.backgroundImage = [self.view screenshot];
     [self.navigationController pushViewController:tagsMenuVc animated:NO];
@@ -387,6 +385,10 @@
         [cell.btnPlus addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    cell.textLabel.alpha = 1.0f;
+    UIView *iconPlus = [cell.contentView viewWithTag:1000];
+    iconPlus.alpha = 1.0f;
+
     cell.btnPlus.tag = 1000+indexPath.row;
     cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
     return cell;
@@ -426,6 +428,7 @@
                          [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                          [self.searchTable endUpdates];
                          [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
+                         
                      }];
     
 }
