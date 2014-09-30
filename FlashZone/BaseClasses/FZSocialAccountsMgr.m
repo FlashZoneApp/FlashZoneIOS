@@ -187,7 +187,7 @@
 - (void)requestFacebookAccountInfo:(FZSocialAccountsMgrCompletionBlock)completionBlock
 {
     if (!self.facebookAccount) { // no facebook acccount linked
-        NSError *error = [NSError errorWithDomain:@"com.flashzone.app" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
+        NSError *error = [NSError errorWithDomain:kErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey:@"No Facebook account linked. Please allow Facebook access."}];
         completionBlock(nil, error);
         return;
     }
