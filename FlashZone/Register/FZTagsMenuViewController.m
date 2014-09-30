@@ -13,7 +13,6 @@
 
 @interface FZTagsMenuViewController ()
 @property (strong, nonatomic) UIView *screen;
-@property (strong, nonatomic) UIScrollView *tagsScrollview;
 @property (strong, nonatomic) UIButton *btnShowMore;
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) UILabel *lblConfirmation;
@@ -97,13 +96,9 @@
     
     [view addSubview:self.screen];
     
-    
-    self.tagsScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
-    self.tagsScrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    
     UIImageView *networkIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
     networkIcon.center = CGPointMake(0.5f*frame.size.width, 36.0f);
-    [self.tagsScrollview addSubview:networkIcon];
+    [view addSubview:networkIcon];
     
     
     self.lblCategory = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 22.0f)];
@@ -112,14 +107,14 @@
     self.lblCategory.textAlignment = NSTextAlignmentCenter;
     self.lblCategory.font = [UIFont boldSystemFontOfSize:14.0f];
     self.lblCategory.text = self.category;
-    [self.tagsScrollview addSubview:self.lblCategory];
+    [view addSubview:self.lblCategory];
 
     
     UILabel *lblDirections = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 54.0f, frame.size.width, 24.0f)];
     lblDirections.textColor = [UIColor whiteColor];
     lblDirections.textAlignment = NSTextAlignmentCenter;
     lblDirections.text = @"Tap a few things you like";
-    [self.tagsScrollview addSubview:lblDirections];
+    [view addSubview:lblDirections];
     
     UIButton *btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -128,10 +123,7 @@
     [btnNext addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
     btnNext.titleLabel.textAlignment = NSTextAlignmentRight;
     btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
-    [self.tagsScrollview addSubview:btnNext];
-    
-    [view addSubview:self.tagsScrollview];
-    
+    [view addSubview:btnNext];
     
     self.cover = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
     self.cover.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -209,7 +201,7 @@
 
 - (void)layoutTags
 {
-    CGRect frame = self.tagsScrollview.frame;
+    CGRect frame = self.view.frame;
     
     CGFloat h = 36.0f;
     CGFloat y = 94.0f;
@@ -234,7 +226,7 @@
         
         btnTag.frame = CGRectMake(x, y, boudingRect.size.width+44.0f, h);
         btnTag.layer.cornerRadius = 0.5f*h;
-        [self.tagsScrollview addSubview:btnTag];
+        [self.view addSubview:btnTag];
         NSLog(@"%@ == %.2f", tag, btnTag.center.x);
         
         if (btnTag.center.x > 140.0f){
@@ -252,7 +244,7 @@
     }
     
     h = y+100.0f;
-    self.tagsScrollview.contentSize = CGSizeMake(0, h);
+//    self.tagsScrollview.contentSize = CGSizeMake(0, h);
     
     if (h+44.0f < frame.size.height)
         h = frame.size.height;
@@ -272,18 +264,19 @@
         reload.center = CGPointMake(0.7f*frame.size.width, 22.0f);
         [self.btnShowMore addSubview:reload];
         
-        [self.tagsScrollview addSubview:self.btnShowMore];
+        [self.view addSubview:self.btnShowMore];
     }
     
     
     self.btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
+    
+    [self.view bringSubviewToFront:self.cover];
 }
 
 - (void)pickTag:(UIButton *)btn
 {
     int index = (int)btn.tag-1000;
     NSDictionary *flashTag = self.profile.suggestedTags[index];
-//    NSLog(@"pickTag: %@", flashTag[@"name"]);
     btn.selected = !btn.selected;
     btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
     
@@ -298,7 +291,6 @@
 
 - (void)exit
 {
-    
     [UIView animateWithDuration:0.75f
                           delay:0
          usingSpringWithDamping:0.6f
