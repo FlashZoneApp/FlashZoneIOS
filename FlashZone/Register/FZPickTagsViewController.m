@@ -386,9 +386,6 @@
     }
     
     cell.textLabel.alpha = 1.0f;
-    UIView *iconPlus = [cell.contentView viewWithTag:1000];
-    iconPlus.alpha = 1.0f;
-    cell.btnPlus.tag = 1000+indexPath.row;
 
     if (self.searchResults.count == 0){
         if (self.exploreTagsSlide.searchField.text.length > 0)
@@ -399,6 +396,9 @@
         return cell;
     }
     
+    UIView *iconPlus = [cell.contentView viewWithTag:1000];
+    iconPlus.alpha = 1.0f;
+    cell.btnPlus.tag = 1000+indexPath.row;
     cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
     return cell;
 }
@@ -415,7 +415,9 @@
     iconPlus.alpha = 0;
     
     FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, self.searchTable.frame.size.width, 44.0f)];
-    cellCopy.lblTitle.text = self.searchResults[indexPath.row];
+    
+    cellCopy.lblTitle.text = (self.searchResults.count > 0) ? self.searchResults[indexPath.row] : [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+    
     CGPoint center = [self.view convertPoint:cell.center fromView:self.searchTable];
     center.x -= 160.0f;
     cellCopy.center = center;
@@ -432,11 +434,18 @@
                          cellCopy.layer.transform = leftTransform;
                      }
                      completion:^(BOOL finished){
-                         [self.searchTable beginUpdates];
-                         [self.searchResults removeObjectAtIndex:indexPath.row];
-                         [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                         [self.searchTable endUpdates];
-                         [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
+                         if (self.searchResults.count > 0){
+                             [self.searchTable beginUpdates];
+                             [self.searchResults removeObjectAtIndex:indexPath.row];
+                             [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                             [self.searchTable endUpdates];
+                             [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
+                         }
+                         else{
+                             self.exploreTagsSlide.searchField.text = @"";
+                             [self.searchTable reloadData];
+                         }
+
                          
                      }];
     
