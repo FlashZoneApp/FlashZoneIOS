@@ -284,9 +284,6 @@
         [self.profile.tags addObject:flashTag];
     else
         [self.profile.tags removeObject:flashTag];
-    
-    NSLog(@"CURRENT TAGS: %@", [self.profile.tags description]);
-    
 }
 
 - (void)exit
