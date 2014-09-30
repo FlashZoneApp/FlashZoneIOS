@@ -192,7 +192,7 @@
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
                          self.blurryBackground.alpha = 1.0f;
-                         self.screen.alpha = 0.60f;
+                         self.screen.alpha = (self.useSocialNetwork) ? 1.0f : 0.60f;
                      }
                      completion:^(BOOL finished){
                          
