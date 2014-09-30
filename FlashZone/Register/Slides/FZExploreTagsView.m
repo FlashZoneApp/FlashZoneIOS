@@ -17,6 +17,7 @@
 @synthesize searchField;
 @synthesize buttonsArray;
 @synthesize tagsScrollview;
+@synthesize socialIconsArray;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -24,6 +25,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.buttonsArray = [NSMutableArray array];
+        self.socialIconsArray = [NSMutableArray array];
+        
         BOOL iPhone5 = (frame.size.height > 500);
         NSString *background = (iPhone5) ? @"bg_explore_tags.png" : @"bg_explore_tags_480.png";
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
@@ -69,9 +72,11 @@
         for (int i=0; i<icons.count; i++) {
             UIImage *img = [UIImage imageNamed:icons[i]];
             UIButton *btnNetwork = [UIButton buttonWithType:UIButtonTypeCustom];
+            btnNetwork.tag = 1000+i;
             [btnNetwork setBackgroundImage:img forState:UIControlStateNormal];
             btnNetwork.frame = CGRectMake(x, y, img.size.width, img.size.height);
             [self addSubview:btnNetwork];
+            [self.socialIconsArray addObject:btnNetwork];
             x += img.size.width+padding;
         }
         
