@@ -36,11 +36,6 @@
         self.categories = nil;
         self.searchResults = [NSMutableArray array];
         self.allInterests = [NSMutableArray array];
-        
-//        [self.searchResults addObject:@"camping"];
-//        [self.searchResults addObject:@"hiking"];
-//        [self.searchResults addObject:@"outdoors"];
-
     }
     return self;
 }
@@ -481,18 +476,41 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollViewWillBeginDragging:");
+//    NSLog(@"scrollViewWillBeginDragging:");
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.exploreTagsSlide.searchField resignFirstResponder];
+//    NSLog(@"scrollViewDidScroll: %.2f", scrollView.contentOffset.y);
+    
+    if (scrollView.contentOffset.y >= -100.0f)
+        return;
+    
+    [UIView animateWithDuration:0.5f
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         CGRect frame = self.searchTable.frame;
+                         frame.origin.y = self.view.frame.size.height;
+                         self.searchTable.frame = frame;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         self.searchTable.alpha = 0.0f;
+                         
+                         CGRect frame = self.searchTable.frame;
+                         CGFloat y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
+                         frame.origin.y = y;
+                         self.searchTable.frame = frame;
+                     }];
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 
-    NSLog(@"scrollViewDidEndDecelerating: %.2f", scrollView.contentOffset.x);
+//    NSLog(@"scrollViewDidEndDecelerating: %.2f", scrollView.contentOffset.x);
     
     if ([scrollView isEqual:self.theScrollview]==NO){
         return;
