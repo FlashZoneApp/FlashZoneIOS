@@ -373,7 +373,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.searchResults.count;
+    return (self.searchResults.count==0) ? 1 : self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -388,8 +388,17 @@
     cell.textLabel.alpha = 1.0f;
     UIView *iconPlus = [cell.contentView viewWithTag:1000];
     iconPlus.alpha = 1.0f;
-
     cell.btnPlus.tag = 1000+indexPath.row;
+
+    if (self.searchResults.count == 0){
+        if (self.exploreTagsSlide.searchField.text.length > 0)
+            cell.textLabel.text = [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+        else
+            cell.textLabel.text = @"";
+        
+        return cell;
+    }
+    
     cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
     return cell;
 }
@@ -437,7 +446,6 @@
 {
     [self.searchResults removeAllObjects];
     NSString *searchTerm = [self.exploreTagsSlide.searchField.text lowercaseString];
-//    NSLog(@"updateSearchResults: %@", searchTerm);
     if (searchTerm.length==0){
         [self.searchTable reloadData];
         return;
