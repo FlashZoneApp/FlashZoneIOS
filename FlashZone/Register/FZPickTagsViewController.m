@@ -484,46 +484,40 @@
             // only one account - use it:
             ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[0];
             [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [self.socialAccountsMgr fetchRecentTweets:twitterAccount completionBlock:^(id result, NSError *error){
+                    if (error){
+                        NSLog(@"Error fetching recent tweets.");
+                        return;
+                    }
                     
-                    
-                    [self.socialAccountsMgr fetchRecentTweets:twitterAccount completionBlock:^(id result, NSError *error){
-                        if (error){
-                            NSLog(@"Error fetching recent tweets.");
-                        }
-                        else{
-                            NSArray *tweets = (NSArray *)result;
-                            
-                            NSMutableArray *tags = [NSMutableArray array];
-                            for (NSDictionary *tweet in tweets) {
-                                NSDictionary *entities = tweet[@"entities"];
-                                if (entities==nil)
-                                    continue;
-                                
-                                NSArray *hashtags = entities[@"hashtags"];
-                                if (hashtags==nil)
-                                    continue;
-                                
-                                for (NSDictionary *hashtag in hashtags) {
-                                    NSString *t = hashtag[@"text"];
-                                    if ([tags containsObject:t]==NO){
-                                        [tags addObject:t];
-                                        NSLog(@"HASH TAG: %@", t);
-                                    }
-                                }
+                    NSArray *tweets = (NSArray *)result;
+                    NSMutableArray *tags = [NSMutableArray array];
+                    for (NSDictionary *tweet in tweets) {
+                        NSDictionary *entities = tweet[@"entities"];
+                        if (entities==nil)
+                            continue;
+                        
+                        NSArray *hashtags = entities[@"hashtags"];
+                        if (hashtags==nil)
+                            continue;
+                        
+                        for (NSDictionary *hashtag in hashtags) {
+                            NSString *t = hashtag[@"text"];
+                            if ([tags containsObject:t]==NO){
+                                [tags addObject:t];
+                                NSLog(@"HASH TAG: %@", t);
                             }
-                            
-                            for (NSString *tag in tags)
-                                [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
-                            
-                            NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
-                            [self showTagsMenu];
-//                            [self fetchCategoryList];
                         }
-                    }];
-
+                    }
                     
-                });
+                    for (NSString *tag in tags)
+                        [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showTagsMenu];
+                    });
+                    
+                }];
                 
             }];
             
