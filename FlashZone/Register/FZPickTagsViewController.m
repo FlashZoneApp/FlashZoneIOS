@@ -543,6 +543,41 @@
             return;
         }
         
+        
+        [self.loadingIndicator startLoading];
+        [self.socialAccountsMgr requestLinkedInAccess:@[@"r_fullprofile", @"r_network"] fromViewController:self completionBlock:^(id result, NSError *error){
+            [self.loadingIndicator stopLoading];
+            
+            
+            if (error){
+                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+                return;
+            }
+            
+            NSDictionary *linkedInInfo = (NSDictionary *)result;
+            if (linkedInInfo[@"industry"]){
+                NSString *industry = linkedInInfo[@"industry"];
+                [self.profile.suggestedTags addObject:@{@"name":industry, @"id":@"-1"}];
+            }
+            
+            if (linkedInInfo[@"interests"]){
+                NSString *interests = linkedInInfo[@"interests"]; // comma separated string
+                NSArray *a = [interests componentsSeparatedByString:@","];
+                
+                for (int i=0; i<a.count; i++){
+                    NSString *interest = a[i];
+                    interest = [interest stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    [self.profile.suggestedTags addObject:@{@"name":interest, @"id":@"-1"}];
+                }
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showTagsMenu:NO];
+            });
+            
+        }];
+        
+        
     }
 
     if (tag==1004){ // reddit
