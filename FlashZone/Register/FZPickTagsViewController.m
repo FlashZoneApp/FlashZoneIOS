@@ -529,14 +529,27 @@
     }
 
     if (tag==1002){ // google
+        if (self.profile.registrationType==FZRegistrationTypeGoogle){
+            [self showTagsMenu:NO];
+            return;
+        }
+
         
     }
 
     if (tag==1003){ // linkedin
+        if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
+            [self showTagsMenu:NO];
+            return;
+        }
         
     }
 
     if (tag==1004){ // reddit
+        if (self.profile.registrationType==FZRegistrationTypeReddit){
+            [self showTagsMenu:NO];
+            return;
+        }
         
     }
 
