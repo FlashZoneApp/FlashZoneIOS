@@ -113,6 +113,10 @@
                 for (UIButton *btn in self.exploreTagsSlide.buttonsArray)
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
+                for (UIButton *btn in self.exploreTagsSlide.socialIconsArray)
+                    [btn addTarget:self action:@selector(socialNetworkSelected:) forControlEvents:UIControlEventTouchUpInside];
+
+                
                 [self.theScrollview addSubview:self.exploreTagsSlide];
                 
                 CGFloat y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
@@ -196,27 +200,27 @@
         [self.socialAccountsMgr requestFacebookLikes:^(id result, NSError *error){
             if (error){
                 NSLog(@"Error fetching recent likes.");
+                return;
             }
-            else{
-                NSDictionary *results = (NSDictionary *)result;
-                NSArray *likes = results[@"data"];
-                if (likes){
-                    for (int i=0; i<likes.count; i++) {
-                        NSDictionary *likeInfo = likes[i];
-                        if (likeInfo[@"name"])
-                            [self.profile.suggestedTags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
+            
+            NSDictionary *results = (NSDictionary *)result;
+            NSArray *likes = results[@"data"];
+            if (likes){
+                for (int i=0; i<likes.count; i++) {
+                    NSDictionary *likeInfo = likes[i];
+                    if (likeInfo[@"name"])
+                        [self.profile.suggestedTags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
+                    
+                    NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
+                    for (NSDictionary *categoryInfo in categoryList) {
+                        NSString *categoryName = categoryInfo[@"name"];
+                        if (categoryName != nil)
+                            [self.profile.suggestedTags addObject:@{@"name":categoryName, @"id":@"-1"}];
                         
-                        NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
-                        for (NSDictionary *categoryInfo in categoryList) {
-                            NSString *categoryName = categoryInfo[@"name"];
-                            if (categoryName != nil)
-                                [self.profile.suggestedTags addObject:@{@"name":categoryName, @"id":@"-1"}];
-                            
-                        }
                     }
                 }
-                [self fetchCategoryList];
             }
+            [self fetchCategoryList];
         }];
         
         return;
@@ -304,12 +308,18 @@
 
 - (void)showTagsMenu
 {
+    [self showTagsMenu:YES];
+    
+}
+
+- (void)showTagsMenu:(BOOL)showNext
+{
     FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
     tagsMenuVc.backgroundImage = [self.view screenshot];
     [self.navigationController pushViewController:tagsMenuVc animated:NO];
     
-    [self performSelector:@selector(nextSlide) withObject:nil afterDelay:1.0f];
-    
+    if (showNext)
+        [self performSelector:@selector(nextSlide) withObject:nil afterDelay:1.0f];
 }
 
 - (void)categorySelected:(UIButton *)btn
@@ -366,6 +376,89 @@
                                           }];
                      }];
     
+}
+
+- (void)socialNetworkSelected:(UIButton *)btn
+{
+    int tag = (int)btn.tag;
+    NSLog(@"socialNetworkSelected: %d", tag);
+    
+    if (tag==1000){ // facebook
+        if (self.profile.registrationType == FZRegistrationTypeFacebook){
+            [self showTagsMenu];
+            return;
+        }
+        
+        // Request Access - this would happen if the user registered via email/twitter/etc then decided to use FB:
+        [self.loadingIndicator startLoading];
+        [self.socialAccountsMgr requestFacebookAccess:kFacebookPermissions completionBlock:^(id result, NSError *error){
+            
+            if (error){
+                [self.loadingIndicator stopLoading];
+                [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+                return;
+            }
+            
+            NSLog(@"FACEBOOK ACCESS GRANTED!!");
+            [self.profile getFacebookInfo:^(BOOL success, NSError *error){
+                if (error){
+                    [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+                    return;
+                }
+                
+                
+                [self.socialAccountsMgr requestFacebookLikes:^(id result, NSError *error){
+                    if (error){
+                        NSLog(@"Error fetching recent likes.");
+                        return;
+                    }
+                    NSDictionary *results = (NSDictionary *)result;
+                    NSArray *likes = results[@"data"];
+                    if (likes){
+                        for (int i=0; i<likes.count; i++) {
+                            NSDictionary *likeInfo = likes[i];
+                            if (likeInfo[@"name"])
+                                [self.profile.suggestedTags addObject:@{@"name":likeInfo[@"name"], @"id":@"-1"}];
+                            
+                            NSArray *categoryList = (NSArray *)likeInfo[@"category_list"];
+                            for (NSDictionary *categoryInfo in categoryList) {
+                                NSString *categoryName = categoryInfo[@"name"];
+                                if (categoryName != nil)
+                                    [self.profile.suggestedTags addObject:@{@"name":categoryName, @"id":@"-1"}];
+                                
+                            }
+                        }
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.loadingIndicator stopLoading];
+                        [self showTagsMenu:NO];
+                    });
+                }];
+                
+            }];
+        }];
+        
+
+        
+    }
+
+    if (tag==1001){ // twitter
+        
+    }
+
+    if (tag==1002){ // google
+        
+    }
+
+    if (tag==1003){ // linkedin
+        
+    }
+
+    if (tag==1004){ // reddit
+        
+    }
+
 }
 
 
