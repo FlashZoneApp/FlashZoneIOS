@@ -13,6 +13,7 @@
 #import "FZTagsMenuViewController.h"
 #import "FZSelectedTagView.h"
 #import "FZSearchCell.h"
+#import "FZSelectTwitterViewController.h"
 
 
 @interface FZPickTagsViewController ()
@@ -162,8 +163,6 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSLog(@"ALL INTEREST: %@", [self.allInterests description]);
-//                    [self layoutTags];
-                    
                 });
             }
             else{
@@ -232,35 +231,40 @@
         [self.socialAccountsMgr fetchRecentTweets:self.socialAccountsMgr.selectedTwitterAccount completionBlock:^(id result, NSError *error){
             if (error){
                 NSLog(@"Error fetching recent tweets.");
+                return;
             }
-            else{
-                NSArray *tweets = (NSArray *)result;
+            
+            NSArray *tweets = (NSArray *)result;
+            NSMutableArray *tags = [NSMutableArray array];
+            for (NSDictionary *tweet in tweets) {
+                NSDictionary *entities = tweet[@"entities"];
+                if (entities==nil)
+                    continue;
                 
-                NSMutableArray *tags = [NSMutableArray array];
-                for (NSDictionary *tweet in tweets) {
-                    NSDictionary *entities = tweet[@"entities"];
-                    if (entities==nil)
-                        continue;
-                    
-                    NSArray *hashtags = entities[@"hashtags"];
-                    if (hashtags==nil)
-                        continue;
-                    
-                    for (NSDictionary *hashtag in hashtags) {
-                        NSString *t = hashtag[@"text"];
-                        if ([tags containsObject:t]==NO){
-                            [tags addObject:t];
-                            NSLog(@"HASH TAG: %@", t);
-                        }
+                NSArray *hashtags = entities[@"hashtags"];
+                if (hashtags==nil)
+                    continue;
+                
+                for (NSDictionary *hashtag in hashtags) {
+                    NSString *t = hashtag[@"text"];
+                    if ([tags containsObject:t]==NO){
+                        [tags addObject:t];
+                        NSLog(@"HASH TAG: %@", t);
                     }
                 }
-                
-                for (NSString *tag in tags)
-                    [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
-                
-                NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
-                [self fetchCategoryList];
             }
+            
+            for (NSString *tag in tags)
+                [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
+            
+//            NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (self.allInterests.count == 0)
+                    [self fetchCategoryList];
+                else
+                    [self showTagsMenu:NO];
+            });
+            
         }];
         
         return;
@@ -289,7 +293,8 @@
     NSLog(@"dismissKeyboard:");
     [self.exploreTagsSlide.searchField resignFirstResponder];
 }
-                           
+
+
 
 - (void)nextSlide
 {
@@ -317,7 +322,8 @@
     FZTagsMenuViewController *tagsMenuVc = [[FZTagsMenuViewController alloc] init];
     tagsMenuVc.backgroundImage = [self.view screenshot];
     [self.navigationController pushViewController:tagsMenuVc animated:NO];
-    
+    [self.loadingIndicator stopLoading];
+
     if (showNext)
         [self performSelector:@selector(nextSlide) withObject:nil afterDelay:1.0f];
 }
@@ -438,12 +444,93 @@
                 
             }];
         }];
-        
-
-        
     }
+    
 
     if (tag==1001){ // twitter
+        if ([self.profile.twitterId isEqualToString:@"none"]==NO){
+            [self showTagsMenu:NO];
+            return;
+        }
+
+        
+        [self.socialAccountsMgr requestTwitterAccess:^(id result, NSError *error){
+            if (error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showAlertWithtTitle:@"Error" message:[error localizedDescription]];
+                });
+                return;
+            }
+            
+            NSArray *twitterAccounts = (NSArray *)result;
+            if (twitterAccounts.count == 0) {
+                NSLog(@"No Twitter Acccounts found.");
+                return;
+            }
+            
+            if (twitterAccounts.count > 1){ // multiple accounts - select one
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FZSelectTwitterViewController *selectTwitterVc = [[FZSelectTwitterViewController alloc] init];
+                    UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:selectTwitterVc];
+                    navCtr.navigationBar.barTintColor = kOrange;
+                    [self presentViewController:navCtr animated:YES completion:^{
+                        self.profile.registrationType = FZRegistrationTypeTwitter;
+                        [self.loadingIndicator startLoading];
+                    }];
+                });
+                return;
+            }
+            
+            // only one account - use it:
+            ACAccount *twitterAccount = self.socialAccountsMgr.twitterAccounts[0];
+            [self.profile requestTwitterProfileInfo:twitterAccount completion:^(BOOL success, NSError *error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
+                    [self.socialAccountsMgr fetchRecentTweets:twitterAccount completionBlock:^(id result, NSError *error){
+                        if (error){
+                            NSLog(@"Error fetching recent tweets.");
+                        }
+                        else{
+                            NSArray *tweets = (NSArray *)result;
+                            
+                            NSMutableArray *tags = [NSMutableArray array];
+                            for (NSDictionary *tweet in tweets) {
+                                NSDictionary *entities = tweet[@"entities"];
+                                if (entities==nil)
+                                    continue;
+                                
+                                NSArray *hashtags = entities[@"hashtags"];
+                                if (hashtags==nil)
+                                    continue;
+                                
+                                for (NSDictionary *hashtag in hashtags) {
+                                    NSString *t = hashtag[@"text"];
+                                    if ([tags containsObject:t]==NO){
+                                        [tags addObject:t];
+                                        NSLog(@"HASH TAG: %@", t);
+                                    }
+                                }
+                            }
+                            
+                            for (NSString *tag in tags)
+                                [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
+                            
+                            NSLog(@"SUGGESTED TAGS: %@", [self.profile.suggestedTags description]);
+                            [self showTagsMenu];
+//                            [self fetchCategoryList];
+                        }
+                    }];
+
+                    
+                });
+                
+            }];
+            
+            
+            
+        }];
+
         
     }
 
