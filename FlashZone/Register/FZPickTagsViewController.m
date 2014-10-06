@@ -418,9 +418,11 @@
                         NSLog(@"Error fetching recent likes.");
                         return;
                     }
+                    
                     NSDictionary *results = (NSDictionary *)result;
                     NSArray *likes = results[@"data"];
                     if (likes){
+                        [self.profile.suggestedTags removeAllObjects];
                         for (int i=0; i<likes.count; i++) {
                             NSDictionary *likeInfo = likes[i];
                             if (likeInfo[@"name"])
@@ -474,10 +476,12 @@
                     UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:selectTwitterVc];
                     navCtr.navigationBar.barTintColor = kOrange;
                     [self presentViewController:navCtr animated:YES completion:^{
+                        [self.profile.suggestedTags removeAllObjects];
                         self.profile.registrationType = FZRegistrationTypeTwitter;
                         [self.loadingIndicator startLoading];
                     }];
                 });
+                
                 return;
             }
             
@@ -490,6 +494,7 @@
                         return;
                     }
                     
+                    [self.profile.suggestedTags removeAllObjects];
                     NSArray *tweets = (NSArray *)result;
                     NSMutableArray *tags = [NSMutableArray array];
                     for (NSDictionary *tweet in tweets) {
@@ -554,6 +559,7 @@
                 return;
             }
             
+            [self.profile.suggestedTags removeAllObjects];
             NSDictionary *linkedInInfo = (NSDictionary *)result;
             if (linkedInInfo[@"industry"]){
                 NSString *industry = linkedInInfo[@"industry"];
