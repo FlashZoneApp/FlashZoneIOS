@@ -14,6 +14,7 @@
 #import "FZSelectedTagView.h"
 #import "FZSearchCell.h"
 #import "FZSelectTwitterViewController.h"
+#import "FZRedditLoginViewController.h"
 
 
 @interface FZPickTagsViewController ()
@@ -591,6 +592,16 @@
             [self showTagsMenu:NO];
             return;
         }
+        
+        
+        FZRedditLoginViewController *redditSignInVc = [[FZRedditLoginViewController alloc] init];
+        UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:redditSignInVc];
+        navCtr.navigationBar.barTintColor = kOrange;
+        navCtr.navigationBar.tintColor = [UIColor whiteColor];
+        [self presentViewController:navCtr animated:YES completion:^{
+            
+        }];
+
         
     }
 
