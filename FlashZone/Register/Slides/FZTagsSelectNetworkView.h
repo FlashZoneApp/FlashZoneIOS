@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) UIButton *btnNext;
 @property (strong, nonatomic) UIButton *btnGetStarted;
+@property (strong, nonatomic) NSMutableArray *socialIconsArray;
 @end

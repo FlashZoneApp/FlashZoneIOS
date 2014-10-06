@@ -11,15 +11,18 @@
 @implementation FZTagsSelectNetworkView
 @synthesize btnNext;
 @synthesize btnGetStarted;
+@synthesize socialIconsArray;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSLog(@"HEIGHT: %.2f", frame.size.height);
+        self.socialIconsArray = [NSMutableArray array];
+        
+//        NSLog(@"HEIGHT: %.2f", frame.size.height);
         BOOL iPhone5 = (frame.size.height > 500);
         NSString *background = (iPhone5) ? @"bg_select_network.png" : @"bg_select_network_480.png";
-        NSLog(@"BACKGROUND: %@", background);
+//        NSLog(@"BACKGROUND: %@", background);
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
         
         
@@ -52,9 +55,11 @@
         for (int i=0; i<icons.count; i++) {
             UIImage *img = [UIImage imageNamed:icons[i]];
             UIButton *btnNetwork = [UIButton buttonWithType:UIButtonTypeCustom];
+            btnNetwork.tag = 1000+i;
             [btnNetwork setBackgroundImage:img forState:UIControlStateNormal];
             btnNetwork.frame = CGRectMake(x, y, img.size.width, img.size.height);
             [self addSubview:btnNetwork];
+            [self.socialIconsArray addObject:btnNetwork];
             x += img.size.width+padding;
         }
 
