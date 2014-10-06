@@ -68,6 +68,10 @@
     self.selectNetworkSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.selectNetworkSlide.btnNext addTarget:self action:@selector(nextSlide) forControlEvents:UIControlEventTouchUpInside];
     [self.selectNetworkSlide.btnGetStarted addTarget:self action:@selector(showTagsMenu) forControlEvents:UIControlEventTouchUpInside];
+    
+    for (UIButton *btn in self.selectNetworkSlide.socialIconsArray)
+        [btn addTarget:self action:@selector(socialNetworkSelected:) forControlEvents:UIControlEventTouchUpInside];
+
     [self.theScrollview addSubview:self.selectNetworkSlide];
 
     
