@@ -539,6 +539,46 @@
             [self showTagsMenu:NO];
             return;
         }
+        
+        
+        [self.loadingIndicator startLoading];
+        [self.socialAccountsMgr requestGooglePlusAccess:@[@"profile"] completion:^(id result, NSError *error){
+            if (error){
+                [self.loadingIndicator stopLoading];
+                NSLog(@"GOOGLE PLUS LOGIN FAILED");
+                return;
+            }
+            
+            GTMOAuth2Authentication *auth = (GTMOAuth2Authentication *)result;
+            
+            [self.profile requestGooglePlusInfo:auth completion:^(id result, NSError *error){
+                if (error)
+                    return;
+                
+                [self.profile.suggestedTags removeAllObjects];
+                GTLPlusPerson *person = (GTLPlusPerson *)result;
+                if (person.occupation){
+                    [self.profile.suggestedTags addObject:@{@"name":person.occupation, @"id":@"-1"}];
+                }
+                
+                if (person.skills){
+                    NSArray *skills = [person.skills componentsSeparatedByString:@","];
+                    for (int i=0; i<skills.count; i++) {
+                        NSString *skill = skills[i];
+                        skill = [skill stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                        [self.profile.suggestedTags addObject:@{@"name":skill, @"id":@"-1"}];
+                    }
+                }
+                
+                self.profile.registrationType = FZRegistrationTypeGoogle;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.loadingIndicator stopLoading];
+                    [self showTagsMenu:NO];
+                });
+                
+            }];
+        }];
+
 
         
     }
