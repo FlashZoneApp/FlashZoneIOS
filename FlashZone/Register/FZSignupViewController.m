@@ -27,10 +27,6 @@
     if (self) {
         self.requestTwitterAccess = NO;
         self.title = @"";
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(showProfileDetailsScreen)
-                                                     name:kShowProfileDetailsNotification
-                                                   object:nil];
         
     }
     return self;
@@ -124,6 +120,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showProfileDetailsScreen)
+                                                 name:kShowProfileDetailsNotification
+                                               object:nil];
+
     if (self.requestTwitterAccess)
         [self.loadingIndicator startLoading];
     
@@ -175,6 +177,7 @@
     
     [self presentViewController:registerNavCtr animated:YES completion:^{
         [self.loadingIndicator stopLoading];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kShowProfileDetailsNotification object:nil];
     }];
 }
 
