@@ -599,7 +599,10 @@
         navCtr.navigationBar.barTintColor = kOrange;
         navCtr.navigationBar.tintColor = [UIColor whiteColor];
         [self presentViewController:navCtr animated:YES completion:^{
-            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(showTagsMenu:)
+                                                         name:kShowProfileDetailsNotification
+                                                       object:nil];
         }];
 
         
