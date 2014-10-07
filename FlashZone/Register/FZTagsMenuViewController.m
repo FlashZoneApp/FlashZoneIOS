@@ -208,7 +208,11 @@
     CGFloat x = 0.0f;
     BOOL nextLine = NO;
     
-    for (int i=0; i<self.profile.suggestedTags.count; i++) {
+    int max = self.profile.suggestedTags.count;
+    if (max > 11)
+        max = 11;
+    
+    for (int i=0; i<max; i++) {
         NSDictionary *tag = self.profile.suggestedTags[i];
         NSString *tagName = tag[@"name"];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
@@ -242,8 +246,6 @@
             nextLine = NO;
         }
     }
-    
-    h = y+100.0f;
     
     if (self.btnShowMore==nil) {
         self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
