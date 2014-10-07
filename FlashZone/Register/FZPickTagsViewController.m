@@ -705,7 +705,16 @@
     
     FZSelectedTagView *cellCopy = [[FZSelectedTagView alloc] initWithFrame:CGRectMake(0.0f, 0.0, self.searchTable.frame.size.width, 44.0f)];
     
-    cellCopy.lblTitle.text = (self.searchResults.count > 0) ? self.searchResults[indexPath.row] : [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+    NSString *selectedTag = (self.searchResults.count > 0) ? self.searchResults[indexPath.row] : [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+    cellCopy.lblTitle.text = selectedTag;
+    
+    if (self.searchResults.count==0)
+        [self.profile.tags addObject:self.exploreTagsSlide.searchField.text];
+    else
+        [self.profile.tags addObject:selectedTag];
+    
+    
+    NSLog(@"CURRENT TAGs: %@", [self.profile.tags description]);
     
     CGPoint center = [self.view convertPoint:cell.center fromView:self.searchTable];
     center.x -= 160.0f;
@@ -724,11 +733,18 @@
                      }
                      completion:^(BOOL finished){
                          if (self.searchResults.count > 0){
-                             [self.searchTable beginUpdates];
                              [self.searchResults removeObjectAtIndex:indexPath.row];
-                             [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                             [self.searchTable endUpdates];
+                             if (self.searchResults.count > 0){
+                                 [self.searchTable beginUpdates];
+                                 [self.searchTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                 [self.searchTable endUpdates];
+                             }
+                             else{
+                                 self.exploreTagsSlide.searchField.text = @"";
+                             }
+                             
                              [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
+
                          }
                          else{
                              self.exploreTagsSlide.searchField.text = @"";
