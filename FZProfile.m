@@ -379,7 +379,7 @@
 
 - (NSDictionary *)parametersDictionary
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"fullname":self.fullname, @"username":self.username, @"email":self.email, @"bio":self.bio, @"gender":self.gender, @"location":self.location, @"facebookId":self.facebookId, @"facebookName":self.facebookName, @"twitterId":self.twitterId, @"twitterHandle":self.twitterHandle, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude], @"linkedinId":self.linkedinId}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id":self.uniqueId, @"fullname":self.fullname, @"username":self.username, @"email":self.email, @"bio":self.bio, @"gender":self.gender, @"location":self.location, @"facebookId":self.facebookId, @"facebookName":self.facebookName, @"twitterId":self.twitterId, @"twitterHandle":self.twitterHandle, @"latitude":[NSString stringWithFormat:@"%.4f", self.latitude], @"longitude":[NSString stringWithFormat:@"%.4f", self.longitude], @"linkedinId":self.linkedinId, @"tags":self.tags}];
     
     if (self.password)
         params[@"password"] = self.password;
