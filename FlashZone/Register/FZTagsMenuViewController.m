@@ -244,10 +244,6 @@
     }
     
     h = y+100.0f;
-//    self.tagsScrollview.contentSize = CGSizeMake(0, h);
-    
-    if (h+44.0f < frame.size.height)
-        h = frame.size.height;
     
     if (self.btnShowMore==nil) {
         self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -267,9 +263,7 @@
         [self.view addSubview:self.btnShowMore];
     }
     
-    
-    self.btnShowMore.frame = CGRectMake(0.0f, h-44.0f, frame.size.width, 44.0f);
-    
+    self.btnShowMore.frame = CGRectMake(0.0f, frame.size.height-44.0f, frame.size.width, 44.0f);
     [self.view bringSubviewToFront:self.cover];
 }
 
