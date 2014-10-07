@@ -289,9 +289,9 @@
     btn.backgroundColor = (btn.selected) ? kOrange : [UIColor whiteColor];
     
     if (btn.selected)
-        [self.profile.tags addObject:flashTag];
+        [self.profile.tags addObject:flashTag[@"name"]];
     else
-        [self.profile.tags removeObject:flashTag];
+        [self.profile.tags removeObject:flashTag[@"name"]];
 }
 
 - (void)loadMoreTags:(UIButton *)btn
