@@ -783,6 +783,27 @@
 {
     self.searchTable.alpha = 0.90f;
     [self.searchTable reloadData];
+    
+    
+    CGRect frame = self.searchTable.frame;
+    frame.origin.y = self.view.frame.size.height;
+    self.searchTable.frame = frame;
+    
+    
+    [UIView animateWithDuration:0.75f
+                          delay:0
+         usingSpringWithDamping:0.75f
+          initialSpringVelocity:0.0f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         CGRect frame = self.searchTable.frame;
+                         frame.origin.y = (self.view.frame.size.height > 500)? 104.0f : 94.0f;
+                         self.searchTable.frame = frame;
+
+                         
+                     }
+                     completion:NULL];
+    
     return YES;
 }
 
