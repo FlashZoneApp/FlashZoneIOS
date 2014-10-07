@@ -674,16 +674,19 @@
     cell.textLabel.alpha = 1.0f;
 
     if (self.searchResults.count == 0){
-        if (self.exploreTagsSlide.searchField.text.length > 0)
+        if (self.exploreTagsSlide.searchField.text.length > 0){
+            cell.btnPlus.alpha = 1.0f;
             cell.textLabel.text = [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
-        else
+        }
+        else{
+            cell.btnPlus.alpha = 0.0f;
             cell.textLabel.text = @"";
+        }
         
         return cell;
     }
     
-    UIView *iconPlus = [cell.contentView viewWithTag:1000];
-    iconPlus.alpha = 1.0f;
+    cell.btnPlus.alpha = 1.0f;
     cell.btnPlus.tag = 1000+indexPath.row;
     cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
     return cell;
@@ -763,6 +766,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     self.searchTable.alpha = 0.90f;
+    [self.searchTable reloadData];
     return YES;
 }
 
