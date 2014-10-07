@@ -188,8 +188,8 @@
                     continue;
                 
                 NSLog(@"SUBREDDIT = %@", title);
-                if([self.profile.tags containsObject:title]==NO)
-                    [self.profile.tags addObject:@{@"name":title, @"id":@"-1"}];
+                if([self.profile.suggestedTags containsObject:title]==NO)
+                    [self.profile.suggestedTags addObject:@{@"name":title, @"id":@"-1"}];
                 
             }
         }
