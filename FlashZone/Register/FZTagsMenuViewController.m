@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) UILabel *lblConfirmation;
 @property (copy, nonatomic) NSString *category;
+@property (nonatomic) int tagIndex;
 @end
 
 @implementation FZTagsMenuViewController
@@ -31,6 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.useSocialNetwork = YES;
+        self.tagIndex = 0;
         
     }
     return self;
@@ -208,11 +210,14 @@
     CGFloat x = 0.0f;
     BOOL nextLine = NO;
     
-    int max = self.profile.suggestedTags.count;
-    if (max > 11)
-        max = 11;
+    int max = self.tagIndex+10;
+    BOOL lastSet = NO;
+    if (max > self.profile.suggestedTags.count){
+        max = self.profile.suggestedTags.count;
+        lastSet = YES;
+    }
     
-    for (int i=0; i<max; i++) {
+    for (int i=self.tagIndex; i<max; i++) {
         NSDictionary *tag = self.profile.suggestedTags[i];
         NSString *tagName = tag[@"name"];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
@@ -245,14 +250,19 @@
             y += h+10.0f;
             nextLine = NO;
         }
+        
+        self.tagIndex++;
     }
+    
     
     if (self.btnShowMore==nil) {
         self.btnShowMore = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.btnShowMore.frame = CGRectMake(0.0f, frame.size.height-44.0f, frame.size.width, 44.0f);
         self.btnShowMore.backgroundColor = [UIColor clearColor];
         self.btnShowMore.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [self.btnShowMore setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btnShowMore setTitle:@"Show more" forState:UIControlStateNormal];
+        [self.btnShowMore addTarget:self action:@selector(loadMoreTags:) forControlEvents:UIControlEventTouchUpInside];
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 1.0f)];
         line.backgroundColor = [UIColor whiteColor];
         [self.btnShowMore addSubview:line];
@@ -265,7 +275,9 @@
         [self.view addSubview:self.btnShowMore];
     }
     
-    self.btnShowMore.frame = CGRectMake(0.0f, frame.size.height-44.0f, frame.size.width, 44.0f);
+    if (lastSet)
+        self.btnShowMore.alpha = 0.0f;
+    
     [self.view bringSubviewToFront:self.cover];
 }
 
@@ -280,6 +292,17 @@
         [self.profile.tags addObject:flashTag];
     else
         [self.profile.tags removeObject:flashTag];
+}
+
+- (void)loadMoreTags:(UIButton *)btn
+{
+    NSLog(@"loadMoreTags: ");
+    for (FZButtonTag *tag in self.view.subviews) {
+        if (tag.tag >= 1000)
+            [tag removeFromSuperview];
+    }
+    
+    [self layoutTags];
 }
 
 - (void)exit
