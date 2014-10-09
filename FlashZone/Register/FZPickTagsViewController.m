@@ -174,7 +174,12 @@
                     
                     [list addObject:interest];
                     self.categorizedTags[category] = list;
-                    
+                }
+                
+                for (NSString *categoryName in self.categorizedTags.allKeys) {
+                    NSMutableArray *list = self.categorizedTags[categoryName];
+                    [list addObject:@{@"name":categoryName, @"id":@"-1", @"category":categoryName}];
+                    self.categorizedTags[categoryName] = list;
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
