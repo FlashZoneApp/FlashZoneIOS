@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) NSMutableArray *allInterests; // combination of categories and subcategories
 @property (strong, nonatomic) UITableView *searchTable;
+@property (strong, nonatomic) NSMutableDictionary *categorizedTags;
 @end
 
 @implementation FZPickTagsViewController
@@ -38,6 +39,7 @@
         self.categories = nil;
         self.searchResults = [NSMutableArray array];
         self.allInterests = [NSMutableArray array];
+        self.categorizedTags = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -165,10 +167,18 @@
                     NSString *category = [interest[@"category"] lowercaseString];
                     if ([self.allInterests containsObject:category]==NO)
                         [self.allInterests addObject:category];
+                    
+                    NSMutableArray *list = self.categorizedTags[category];
+                    if (list==nil)
+                        list = [NSMutableArray array];
+                    
+                    [list addObject:interest];
+                    self.categorizedTags[category] = list;
+                    
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"ALL INTERESTS: %@", [self.allInterests description]);
+                    NSLog(@"CATEGORIZED TAGS: %@", [self.categorizedTags description]);
                 });
             }
             else{
