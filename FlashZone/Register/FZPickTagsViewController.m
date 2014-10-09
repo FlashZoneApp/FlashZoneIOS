@@ -83,6 +83,7 @@
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, frame.size.height-30.0f, frame.size.width, 24.0f)];
     self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.pageControl.numberOfPages = 3;
+    self.pageControl.enabled = NO;
     [view addSubview:self.pageControl];
     
     self.view = view;
