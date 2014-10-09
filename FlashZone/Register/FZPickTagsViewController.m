@@ -443,6 +443,7 @@
                         }
                     }
                     
+                    self.profile.registrationType = FZRegistrationTypeFacebook;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.loadingIndicator stopLoading];
                         [self showTagsMenu:NO];
@@ -523,6 +524,7 @@
                     for (NSString *tag in tags)
                         [self.profile.suggestedTags addObject:@{@"name":tag, @"id":@"-1"}];
                     
+                    self.profile.registrationType = FZRegistrationTypeTwitter;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self showTagsMenu];
                     });
@@ -622,6 +624,7 @@
                 }
             }
             
+            self.profile.registrationType = FZRegistrationTypeLinkedIn;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showTagsMenu:NO];
             });
@@ -643,6 +646,7 @@
         navCtr.navigationBar.barTintColor = kOrange;
         navCtr.navigationBar.tintColor = [UIColor whiteColor];
         [self presentViewController:navCtr animated:YES completion:^{
+            self.profile.registrationType = FZRegistrationTypeReddit;
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(showTagsMenu:)
                                                          name:kShowProfileDetailsNotification
@@ -709,7 +713,7 @@
         [self.profile.tags addObject:selectedTag];
     
     
-    NSLog(@"CURRENT TAGs: %@", [self.profile.tags description]);
+//    NSLog(@"CURRENT TAGs: %@", [self.profile.tags description]);
     
     CGPoint center = [self.view convertPoint:cell.center fromView:self.searchTable];
     center.x -= 160.0f;
@@ -745,8 +749,6 @@
                              self.exploreTagsSlide.searchField.text = @"";
                              [self.searchTable reloadData];
                          }
-                         
-                         
                      }];
     
 }
@@ -852,14 +854,9 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-
 //    NSLog(@"scrollViewDidEndDecelerating: %.2f", scrollView.contentOffset.x);
-    
-    if ([scrollView isEqual:self.theScrollview]==NO){
+    if ([scrollView isEqual:self.theScrollview]==NO)
         return;
-    }
-    
-
     
     int page = (int)(scrollView.contentOffset.x/scrollView.frame.size.width);
     self.pageControl.currentPage = page;
