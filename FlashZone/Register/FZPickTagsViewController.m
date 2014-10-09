@@ -119,6 +119,8 @@
                 self.exploreTagsSlide.autoresizingMask = UIViewAutoresizingFlexibleHeight;
                 self.exploreTagsSlide.tagsScrollview.delegate = self;
                 
+                [self.exploreTagsSlide.btnGetStarted addTarget:self action:@selector(completeRegistration:) forControlEvents:UIControlEventTouchUpInside];
+                 
                 for (UIButton *btn in self.exploreTagsSlide.buttonsArray)
                     [btn addTarget:self action:@selector(categorySelected:) forControlEvents:UIControlEventTouchUpInside];
                 
@@ -677,7 +679,12 @@
 
         
     }
+}
 
+- (void)completeRegistration:(UIButton *)btn
+{
+    NSLog(@"completeRegistration: ");
+    
 }
 
 
