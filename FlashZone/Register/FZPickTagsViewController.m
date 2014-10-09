@@ -350,6 +350,10 @@
     NSDictionary *category = self.categories[index];
     NSLog(@"categorySelected: %@", category[@"name"]);
     
+    NSMutableArray *list = self.categorizedTags[[category[@"name"] lowercaseString]];
+    if (list)
+        self.profile.suggestedTags = list;
+    
     btn.titleLabel.alpha = 0.0f;
     UIView *snapshot = [btn snapshotViewAfterScreenUpdates:YES];
     snapshot.center = [self.exploreTagsSlide.tagsScrollview convertPoint:btn.center toView:self.view];
