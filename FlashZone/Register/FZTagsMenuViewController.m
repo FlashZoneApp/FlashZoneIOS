@@ -208,50 +208,50 @@
     CGFloat h = 36.0f;
     CGFloat y = 94.0f;
     CGFloat x = 0.0f;
+    
     BOOL nextLine = NO;
-    
-    int max = self.tagIndex+10;
     BOOL lastSet = NO;
-    if (max > self.profile.suggestedTags.count){
-        max = self.profile.suggestedTags.count;
-        lastSet = YES;
-    }
+    int lines = 0;
     
-    for (int i=self.tagIndex; i<max; i++) {
-        NSDictionary *tag = self.profile.suggestedTags[i];
+    int limit = (frame.size.height > 500.0f) ? 9 : 8;
+    while (lines < limit) {
+        NSDictionary *tag = self.profile.suggestedTags[self.tagIndex];
         NSString *tagName = tag[@"name"];
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
-        btnTag.tag = 1000+i;
+        btnTag.tag = 1000+self.tagIndex;
         [btnTag setTitle:[NSString stringWithFormat:@"  #%@", tagName] forState:UIControlStateNormal];
         [btnTag addTarget:self action:@selector(pickTag:) forControlEvents:UIControlEventTouchUpInside];
-        
+
         CGRect boudingRect = [tagName boundingRectWithSize:CGSizeMake(160.0f, 250.0f)
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                 attributes:@{NSFontAttributeName:btnTag.titleLabel.font}
                                                    context:NULL];
-        
+
         if (x==0.0)
             x = 10+arc4random()%130;
-        
+
         btnTag.frame = CGRectMake(x, y, boudingRect.size.width+44.0f, h);
         btnTag.layer.cornerRadius = 0.5f*h;
         [self.view addSubview:btnTag];
-        NSLog(@"%@ == %.2f", tag, btnTag.center.x);
-        
-        if (btnTag.center.x > 140.0f){
-            nextLine = YES;
+
+        nextLine = (btnTag.center.x > 140.0f);
+        if (nextLine){
             x = 0.0f;
+            y += h+10.0f;
+            nextLine = NO;
+            lines++;
         }
         else{
             x = btnTag.frame.origin.x+btnTag.frame.size.width+10.0f;
         }
         
-        if (nextLine){
-            y += h+10.0f;
-            nextLine = NO;
-        }
-        
         self.tagIndex++;
+        
+        if (self.tagIndex >= self.profile.suggestedTags.count){
+            lines = limit;
+            lastSet = YES;
+            break;
+        }
     }
     
     
@@ -296,7 +296,6 @@
 
 - (void)loadMoreTags:(UIButton *)btn
 {
-    NSLog(@"loadMoreTags: ");
     for (FZButtonTag *tag in self.view.subviews) {
         if (tag.tag >= 1000)
             [tag removeFromSuperview];
