@@ -168,7 +168,7 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"ALL INTEREST: %@", [self.allInterests description]);
+                    NSLog(@"ALL INTERESTS: %@", [self.allInterests description]);
                 });
             }
             else{
@@ -336,7 +336,9 @@
 
 - (void)categorySelected:(UIButton *)btn
 {
-    NSLog(@"categorySelected: %d", (int)btn.tag);
+    int index = (int)btn.tag-1000;
+    NSDictionary *category = self.categories[index];
+    NSLog(@"categorySelected: %@", category[@"name"]);
     
     btn.titleLabel.alpha = 0.0f;
     UIView *snapshot = [btn snapshotViewAfterScreenUpdates:YES];
