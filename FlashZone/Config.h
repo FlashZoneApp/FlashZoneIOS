@@ -27,12 +27,14 @@
 
 
 //Colors:
-#define kOrange [UIColor colorWithRed:255.0f/255.0f green:173.0f/255.0f blue:15.0f/255.0f alpha:1.0f]
-#define kFacebookBlue   @"#3b5998"
-#define kTwitterBlue    @"#55acee"
-#define kLinkedinBlue   @"#007bb5"
+#define kOrange         [UIColor colorWithRed:255.0f/255.0f green:173.0f/255.0f blue:15.0f/255.0f alpha:1.0f]
+#define kFacebookBlue   @"#277dbd"
+#define kTwitterBlue    @"#3fc0ec"
+#define kLinkedinBlue   @"#0f83b9"
 #define kGoogleRed      @"#dd4b39"
-#define kRedditRed      @"#ff4500"
+#define kRedditRed      @"#ff500f"
+
+//update the background to be solid color hexcode. (no more transparency / translucency.  hexcodes as follows: fb: #277dbd  twitter: #3fc0ec  google+: #3fc0ec   linkedin: #0f83b9 reddit: #ff500f       email: #9d9d9d
 
 
 #define kShowProfileDetailsNotification @"ShowProfileDetails"
