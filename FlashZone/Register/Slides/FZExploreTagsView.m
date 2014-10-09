@@ -18,6 +18,7 @@
 @synthesize buttonsArray;
 @synthesize tagsScrollview;
 @synthesize socialIconsArray;
+@synthesize btnGetStarted;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -82,14 +83,14 @@
         
         y += (iPhone5) ? 74.0f : 54.0f;
         CGFloat width = 0.6f*frame.size.width;
-        UIButton *btnGetStarted = [UIButton buttonWithType:UIButtonTypeCustom];
-        btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), y, width, 44.0f);
-        btnGetStarted.backgroundColor = [UIColor grayColor];
-        btnGetStarted.layer.cornerRadius = 4.0f;
-        btnGetStarted.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        [btnGetStarted setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [btnGetStarted setTitle:@"Okay I'm ready" forState:UIControlStateNormal];
-        [self addSubview:btnGetStarted];
+        self.btnGetStarted = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), y, width, 44.0f);
+        self.btnGetStarted.backgroundColor = [UIColor grayColor];
+        self.btnGetStarted.layer.cornerRadius = 4.0f;
+        self.btnGetStarted.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+        [self.btnGetStarted setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.btnGetStarted setTitle:@"Okay I'm ready" forState:UIControlStateNormal];
+        [self addSubview:self.btnGetStarted];
         
     }
     return self;
