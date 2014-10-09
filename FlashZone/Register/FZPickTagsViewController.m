@@ -666,10 +666,9 @@
 {
     static NSString *cellId = @"cellId";
     FZSearchCell *cell = (FZSearchCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell==nil){
+    if (cell==nil)
         cell = [[FZSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        [cell.btnPlus addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    
     
     cell.textLabel.alpha = 1.0f;
 
@@ -692,12 +691,8 @@
     return cell;
 }
 
-- (void)selectTag:(UIButton *)btn
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"selectTag: %d", btn.tag);
-    int row = btn.tag-1000;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    
     UITableViewCell *cell = [self.searchTable cellForRowAtIndexPath:indexPath];
     cell.textLabel.alpha = 0.0f;
     UIView *iconPlus = [cell.contentView viewWithTag:1000];
@@ -744,17 +739,18 @@
                              }
                              
                              [self.searchTable reloadData]; // have to reload here in order to reset tag values of cell buttons
-
+                             
                          }
                          else{
                              self.exploreTagsSlide.searchField.text = @"";
                              [self.searchTable reloadData];
                          }
-
+                         
                          
                      }];
     
 }
+
 
 - (void)updateSearchResults
 {
