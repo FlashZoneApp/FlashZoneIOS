@@ -180,7 +180,7 @@
                 
                 for (NSString *categoryName in self.categorizedTags.allKeys) {
                     NSMutableArray *list = self.categorizedTags[categoryName];
-                    [list addObject:@{@"name":categoryName, @"id":@"-1", @"category":categoryName}];
+                    [list insertObject:@{@"name":categoryName, @"id":@"-1", @"category":categoryName} atIndex:0];
                     self.categorizedTags[categoryName] = list;
                 }
                 
