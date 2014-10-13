@@ -214,7 +214,7 @@
     BOOL lastSet = NO;
     int lines = 0;
     
-    int limit = (frame.size.height > 500.0f) ? 9 : 8;
+    int limit = (frame.size.height > 500.0f) ? 9 : 7;
     while (lines < limit) {
         NSDictionary *tag = self.profile.suggestedTags[self.tagIndex];
         NSString *tagName = tag[@"name"];
