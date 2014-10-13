@@ -218,6 +218,9 @@
     while (lines < limit) {
         NSDictionary *tag = self.profile.suggestedTags[self.tagIndex];
         NSString *tagName = tag[@"name"];
+        tagName = [tagName capitalizedString];
+        tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];
         btnTag.tag = 1000+self.tagIndex;
         [btnTag setTitle:[NSString stringWithFormat:@"  #%@", tagName] forState:UIControlStateNormal];
