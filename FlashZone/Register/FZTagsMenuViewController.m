@@ -219,6 +219,8 @@
         NSDictionary *tag = self.profile.suggestedTags[self.tagIndex];
         NSString *tagName = tag[@"name"];
         tagName = [tagName capitalizedString];
+        tagName = [tagName stringByReplacingOccurrencesOfString:@"The" withString:@"the"];
+        tagName = [tagName stringByReplacingOccurrencesOfString:@"Or" withString:@"or"];
         tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         FZButtonTag *btnTag = [FZButtonTag buttonWithType:UIButtonTypeCustom];

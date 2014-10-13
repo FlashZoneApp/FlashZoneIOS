@@ -708,6 +708,8 @@
     if (self.searchResults.count == 0){
         if (self.exploreTagsSlide.searchField.text.length > 0){
             NSString *tagName = [self.exploreTagsSlide.searchField.text capitalizedString];
+            tagName = [tagName stringByReplacingOccurrencesOfString:@"The" withString:@"the"];
+            tagName = [tagName stringByReplacingOccurrencesOfString:@"Or" withString:@"or"];
             tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
 
             cell.btnPlus.alpha = 1.0f;
@@ -727,6 +729,8 @@
     
     NSString *tagName = self.searchResults[indexPath.row];
     tagName = [tagName capitalizedString];
+    tagName = [tagName stringByReplacingOccurrencesOfString:@"The" withString:@"the"];
+    tagName = [tagName stringByReplacingOccurrencesOfString:@"Or" withString:@"or"];
     tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
 
 //    cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
