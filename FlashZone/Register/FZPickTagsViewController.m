@@ -707,8 +707,12 @@
 
     if (self.searchResults.count == 0){
         if (self.exploreTagsSlide.searchField.text.length > 0){
+            NSString *tagName = [self.exploreTagsSlide.searchField.text capitalizedString];
+            tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
+
             cell.btnPlus.alpha = 1.0f;
-            cell.textLabel.text = [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+//            cell.textLabel.text = [NSString stringWithFormat:@"Add \"%@\"", self.exploreTagsSlide.searchField.text];
+            cell.textLabel.text = [NSString stringWithFormat:@"Add \"%@\"", tagName];
         }
         else{
             cell.btnPlus.alpha = 0.0f;
@@ -720,7 +724,13 @@
     
     cell.btnPlus.alpha = 1.0f;
     cell.btnPlus.tag = 1000+indexPath.row;
-    cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
+    
+    NSString *tagName = self.searchResults[indexPath.row];
+    tagName = [tagName capitalizedString];
+    tagName = [tagName stringByReplacingOccurrencesOfString:@" " withString:@""];
+
+//    cell.textLabel.text = [NSString stringWithFormat:@"#%@", self.searchResults[indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"#%@", tagName];
     return cell;
 }
 
