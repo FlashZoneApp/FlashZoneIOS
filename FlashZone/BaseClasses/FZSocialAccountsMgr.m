@@ -114,7 +114,7 @@
 - (void)fetchRecentTweets:(ACAccount *)twitterAccount completionBlock:(FZSocialAccountsMgrCompletionBlock)completionBlock
 {
     NSString *url = [kTwitterAPI stringByAppendingString:@"statuses/user_timeline.json"];
-    SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:url] parameters:@{@"screen_name":twitterAccount.username}];
+    SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:url] parameters:@{@"screen_name":twitterAccount.username, @"count":@"200"}];
     twitterInfoRequest.account = twitterAccount;
     
     [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
