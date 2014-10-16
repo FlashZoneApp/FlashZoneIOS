@@ -103,6 +103,12 @@
 		5C9BC91319875EBA007BAD1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC91219875EBA007BAD1E /* SystemConfiguration.framework */; };
 		5CB4480919F06C000004A4EE /* bg_select_network_480@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */; };
 		5CB4480A19F06C000004A4EE /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480819F06C000004A4EE /* bg_select_network@2x.png */; };
+		5CB4481119F06CD60004A4EE /* half-phone-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */; };
+		5CB4481219F06CD60004A4EE /* halfiphone-fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */; };
+		5CB4481319F06CD60004A4EE /* halfiphone-google@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */; };
+		5CB4481419F06CD60004A4EE /* halfiphone-linkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480E19F06CD60004A4EE /* halfiphone-linkedin@2x.png */; };
+		5CB4481519F06CD60004A4EE /* halfiphone-reddit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480F19F06CD60004A4EE /* halfiphone-reddit@2x.png */; };
+		5CB4481619F06CD60004A4EE /* halfiphone-twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4481019F06CD60004A4EE /* halfiphone-twitter@2x.png */; };
 		5CCA38E719C24B45001904D2 /* bg_explore_tags_480@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA38E619C24B45001904D2 /* bg_explore_tags_480@2x.png */; };
 		5CE018091995E64600D4D67C /* FZSocialAccountsMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */; };
 		5CEA047E198AFEBA00BE0457 /* FZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA047D198AFEBA00BE0457 /* FZLoginViewController.m */; };
@@ -264,6 +270,12 @@
 		5C9BC91219875EBA007BAD1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network_480@2x.png"; sourceTree = "<group>"; };
 		5CB4480819F06C000004A4EE /* bg_select_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network@2x.png"; sourceTree = "<group>"; };
+		5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-phone-email@2x.png"; sourceTree = "<group>"; };
+		5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-fb@2x.png"; sourceTree = "<group>"; };
+		5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-google@2x.png"; sourceTree = "<group>"; };
+		5CB4480E19F06CD60004A4EE /* halfiphone-linkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-linkedin@2x.png"; sourceTree = "<group>"; };
+		5CB4480F19F06CD60004A4EE /* halfiphone-reddit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-reddit@2x.png"; sourceTree = "<group>"; };
+		5CB4481019F06CD60004A4EE /* halfiphone-twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-twitter@2x.png"; sourceTree = "<group>"; };
 		5CCA38E619C24B45001904D2 /* bg_explore_tags_480@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_explore_tags_480@2x.png"; sourceTree = "<group>"; };
 		5CE018071995E64600D4D67C /* FZSocialAccountsMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSocialAccountsMgr.h; sourceTree = "<group>"; };
 		5CE018081995E64600D4D67C /* FZSocialAccountsMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSocialAccountsMgr.m; sourceTree = "<group>"; };
@@ -348,6 +360,12 @@
 				5C7A706B19B24C0900CDB4F6 /* profileIcon@2x.png */,
 				5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */,
 				5CB4480819F06C000004A4EE /* bg_select_network@2x.png */,
+				5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */,
+				5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */,
+				5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */,
+				5CB4480E19F06CD60004A4EE /* halfiphone-linkedin@2x.png */,
+				5CB4480F19F06CD60004A4EE /* halfiphone-reddit@2x.png */,
+				5CB4481019F06CD60004A4EE /* halfiphone-twitter@2x.png */,
 				5C7A706719B2460100CDB4F6 /* bg_select_tags1@2x.png */,
 				5C4A33ED19B28F6B001D5502 /* bg_explore_tags@2x.png */,
 				5CCA38E619C24B45001904D2 /* bg_explore_tags_480@2x.png */,
@@ -720,13 +738,17 @@
 				5C133E7A19B9228300FB4AEC /* twt-rndsquare@2x.png in Resources */,
 				5C30C85419CA274E00871A4A /* iconFlashZone@2x.png in Resources */,
 				5C133E7119B9228300FB4AEC /* fb-active-rndsquare@2x.png in Resources */,
+				5CB4481319F06CD60004A4EE /* halfiphone-google@2x.png in Resources */,
 				5C04D62319CC8EE3009060A9 /* iconReload@2x.png in Resources */,
 				5C133E7419B9228300FB4AEC /* g-rndsquare@2x.png in Resources */,
 				5C7A707419B24ED300CDB4F6 /* user-popup02@2x.png in Resources */,
 				5C35AD7E199A824600D99CAF /* 01-refresh.png in Resources */,
 				5C133E7519B9228300FB4AEC /* linkd-activestate-rndsquare@2x.png in Resources */,
 				5C1BCAA019CA0B5500926CD3 /* iconGoogle@2x.png in Resources */,
+				5CB4481219F06CD60004A4EE /* halfiphone-fb@2x.png in Resources */,
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
+				5CB4481519F06CD60004A4EE /* halfiphone-reddit@2x.png in Resources */,
+				5CB4481419F06CD60004A4EE /* halfiphone-linkedin@2x.png in Resources */,
 				5C064D3319D49EAF0020315C /* iconPlus18@2x.png in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
 				5C116C2B19898FB5004AFC22 /* btnSelected@2x.png in Resources */,
@@ -736,10 +758,12 @@
 				5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */,
 				5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */,
 				5C1BCA9F19CA0B5500926CD3 /* iconFacebook@2x.png in Resources */,
+				5CB4481119F06CD60004A4EE /* half-phone-email@2x.png in Resources */,
 				5C4685EE19C94E3C00F22683 /* photoPlaceholder@2x.png in Resources */,
 				5C7A706819B2460100CDB4F6 /* bg_select_tags1@2x.png in Resources */,
 				5C1BCAA319CA0B5500926CD3 /* iconTwitter@2x.png in Resources */,
 				5CCA38E719C24B45001904D2 /* bg_explore_tags_480@2x.png in Resources */,
+				5CB4481619F06CD60004A4EE /* halfiphone-twitter@2x.png in Resources */,
 				5C3338841997FD1800B5E58E /* atSign@2x.png in Resources */,
 				5C58D9CB19BF71A700E070E4 /* iconPlus@2x.png in Resources */,
 				5C064D3219D49EAF0020315C /* iconCheckmark45@2x.png in Resources */,
