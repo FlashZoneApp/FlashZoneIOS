@@ -10,6 +10,7 @@
 
 @interface FZTagsSelectNetworkView : UIView
 
+@property (strong, nonatomic) UIView *halfPhoneImage;
 @property (strong, nonatomic) UIButton *btnNext;
 @property (strong, nonatomic) UIButton *btnGetStarted;
 @property (strong, nonatomic) NSMutableArray *socialIconsArray;

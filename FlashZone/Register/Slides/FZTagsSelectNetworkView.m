@@ -12,6 +12,7 @@
 @synthesize btnNext;
 @synthesize btnGetStarted;
 @synthesize socialIconsArray;
+@synthesize halfPhoneImage;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,11 +20,27 @@
     if (self) {
         self.socialIconsArray = [NSMutableArray array];
         
-//        NSLog(@"HEIGHT: %.2f", frame.size.height);
         BOOL iPhone5 = (frame.size.height > 500);
-        NSString *background = (iPhone5) ? @"bg_select_network.png" : @"bg_select_network_480.png";
-//        NSLog(@"BACKGROUND: %@", background);
+        
+        NSString *background = nil;
+        UIImage *imgHalfPhone = [UIImage imageNamed:@"half-phone-email.png"];
+        CGFloat h = imgHalfPhone.size.height;
+        if (iPhone5){
+            background = @"bg_select_network.png";
+            h = imgHalfPhone.size.height;
+        }
+        else{
+            background = @"bg_select_network_480.png";
+            h = imgHalfPhone.size.height-83.0f;
+        }
+        
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
+        
+        self.halfPhoneImage = [[UIView alloc] initWithFrame:CGRectMake(0, 20.0f, imgHalfPhone.size.width, h)];
+        self.halfPhoneImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        self.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:imgHalfPhone];
+        self.halfPhoneImage.center = CGPointMake(0.50f*frame.size.width-24.0f, self.halfPhoneImage.center.y);
+        [self addSubview:self.halfPhoneImage];
         
         
         self.btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
