@@ -11,6 +11,8 @@
 		5C051F0819D47E8700DDF04A /* FZSelectedTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */; };
 		5C064D3219D49EAF0020315C /* iconCheckmark45@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C064D3019D49EAF0020315C /* iconCheckmark45@2x.png */; };
 		5C064D3319D49EAF0020315C /* iconPlus18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C064D3119D49EAF0020315C /* iconPlus18@2x.png */; };
+		5C071D7319F089480088F7EB /* bg_select_network_480@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C071D7219F089480088F7EB /* bg_select_network_480@2x.png */; };
+		5C071D7519F08A800088F7EB /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C071D7419F08A800088F7EB /* bg_select_network@2x.png */; };
 		5C0A99E419A25949002A4EF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E319A25949002A4EF9 /* AddressBook.framework */; };
 		5C0A99E619A2594E002A4EF9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */; };
 		5C0A99E819A2595D002A4EF9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */; };
@@ -101,8 +103,6 @@
 		5C9BC91019875EA8007BAD1E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BC90419875EA8007BAD1E /* Reachability.m */; };
 		5C9BC91119875EA8007BAD1E /* SignalCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BC90619875EA8007BAD1E /* SignalCheck.m */; };
 		5C9BC91319875EBA007BAD1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9BC91219875EBA007BAD1E /* SystemConfiguration.framework */; };
-		5CB4480919F06C000004A4EE /* bg_select_network_480@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */; };
-		5CB4480A19F06C000004A4EE /* bg_select_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480819F06C000004A4EE /* bg_select_network@2x.png */; };
 		5CB4481119F06CD60004A4EE /* half-phone-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */; };
 		5CB4481219F06CD60004A4EE /* halfiphone-fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */; };
 		5CB4481319F06CD60004A4EE /* halfiphone-google@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */; };
@@ -140,6 +140,8 @@
 		5C051F0719D47E8700DDF04A /* FZSelectedTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZSelectedTagView.m; sourceTree = "<group>"; };
 		5C064D3019D49EAF0020315C /* iconCheckmark45@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCheckmark45@2x.png"; sourceTree = "<group>"; };
 		5C064D3119D49EAF0020315C /* iconPlus18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPlus18@2x.png"; sourceTree = "<group>"; };
+		5C071D7219F089480088F7EB /* bg_select_network_480@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network_480@2x.png"; sourceTree = "<group>"; };
+		5C071D7419F08A800088F7EB /* bg_select_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network@2x.png"; sourceTree = "<group>"; };
 		5C0A99E319A25949002A4EF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5C0A99E519A2594E002A4EF9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C0A99E719A2595D002A4EF9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -268,8 +270,6 @@
 		5C9BC90519875EA8007BAD1E /* SignalCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalCheck.h; sourceTree = "<group>"; };
 		5C9BC90619875EA8007BAD1E /* SignalCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignalCheck.m; sourceTree = "<group>"; };
 		5C9BC91219875EBA007BAD1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network_480@2x.png"; sourceTree = "<group>"; };
-		5CB4480819F06C000004A4EE /* bg_select_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_select_network@2x.png"; sourceTree = "<group>"; };
 		5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-phone-email@2x.png"; sourceTree = "<group>"; };
 		5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-fb@2x.png"; sourceTree = "<group>"; };
 		5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfiphone-google@2x.png"; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 				5C7A707119B24ED300CDB4F6 /* user-popup01@2x.png */,
 				5C7A707219B24ED300CDB4F6 /* user-popup02@2x.png */,
 				5C7A706B19B24C0900CDB4F6 /* profileIcon@2x.png */,
-				5CB4480719F06C000004A4EE /* bg_select_network_480@2x.png */,
-				5CB4480819F06C000004A4EE /* bg_select_network@2x.png */,
+				5C071D7219F089480088F7EB /* bg_select_network_480@2x.png */,
+				5C071D7419F08A800088F7EB /* bg_select_network@2x.png */,
 				5CB4480B19F06CD60004A4EE /* half-phone-email@2x.png */,
 				5CB4480C19F06CD60004A4EE /* halfiphone-fb@2x.png */,
 				5CB4480D19F06CD60004A4EE /* halfiphone-google@2x.png */,
@@ -732,7 +732,6 @@
 				5C7A707319B24ED300CDB4F6 /* user-popup01@2x.png in Resources */,
 				5C116C2719898B8C004AFC22 /* btnUnselected@2x.png in Resources */,
 				5C4685E919C93E9E00F22683 /* backArrow@2x.png in Resources */,
-				5CB4480A19F06C000004A4EE /* bg_select_network@2x.png in Resources */,
 				5C4A33EC19B28F30001D5502 /* bgSearchBar@2x.png in Resources */,
 				5C133E7319B9228300FB4AEC /* g-activestate-rndsquare@2x.png in Resources */,
 				5C133E7A19B9228300FB4AEC /* twt-rndsquare@2x.png in Resources */,
@@ -748,6 +747,7 @@
 				5CB4481219F06CD60004A4EE /* halfiphone-fb@2x.png in Resources */,
 				5C9BC8B91987595D007BAD1E /* InfoPlist.strings in Resources */,
 				5CB4481519F06CD60004A4EE /* halfiphone-reddit@2x.png in Resources */,
+				5C071D7519F08A800088F7EB /* bg_select_network@2x.png in Resources */,
 				5CB4481419F06CD60004A4EE /* halfiphone-linkedin@2x.png in Resources */,
 				5C064D3319D49EAF0020315C /* iconPlus18@2x.png in Resources */,
 				5C9BC8C11987595D007BAD1E /* Images.xcassets in Resources */,
@@ -757,6 +757,7 @@
 				5CF0CAD219B58C96004AE0D2 /* bg_orange@2x.png in Resources */,
 				5C4E67E519A5712400955E57 /* reddit-logo@2x.png in Resources */,
 				5C7A707619B2530000CDB4F6 /* pulse@2x.png in Resources */,
+				5C071D7319F089480088F7EB /* bg_select_network_480@2x.png in Resources */,
 				5C1BCA9F19CA0B5500926CD3 /* iconFacebook@2x.png in Resources */,
 				5CB4481119F06CD60004A4EE /* half-phone-email@2x.png in Resources */,
 				5C4685EE19C94E3C00F22683 /* photoPlaceholder@2x.png in Resources */,
@@ -769,7 +770,6 @@
 				5C064D3219D49EAF0020315C /* iconCheckmark45@2x.png in Resources */,
 				5C1BCAA219CA0B5500926CD3 /* iconReddit@2x.png in Resources */,
 				5C1BCAA119CA0B5500926CD3 /* iconLinkedin@2x.png in Resources */,
-				5CB4480919F06C000004A4EE /* bg_select_network_480@2x.png in Resources */,
 				5C133E7219B9228300FB4AEC /* fb-rndsquare@2x.png in Resources */,
 				5C116C2D19899499004AFC22 /* bgButton@2x.png in Resources */,
 				5C133E7619B9228300FB4AEC /* linkd-rndsquare@2x.png in Resources */,
