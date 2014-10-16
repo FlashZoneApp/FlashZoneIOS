@@ -13,5 +13,6 @@
 @property (strong, nonatomic) UIView *halfPhoneImage;
 @property (strong, nonatomic) UIButton *btnNext;
 @property (strong, nonatomic) UIButton *btnGetStarted;
+@property (strong, nonatomic) UILabel *lblExplanation;
 @property (strong, nonatomic) NSMutableArray *socialIconsArray;
 @end

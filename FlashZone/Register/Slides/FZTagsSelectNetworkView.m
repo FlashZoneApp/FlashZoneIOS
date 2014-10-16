@@ -13,6 +13,7 @@
 @synthesize btnGetStarted;
 @synthesize socialIconsArray;
 @synthesize halfPhoneImage;
+@synthesize lblExplanation;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -36,11 +37,23 @@
         
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:background]];
         
-        self.halfPhoneImage = [[UIView alloc] initWithFrame:CGRectMake(0, 20.0f, imgHalfPhone.size.width, h)];
+        CGFloat y = 20.0f;
+        self.halfPhoneImage = [[UIView alloc] initWithFrame:CGRectMake(0, y, imgHalfPhone.size.width, h)];
         self.halfPhoneImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         self.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:imgHalfPhone];
         self.halfPhoneImage.center = CGPointMake(0.50f*frame.size.width-24.0f, self.halfPhoneImage.center.y);
         [self addSubview:self.halfPhoneImage];
+        y += h+53.0f;
+        
+        self.lblExplanation = [[UILabel alloc] initWithFrame:CGRectMake(12.0f, y, frame.size.width-24.0f, 54.0f)];
+        self.lblExplanation.backgroundColor = [UIColor clearColor];
+        self.lblExplanation.textColor = [UIColor whiteColor];
+        self.lblExplanation.font = [UIFont boldSystemFontOfSize:14.0f];
+        self.lblExplanation.textAlignment = NSTextAlignmentCenter;
+        self.lblExplanation.lineBreakMode = NSLineBreakByWordWrapping;
+        self.lblExplanation.numberOfLines = 0;
+        self.lblExplanation.text = @"Get in the FlashZone by adding a few things\nyou're into. (You'll be able to add more\nor remove these at any time.)";
+        [self addSubview:self.lblExplanation];
         
         
         self.btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -50,7 +63,7 @@
         self.btnNext.frame = CGRectMake(frame.size.width-80.0f, 24.0f, 80.0f, 24.0f);
         [self addSubview:self.btnNext];
         
-        CGFloat y = (iPhone5) ? 337.0f : 260.0f;
+        y = (iPhone5) ? 337.0f : 260.0f;
         CGFloat width = 0.6f*frame.size.width;
         self.btnGetStarted = [UIButton buttonWithType:UIButtonTypeCustom];
         self.btnGetStarted.frame = CGRectMake(0.5*(frame.size.width-width), y, width, 44.0f);
