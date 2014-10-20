@@ -219,6 +219,7 @@
     if (self.profile.registrationType==FZRegistrationTypeFacebook){
         NSLog(@"REGISTRATION - FACEBOOK");
         self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-fb.png"]];
+        self.selectNetworkSlide.lblExplanation.text = @"Get started by tapping a few things you like. We’ve suggested some based on your interests on Facebook";
         
         [self.socialAccountsMgr requestFacebookLikes:^(id result, NSError *error){
             if (error){
@@ -252,6 +253,7 @@
     if (self.profile.registrationType==FZRegistrationTypeTwitter){ // fetch most recent tweets
         NSLog(@"REGISTRATION - TWITTER");
         self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-twitter.png"]];
+        self.selectNetworkSlide.lblExplanation.text = @"Get started by tapping a few things you like. We’ve suggested some based on your interests on Twitter";
         
         [self.socialAccountsMgr fetchRecentTweets:self.socialAccountsMgr.selectedTwitterAccount completionBlock:^(id result, NSError *error){
             if (error){
@@ -296,19 +298,25 @@
     }
 
     if (self.profile.registrationType==FZRegistrationTypeGoogle){
-        self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-google.png"]];
         NSLog(@"REGISTRATION - GOOGLE");
+        self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-google.png"]];
+        self.selectNetworkSlide.lblExplanation.text = @"Get started by tapping a few things you like. We’ve suggested some based on your interests on Google+";
+
         [self fetchCategoryList];
         return;
     }
     
     if (self.profile.registrationType==FZRegistrationTypeLinkedIn){
         self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-linkedin.png"]];
+        self.selectNetworkSlide.lblExplanation.text = @"Get started by tapping a few things you like. We’ve suggested some based on your interests on LinkedIn";
+
         return;
     }
 
     if (self.profile.registrationType==FZRegistrationTypeReddit){
         self.selectNetworkSlide.halfPhoneImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"halfiphone-reddit.png"]];
+        self.selectNetworkSlide.lblExplanation.text = @"Get started by tapping a few things you like. We’ve suggested some based on your interests on Reddit";
+
         return;
     }
 
