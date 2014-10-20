@@ -312,6 +312,20 @@
 
 - (void)exit
 {
+//    NSLog(@"exit: %@", [self.profile.tags description]);
+    
+    if (self.profile.tags.count==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Tags"
+                                                        message:@"You have not selected any tags. Are you sure?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Yes"
+                                              otherButtonTitles:@"No", nil];
+        
+        [alert show];
+        return;
+    }
+    
+    
     [UIView animateWithDuration:0.75f
                           delay:0
          usingSpringWithDamping:0.6f
@@ -326,8 +340,13 @@
                      completion:^(BOOL finished){
                          [self.navigationController popViewControllerAnimated:NO];
                      }];
-    
+}
 
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"alertView clickedButtonAtIndex: %d", buttonIndex);
+    
 }
 
 - (void)didReceiveMemoryWarning

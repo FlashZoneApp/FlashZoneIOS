@@ -8,7 +8,7 @@
 
 #import "FZViewController.h"
 
-@interface FZTagsMenuViewController : FZViewController
+@interface FZTagsMenuViewController : FZViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIImage *backgroundImage;
 @property (strong, nonatomic) UIImageView *blurryBackground;
