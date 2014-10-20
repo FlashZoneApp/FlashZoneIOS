@@ -325,7 +325,11 @@
         return;
     }
     
-    
+    [self dismissSelf];
+}
+
+- (void)dismissSelf
+{
     [UIView animateWithDuration:0.75f
                           delay:0
          usingSpringWithDamping:0.6f
@@ -346,6 +350,11 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"alertView clickedButtonAtIndex: %d", buttonIndex);
+    if (buttonIndex==0){
+        [self dismissSelf];
+        return;
+    }
+    
     
 }
 
